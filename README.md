@@ -1,3 +1,3 @@
 # movieHub
 
-Just another movie web app using TMDB api but with a better UI and implementation
+Just another movie web app using TMDB api but with a solid UI and better implementation
