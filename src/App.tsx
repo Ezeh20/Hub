@@ -9,6 +9,7 @@ import TvDetails from './Components/Tv_details/tv_details'
 import PeopleDetails from './Components/People_details/people_details'
 
 function App() {
+  
   return (
     <div>
       <Routes>

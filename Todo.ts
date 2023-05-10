@@ -1,9 +1,9 @@
 /**
  * Tools
  * 
+ * 
  * axios - for api call 
  * framer_motion - for animation
- * dotenv - for safely using the api_key
  * sass - styling
  * typescript - type safety
  * react-router - navigation
@@ -26,7 +26,10 @@
 /**
  * phase 2
  * 
+ * 
  * Think of possible components then create then in a components folder
  * Map out the project's Layout in a reuseable component
- * Declare possible Route (Home, Movies, TV, People)
+ * Declare possible Routes (Home, Movies, TV, People)
+ * Configure the api noting the base URI then write out the methods for each call to be made
+ * 
  */
