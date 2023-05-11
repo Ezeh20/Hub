@@ -31,6 +31,14 @@ button {
   align-items: center;
   justify-content: center;
 }
+input,
+textarea,
+select{
+  outline: none;
+  &:hover{
+    cursor: pointer;
+  }
+}
 
 a,
 a:visited,
@@ -60,35 +68,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: $primary-font;
+  background-color: $Light-bg;
   font-weight: 400;
 
   .light {
     background-color: $Light-bg;
     color: $Light-text;
   }
-  .dark{
+
+  .dark {
     background-color: $Dark-bg;
     color: $Dark-text;
   }
 }
 
 
-.light {
-  .text {
-    color: $Light-text;
-  }
+//.light {}
 
-  .bg {
-    background-color: $Light-bg;
-  }
-}
-
-.dark {
-  .text {
-    color: $Dark-text;
-  }
-
-  .bg {
-    background-color: $Dark-bg;
-  }
-}
+//.dark {}

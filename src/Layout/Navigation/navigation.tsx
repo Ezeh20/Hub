@@ -4,7 +4,7 @@ import { ThemeContext } from '../../Context/theme_context'
 
 const Navigation = () => {
     const { theme, setTheme } = useContext(ThemeContext)
-    console.log(theme)
+
     return (
         <div className={styles.navigation}>
             <p>navigation</p>
