@@ -61,25 +61,34 @@ body {
   padding: 0;
   font-family: $primary-font;
   font-weight: 400;
-}
 
-
-.dark {
-  .text {
-    color: $Dark-Blue-light-mode-text;
+  .light {
+    background-color: $Light-bg;
+    color: $Light-text;
   }
-
-  .bg {
-    background-color: $General-white;
+  .dark{
+    background-color: $Dark-bg;
+    color: $Dark-text;
   }
 }
 
-.dark {
+
+.light {
   .text {
-    color: $Light-gray-light-mode-background;
+    color: $Light-text;
   }
 
   .bg {
-    background-color: $Dark-Blue-dark-mode-background;
+    background-color: $Light-bg;
+  }
+}
+
+.dark {
+  .text {
+    color: $Dark-text;
+  }
+
+  .bg {
+    background-color: $Dark-bg;
   }
 }
