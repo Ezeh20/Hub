@@ -41,7 +41,7 @@ export const tvInfo: globalType = {
 }
 
 
-//API request methods to call
+//API request endpoints to call
 const requestApi = {
     movie: (path: string, params: number) => {
         const url = `/movie/${moviePath[path]}?${key}&page=${params}`

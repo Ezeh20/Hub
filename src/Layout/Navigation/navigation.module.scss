@@ -1,0 +1,50 @@
+@use '../../scss/utils/functions'as fn;
+@use '../../scss/global/colors'as *;
+
+.navigation {
+    .header {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 1);
+        color: $Dark-headings;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+
+        @media screen and (min-width: 768px) {
+            height: 5.5rem;
+        }
+
+        .nav {
+            width: 100%;
+            position: relative;
+            margin-inline: 1.5rem;
+            max-width: 1440px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media screen and (min-width: 1440px) {
+                margin-inline: auto;
+            }
+
+            .logo {
+                width: fn.rem(40);
+                margin-top: .7rem;
+
+                @media screen and (min-width: 768px) {
+                    width: fn.rem(48);
+                }
+            }
+
+            .menu {
+                display: none;
+
+                @media screen and (min-width: 768px) {
+                    display: flex;
+                }
+            }
+        }
+    }
+}

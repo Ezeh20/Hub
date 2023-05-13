@@ -1,0 +1,54 @@
+@use '../../scss/utils/functions'as fn;
+@use '../../scss/utils/fonts'as *;
+@use '../../scss/global/colors'as *;
+
+.select {
+    width: fn.rem(100);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .currentSelected {
+        width: 100%;
+        display: flex;
+        background-color: transparent;
+        border: 1px solid $Primary-color;
+        padding: .3rem .5rem;
+        justify-content: space-between;
+        align-items: center;
+        &:hover{
+            cursor: pointer;
+        }
+
+        .icon {
+            font-size: fn.rem(22);
+           
+        }
+        .iconAlt {
+            transform: rotate(180deg);
+        }
+    }
+    .options{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: .3rem;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 1);
+        border: 1px solid $Primary-color;
+        left: 0;
+        bottom: -4.5rem;
+        
+        .rep{
+            display: flex;
+            align-items: center;
+            padding: .1rem .5rem;
+            gap: .4rem;
+            &:hover{
+                background-color: $Primary-colorAlt;
+                cursor: pointer;
+            }
+        }
+    }
+    
+}
