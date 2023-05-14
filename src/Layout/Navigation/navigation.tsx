@@ -1,19 +1,38 @@
 import styles from './navigation.module.scss'
 import logo from '../../../public/main-logo.svg'
 import CustomSelect from '../../Components/Custom_select/custom_select'
-import Fixed from '../../Components/Fixed_menu/fixed'
+import { Link, NavLink } from 'react-router-dom'
+import menuData from './data'
 
 const Navigation = () => {
 
     return (
         <div className={styles.navigation}>
-            <header className={`${styles.header} bg`}>
+            <header className={`${styles.header}`}>
                 <nav className={styles.nav}>
-                    <div className={styles.logo}>
+                    <Link className={styles.logo} to='/'>
                         <img src={logo} alt="logo" />
-                    </div>
+                    </Link>
                     <div className={styles.menu}>
-                        the menu
+                        {
+                            menuData.map(itm => {
+                                const { id, text, to } = itm
+                                return (
+                                    <ul className={styles.ul} key={id}>
+                                        <li className={styles.li}>
+                                            <NavLink key={id} to={to} className={({ isActive }) => {
+                                                return isActive
+                                                    ? `${`${styles.link} ${styles.active}`}`
+                                                    : `${styles.link}`
+                                            }}>
+                                                <p>{text}</p>
+                                            </NavLink>
+                                            <div className={styles.line} />
+                                        </li>
+                                    </ul>
+                                )
+                            })
+                        }
                     </div>
                     <CustomSelect />
                 </nav>

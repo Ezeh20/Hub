@@ -3,8 +3,8 @@ import { createContext, useEffect, useState } from "react";
 import { values, childrenNode } from './types'
 
 export const ThemeContext = createContext<values>({
-    theme: 'light',
-    setTheme: (e:string) => e,
+    theme: 'dark',
+    setTheme: (e: string) => e,
 })
 
 export const ThemeContextProvider = ({ children }: childrenNode) => {

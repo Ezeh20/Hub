@@ -31,11 +31,13 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 input,
 textarea,
-select{
+select {
   outline: none;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 }
@@ -83,6 +85,28 @@ body {
 }
 
 
-//.light {}
+.light {
+  .bg {
+    background-color: #fff;
+    box-shadow: -2px -3px 6px 0px #eee;
+    -webkit-box-shadow: -2px -3px 6px 0px #eee;
+    -moz-box-shadow: -2px -3px 6px 0px rgba(122, 118, 118, 0.75);
+  }
 
-//.dark {}
+  .textFixed {
+    color: $Light-text;
+    font-weight: 400;
+  }
+
+
+}
+
+.dark {
+  .bg {
+    background-color: $Dark-bg;
+  }
+
+  .textFixed {
+    color: $Dark-headings;
+  }
+}

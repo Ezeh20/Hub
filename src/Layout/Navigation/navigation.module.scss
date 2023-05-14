@@ -4,7 +4,7 @@
 .navigation {
     .header {
         width: 100%;
-        background-color: rgba(0, 0, 0, 1);
+        background-color: $Dark-bg;
         color: $Dark-headings;
         height: 5rem;
         display: flex;
@@ -39,10 +39,39 @@
             }
 
             .menu {
-                display: none;
+                display: flex;
+                column-gap: 4rem;
 
-                @media screen and (min-width: 768px) {
-                    display: flex;
+
+                @media screen and (max-width: 767px) {
+                    display: none;
+                }
+
+                .ul {
+                    .li {
+                        .link {
+                            color: $Dark-headings;
+
+                            &:hover {
+                                color: $Primary-color;
+                            }
+                        }
+
+                        .active~.line {
+                            width: 100%;
+                            height: fn.rem(2);
+                            background-color: $Primary-color;
+                            margin-top: .1rem;
+                        }
+                     &:hover .line{
+                        width: 100%;
+                        height: fn.rem(2);
+                        background-color: $Primary-color;
+                        margin-top: .1rem;
+                     }
+
+
+                    }
                 }
             }
         }
