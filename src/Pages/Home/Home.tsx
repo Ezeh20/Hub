@@ -1,26 +1,38 @@
-import { useEffect } from "react"
-import requestApi, { moviePath } from "../../api/tmdb_api_config"
+import { useEffect, useState } from "react"
+import requestApi from "../../api/tmdb_api_config"
+import styles from './home.module.scss'
+import Hero from "./Hero_section/hero"
+
+//import Button from "../../Components/Button/button"
 
 
 const Home = () => {
+  const [trending, setTrending] = useState<string>('movie')
+  const [trendingPeriod, setTrendingPeriod] = useState<string>('day')
+  const [trendingResult, setTrendingResult] = useState<[]>([])
+  const [current, setCurrent] = useState<number>(0)
 
-  const myF = async () => {
-    try {
-      const req = await requestApi.movie(moviePath.popular, 5)
-      console.log(req)
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error.message)
+  useEffect(() => {
+    const Trending = async () => {
+      try {
+        const { data } = await requestApi.trending(trending, trendingPeriod)
+        setTrendingResult(data.results)
+      } catch (error) {
+        if (error instanceof Error) {
+          throw new Error(error.message)
+        }
       }
     }
-  }
-  useEffect(() => {
-    myF()
-  }, [])
+    Trending()
+  }, [trending, trendingPeriod])
+
 
   return (
-    <div className="cc">
-      home
+    <div className={styles.home}>
+      <Hero
+        trendingResult={trendingResult}
+        current={current} setCurrent={setCurrent}
+      />
     </div>
   )
 }

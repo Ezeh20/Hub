@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import { values, childrenNode } from './types'
 
 export const ThemeContext = createContext<values>({
-    theme: 'dark',
+    theme: 'light',
     setTheme: (e: string) => e,
 })
 

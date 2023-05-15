@@ -41,6 +41,7 @@ export const tvInfo: globalType = {
 }
 
 
+
 //API request endpoints to call
 const requestApi = {
     movie: (path: string, params: number) => {
@@ -69,6 +70,10 @@ const requestApi = {
     },
     people: (params: number) => {
         const url = `/person/popular?${key}&page=${params}`
+        return axiosConfig.get(url)
+    },
+    trending: (path: string, params: string) => {
+        const url = `/trending/${path}/${params}?${key}`
         return axiosConfig.get(url)
     }
 }

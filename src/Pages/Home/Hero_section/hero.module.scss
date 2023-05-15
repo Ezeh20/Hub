@@ -1,0 +1,125 @@
+@use '../../../scss/utils/functions' as fn;
+
+.carousel {
+    display: flex;
+    width: 100%;
+    height: fn.rem(400);
+    position: relative;
+
+    @media screen and (min-width: 768px) {
+        height: fn.rem(550);
+    }
+
+    .btn {
+        background-color: transparent;
+        color: #fff;
+        opacity: .5;
+        font-size: fn.rem(28);
+        left: 1.5rem;
+        top: 40%;
+        position: absolute;
+        transition: all 500ms ease-in-out;
+        z-index: 10;
+        display: none;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        @media screen and (min-width: 768px) {
+            font-size: fn.rem(45);
+            display: block;
+        }
+    }
+
+    .btn2 {
+        background-color: transparent;
+        color: #fff;
+        opacity: .5;
+        font-size: fn.rem(28);
+        right: 1.5rem;
+        top: 40%;
+        position: absolute;
+        transition: all 500ms ease-in-out;
+        z-index: 10;
+        display: none;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        @media screen and (min-width: 768px) {
+            font-size: fn.rem(45);
+            display: block;
+        }
+    }
+
+    .carouselContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        .hero {
+            display: flex;
+            flex: 1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-100);
+            transition: 1s ease-in-out;
+
+            .backDrop {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+            }
+
+            .overlay {
+                position: absolute;
+                inset: 0;
+                background:
+                    linear-gradient(transparent, rgba(0, 0, 0, .7), black);
+                width: 100%;
+
+                .content {
+                    position: absolute;
+                    bottom: 0;
+                    color: #fff;
+                    display: flex;
+                    align-items: flex-end;
+                    gap: 1rem;
+
+                    @media screen and (min-width:1024px) {
+                        gap: 0;
+                    }
+
+                    .poster {
+                        width: 35%;
+                        height: 35%;
+                        object-fit: contain;
+
+                        @media screen and (min-width:1024px) {
+                            width: fn.rem(350);
+                            height: fn.rem(350);
+                            object-fit: contain;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        .heroActive {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: visible;
+        }
+    }
+}

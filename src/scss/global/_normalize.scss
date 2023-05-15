@@ -98,6 +98,15 @@ body {
     font-weight: 400;
   }
 
+  .buttons {
+    background-color: $Dark-bg;
+    color: $Dark-headings;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $Light-text;
+    }
+  }
 
 }
 
@@ -108,5 +117,14 @@ body {
 
   .textFixed {
     color: $Dark-headings;
+  }
+
+  .buttons {
+    background-color: #eee;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #fff;
+    }
   }
 }

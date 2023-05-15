@@ -1,0 +1,10 @@
+@use '../../scss/global/colors'as *;
+@use '../../scss/utils/functions'as fn;
+
+.button {
+    width: max-content;
+    padding: .5rem 1rem;
+    background-color: $Primary-color;
+    font-size: fn.rem(14);
+    transition: all 500ms ease-in-out;
+}

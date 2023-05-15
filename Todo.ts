@@ -33,3 +33,10 @@
  * Configure the api noting the base URI then write out the methods for each call to be made
  * 
  */
+
+/**
+ * 
+ * phase 3
+ * 
+ * Using the design pattern, implement the homepage using the needed api method already defined
+ */
