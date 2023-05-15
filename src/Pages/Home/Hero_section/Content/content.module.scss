@@ -1,0 +1,52 @@
+@use '../../../../scss/utils/functions' as fn;
+
+.content {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+
+    @media screen and (min-width:1024px) {
+        gap: 0;
+    }
+
+    .poster {
+        width: 35%;
+        height: 35%;
+        object-fit: contain;
+
+        @media screen and (min-width:1024px) {
+            width: fn.rem(350);
+            height: fn.rem(350);
+            object-fit: contain;
+        }
+    }
+
+    .Info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        margin-bottom: 1rem;
+
+        .rating {
+            display: flex;
+            align-items: center;
+            position: relative;
+            justify-content: center;
+
+            .percentage {
+                position: absolute;
+                display: flex;
+
+                .per {
+                    font-size: 10px;
+                }
+            }
+        }
+
+    }
+}

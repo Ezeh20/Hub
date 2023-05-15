@@ -75,6 +75,10 @@ const requestApi = {
     trending: (path: string, params: string) => {
         const url = `/trending/${path}/${params}?${key}`
         return axiosConfig.get(url)
+    },
+    movieGenres: () => {
+        const url = `/genre/movie/list?${key}`
+        return axiosConfig.get(url)
     }
 }
 
