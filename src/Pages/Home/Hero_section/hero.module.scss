@@ -1,4 +1,4 @@
-@use '../../../scss/utils/functions' as fn;
+@use '../../../scss/utils/functions'as fn;
 
 .carousel {
     display: flex;
@@ -109,6 +109,30 @@
                             height: fn.rem(350);
                             object-fit: contain;
                         }
+                    }
+
+                    .Info {
+                        display: flex;
+                        flex-direction: column;
+                       justify-content: flex-start;
+                       align-items: flex-start;
+                        position: relative;
+
+                        .rating {
+                            display: flex;
+                            align-items: center;
+                            position: relative;
+                            justify-content: center;
+
+                            .percentage {
+                                position: absolute;
+                                display: flex;
+                                .per{
+                                    font-size: 10px;
+                                }
+                            }
+                        }
+
                     }
                 }
 
