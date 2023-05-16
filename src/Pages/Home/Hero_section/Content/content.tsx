@@ -2,6 +2,7 @@ import apiConfig from '../../../../api/api_config'
 import styles from './content.module.scss'
 import Rating from '../../../../Components/Rating/rating';
 import Button from '../../../../Components/Button/button';
+import { BsFillPlayCircleFill,BsArrowBarRight } from "react-icons/bs";
 
 type Props = {
     rating: number,
@@ -24,14 +25,14 @@ const Info = (props: Props) => {
                         <span className={styles.per}>%</span>
                     </p>
                 </div>
-                <p>{original_title}</p>
-                <p>{overview}</p>
+                <p className={styles.title}>{original_title}</p>
+                <p className={styles.overView}>{overview}</p>
                 <div className={styles.genre}>
                     {
                         genreArr.map(itm => {
                             const { id, name } = itm
                             return (
-                                <div key={id}>
+                                <div key={id} className={styles.genreLists}>
                                     <p>{name}</p>
                                 </div>
                             )
@@ -39,8 +40,8 @@ const Info = (props: Props) => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button>watch</Button>
-                    <Button>more</Button>
+                    <Button type='button' btnType='watch'><BsFillPlayCircleFill className={styles.icn}/> watch</Button>
+                    <Button><BsArrowBarRight className={styles.icn}/> more</Button>
                 </div>
             </div>
         </div>

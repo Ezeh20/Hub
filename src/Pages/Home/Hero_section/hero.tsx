@@ -24,8 +24,9 @@ const Hero = (props: heroType) => {
     useEffect(() => {
         play = autoPlay && setTimeout(() => {
             next()
-        }, 5000)
+        }, 7000)
     })
+
 
     useEffect(() => {
         const genre = async () => {

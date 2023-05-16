@@ -2,9 +2,38 @@
 @use '../../scss/utils/functions'as fn;
 
 .button {
-    width:100%;
-    padding: .5rem 1rem;
-    background-color: $Primary-color;
+    width: 100%;
+    padding: .6rem;
+    background-color: $Dark-text;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    border-radius: 5px;
     font-size: fn.rem(14);
     transition: all 500ms ease-in-out;
+    color: #000;
+
+    @media screen and (min-width: 600px) {
+        padding: .8rem;
+        gap: .5rem;
+        font-size: fn.rem(16);
+    }
+
+    @media screen and (min-width: 1440px) {
+        font-size: fn.rem(18);
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: #aaa;
+    }
+
+    &.watch {
+        background-color: red;
+        color: #fff;
+
+        &:hover {
+            background-color: rgb(131, 17, 17);
+        }
+    }
 }
