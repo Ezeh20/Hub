@@ -5,7 +5,6 @@ import apiConfig from "../../../api/api_config"
 import styles from './hero.module.scss'
 import Container from "../../../Components/Container/container"
 import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from "react-icons/tb";
-import Button from "../../../Components/Button/button";
 import requestApi from "../../../api/tmdb_api_config";
 import { heroType, Filter, Content } from "./type";
 import Info from "./Content/content";
@@ -69,9 +68,8 @@ const Hero = (props: heroType) => {
                         vote_average,
                         poster_path,
                         overview,
-                        release_date
                     }: Content = item
-                    const genreArr = []
+                    const genreArr: [] = []
                     genre_ids && genre_ids.forEach((e: number) => {
                         genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
 
@@ -87,8 +85,8 @@ const Hero = (props: heroType) => {
                                     <Info original_title={original_title}
                                         poster_path={poster_path}
                                         overview={overview}
-                                        release_date={release_date}
                                         rating={rating}
+                                        genreArr={genreArr}
                                     />
                                 </Container>
                             </div>

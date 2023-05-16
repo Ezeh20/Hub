@@ -12,7 +12,6 @@ export type Content = {
     vote_average: number,
     poster_path: string,
     overview: string,
-    release_date: string
 }
 
 export type Filter = {

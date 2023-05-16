@@ -2,7 +2,7 @@
 @use '../../scss/utils/functions'as fn;
 
 .button {
-    width: max-content;
+    width:100%;
     padding: .5rem 1rem;
     background-color: $Primary-color;
     font-size: fn.rem(14);
