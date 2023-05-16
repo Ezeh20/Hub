@@ -1,6 +1,7 @@
 import { Circle } from 'rc-progress';
 import apiConfig from '../../../../api/api_config'
 import styles from './content.module.scss'
+import Rating from '../../../../Components/Rating/rating';
 
 type Props = {
     rating: number,
@@ -17,16 +18,7 @@ const Info = (props: Props) => {
             <img src={apiConfig.small(poster_path)} alt="poster" className={styles.poster} />
             <div className={styles.Info}>
                 <div className={styles.rating}>
-                    <Circle percent={rating} strokeWidth={10}
-                        strokeColor={rating <= 49 ? 'red'
-                            : rating <= 69
-                                ? '#227C70'
-                                : rating <= 79
-                                    ? '#21d07a'
-                                    : '#FFB84C'}
-                        style={{
-                            width: '50px', height: '50px'
-                        }} />
+                    <Rating rating={rating} />
                     <p className={styles.percentage}>
                         {rating.toFixed(0)}
                         <span className={styles.per}>%</span>
@@ -34,7 +26,6 @@ const Info = (props: Props) => {
                 </div>
                 <p>{original_title}</p>
                 <p>{overview}</p>
-                <p>{release_date}</p>
                 <div>
 
                 </div>
