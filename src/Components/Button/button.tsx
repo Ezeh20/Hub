@@ -5,7 +5,7 @@ type Btn = {
     children: React.ReactNode,
     type: "button" | "submit" | "reset",
     btnType: string,
-    onClick: React.MouseEventHandler<HTMLButtonElement> | undefined
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
 }
 
 const Button = ({ children, type, btnType, onClick }: Btn) => {
@@ -15,5 +15,7 @@ const Button = ({ children, type, btnType, onClick }: Btn) => {
         </button>
     )
 }
+
+
 
 export default Button
