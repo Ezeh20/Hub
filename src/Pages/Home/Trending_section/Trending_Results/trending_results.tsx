@@ -10,7 +10,7 @@ const TrendingResults = (props: Result) => {
 
     return (
         <div className={styles.TrendingResults}>
-            <div>
+            <div className={styles.trendingCards}>
                 <DisplayCard trendingResult={trendingResult} />
             </div>
         </div>

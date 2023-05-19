@@ -66,6 +66,10 @@ li {
   letter-spacing: 0.5;
 }
 
+img {
+  max-width: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -106,7 +110,10 @@ body {
     font-weight: 400;
   }
 
-  
+  .cardBg {
+    background-color:#faf8f8;
+    color: #000;
+  }
 }
 
 .dark {
@@ -118,6 +125,9 @@ body {
     color: $Dark-headings;
   }
 
-  
-  
+
+  .cardBg {
+    background-color: #000;
+    color: #eee;
+  }
 }
