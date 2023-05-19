@@ -32,7 +32,11 @@ const Home = () => {
         trendingResult={trendingResult}
         current={current} setCurrent={setCurrent}
       />
-      <Trending />
+      <Trending
+        trending={trending} setTrending={setTrending}
+        trendingPeriod={trendingPeriod} setTrendingPeriod={setTrendingPeriod}
+        trendingResult={trendingResult}
+      />
     </div>
   )
 }

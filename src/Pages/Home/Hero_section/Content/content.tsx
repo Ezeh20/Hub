@@ -2,18 +2,19 @@ import apiConfig from '../../../../api/api_config'
 import styles from './content.module.scss'
 import Rating from '../../../../Components/Rating/rating';
 import Button from '../../../../Components/Button/button';
-import { BsFillPlayCircleFill, BsArrowBarRight } from "react-icons/bs";
+import { BsArrowBarRight } from "react-icons/bs";
 
 type Props = {
     rating: number,
     original_title: string,
     poster_path: string,
     overview: string,
+    name: string,
     genreArr: [],
 }
 
 const Info = (props: Props) => {
-    const { poster_path, rating, original_title, overview, genreArr} = props
+    const { poster_path, rating, original_title, overview, genreArr, name } = props
 
     return (
         <div className={styles.content}>
@@ -26,7 +27,10 @@ const Info = (props: Props) => {
                         <span className={styles.per}>%</span>
                     </p>
                 </div>
-                <p className={styles.title}>{original_title}</p>
+                {
+                    original_title ? <p className={styles.title}>{original_title}</p> :
+                        <p className={styles.title}>{name}</p>
+                }
                 <p className={styles.overView}>{overview}</p>
                 <div className={styles.genre}>
                     {

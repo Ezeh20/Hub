@@ -48,7 +48,7 @@ const Hero = (props: heroType) => {
     const prev = () => {
         setCurrent(current === 0 ? top10.length - 1 : current - 1)
     }
-  
+
     return (
         <div className={styles.carousel}
             onMouseEnter={() => { setAutoPlay(false); clearTimeout(play) }}
@@ -64,6 +64,7 @@ const Hero = (props: heroType) => {
                         vote_average,
                         poster_path,
                         overview,
+                        name
                     }: Content = item
                     const genreArr: [] = []
                     genre_ids && genre_ids.forEach((e: number) => {
@@ -83,10 +84,11 @@ const Hero = (props: heroType) => {
                                         overview={overview}
                                         rating={rating}
                                         genreArr={genreArr}
+                                        name={name}
                                     />
                                 </Container>
                             </div>
-                           
+
                             <button onClick={prev} className={styles.btn}>
                                 <TbSquareRoundedArrowLeftFilled />
                             </button>

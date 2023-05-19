@@ -1,12 +1,26 @@
-import { useState } from 'react'
 import Container from '../../../Components/Container/container'
+import TrendingResults from './Trending_Results/trending_results'
 import styles from './trending.module.scss'
 const options = ['movie', 'tv']
 const optionsDuration = ['week', 'day']
 
-const Trending = () => {
-    const [opt, setOpt] = useState<string>('movie')
-    const [duration, setDuration] = useState<string>('week')
+type Trending = {
+    trending: string,
+    setTrending: React.Dispatch<React.SetStateAction<string>>,
+    trendingPeriod: string,
+    setTrendingPeriod: React.Dispatch<React.SetStateAction<string>>,
+    trendingResult: []
+}
+
+const Trending = (props: Trending) => {
+    const {
+        trending,
+        setTrending,
+        trendingPeriod,
+        setTrendingPeriod,
+        trendingResult
+    } = props
+
     return (
         <div className={styles.trending}>
             <Container>
@@ -18,7 +32,7 @@ const Trending = () => {
                                 {
                                     options.map((itm, idx) => {
                                         return (
-                                            <button key={idx} onClick={() => setOpt(itm)} className={opt === itm
+                                            <button key={idx} onClick={() => setTrending(itm)} className={trending === itm
                                                 ? `${styles.TrendingOption}  ${styles.TrendingOptionActive}`
                                                 : `${styles.TrendingOption}`}>
                                                 {itm}
@@ -31,7 +45,7 @@ const Trending = () => {
                                 {
                                     optionsDuration.map((itm, idx) => {
                                         return (
-                                            <button key={idx} onClick={() => setDuration(itm)} className={duration === itm
+                                            <button key={idx} onClick={() => setTrendingPeriod(itm)} className={trendingPeriod === itm
                                                 ? `${styles.DurationOption}  ${styles.DurationOptionActive}`
                                                 : `${styles.DurationOption}`}>
                                                 {itm}
@@ -42,6 +56,7 @@ const Trending = () => {
                             </div>
                         </div>
                     </div>
+                    <TrendingResults trendingResult={trendingResult} />
                 </div>
             </Container>
         </div>
