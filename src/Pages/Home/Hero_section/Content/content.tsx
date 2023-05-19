@@ -22,10 +22,6 @@ const Info = (props: Props) => {
             <div className={styles.Info}>
                 <div className={styles.rating}>
                     <Rating rating={rating} />
-                    <p className={styles.percentage}>
-                        {rating.toFixed(0)}
-                        <span className={styles.per}>%</span>
-                    </p>
                 </div>
                 {
                     original_title ? <p className={styles.title}>{original_title}</p> :
