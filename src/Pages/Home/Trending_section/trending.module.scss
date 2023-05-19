@@ -1,0 +1,67 @@
+@use '../../../scss/global/colors'as *;
+@use '../../../scss/utils/functions'as fn;
+
+.trending {
+    margin-top: 2rem;
+
+    .trendingContainer {
+        .Top {
+            display: flex;
+            gap: .5rem;
+            flex-direction: column;
+
+            .select {
+                display: flex;
+                justify-content: space-between;
+
+                .selectTrending {
+                    display: flex;
+                    align-items: center;
+                    width: max-content;
+                    height: fn.rem(30);
+                    justify-content: space-between;
+
+                    .TrendingOption {
+                        width: fn.rem(50);
+                        font-size: fn.rem(14);
+                        padding: .5rem 1.8rem;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .TrendingOptionActive {
+                        background-color: #000;
+                        color: #fff;
+                        border: 1px solid #fff;
+                    }
+                }
+
+                .period {
+                    display: flex;
+                    align-items: center;
+                    width: max-content;
+                    height: fn.rem(30);
+                    justify-content: space-between;
+
+                    .DurationOption {
+                        width: fn.rem(50);
+                        font-size: fn.rem(14);
+                        padding: .5rem 1.8rem;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .DurationOptionActive {
+                        background-color: #000;
+                        color: #fff;
+                        border: 1px solid #fff;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import requestApi from "../../api/tmdb_api_config"
 import styles from './home.module.scss'
 import Hero from "./Hero_section/hero"
-
-//import Button from "../../Components/Button/button"
+import Trending from "./Trending_section/trending"
 
 
 const Home = () => {
@@ -33,6 +32,7 @@ const Home = () => {
         trendingResult={trendingResult}
         current={current} setCurrent={setCurrent}
       />
+      <Trending />
     </div>
   )
 }

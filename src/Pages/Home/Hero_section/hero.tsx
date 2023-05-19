@@ -17,15 +17,15 @@ const Hero = (props: heroType) => {
         setCurrent
     } = props
 
-    const [autoPlay, setAutoPlay] = useState<boolean>(false)
+    const [autoPlay, setAutoPlay] = useState<boolean>(true)
     const [genre, setGenre] = useState<[]>([])
-    const [toggleWatch, setToggleWatch] = useState<boolean>(false)
     let play: any = null;
 
+
     useEffect(() => {
-         autoPlay && setTimeout(() => {
+        play = autoPlay ? setTimeout(() => {
             next()
-        }, 7000)
+        }, 10000) : ''
     })
 
 
@@ -48,17 +48,11 @@ const Hero = (props: heroType) => {
     const prev = () => {
         setCurrent(current === 0 ? top10.length - 1 : current - 1)
     }
-    //function to close the trailer modal
-    const closeModal = () => {
-        setToggleWatch(curr => !curr)
-        setAutoPlay(true)
-    }
-
+  
     return (
         <div className={styles.carousel}
             onMouseEnter={() => { setAutoPlay(false); clearTimeout(play) }}
-            onMouseLeave={() => setAutoPlay(true)}
-        >
+            onMouseLeave={() => setAutoPlay(true)}>
 
             <div className={styles.carouselContainer}>
                 {top10.map((item, idx) => {
@@ -89,20 +83,10 @@ const Hero = (props: heroType) => {
                                         overview={overview}
                                         rating={rating}
                                         genreArr={genreArr}
-                                        setToggleWatch={setToggleWatch}
-                                        setAutoPlay={setAutoPlay}
                                     />
                                 </Container>
                             </div>
-                            {
-                                toggleWatch &&
-                                <div className={styles.modal}>
-                                    <div>
-                                        <p>{original_title}</p>
-                                        <button onClick={() => closeModal()}>close</button>
-                                    </div>
-                                </div>
-                            }
+                           
                             <button onClick={prev} className={styles.btn}>
                                 <TbSquareRoundedArrowLeftFilled />
                             </button>

@@ -10,17 +10,11 @@ type Props = {
     poster_path: string,
     overview: string,
     genreArr: [],
-    setToggleWatch: React.Dispatch<React.SetStateAction<boolean>>,
-    setAutoPlay: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Info = (props: Props) => {
-    const { poster_path, rating, original_title, overview, genreArr, setToggleWatch, setAutoPlay } = props
+    const { poster_path, rating, original_title, overview, genreArr} = props
 
-    const playTrailer = () => {
-        setToggleWatch(pre => !pre)
-        setAutoPlay(false)
-    }
     return (
         <div className={styles.content}>
             <img src={apiConfig.small(poster_path)} alt="poster" className={styles.poster} />
@@ -47,13 +41,9 @@ const Info = (props: Props) => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button type='button' btnType='watch' onClick={() => playTrailer()}>
-                        <BsFillPlayCircleFill className={styles.icn} />
-                        watch
-                    </Button>
                     <Button type='button' btnType=''>
+                        view
                         <BsArrowBarRight className={styles.icn} />
-                        more
                     </Button>
                 </div>
             </div>
