@@ -9,7 +9,7 @@ type Trending = {
     setTrending: React.Dispatch<React.SetStateAction<string>>,
     trendingPeriod: string,
     setTrendingPeriod: React.Dispatch<React.SetStateAction<string>>,
-    trendingResult: []
+    result: []
 }
 
 const Trending = (props: Trending) => {
@@ -18,7 +18,7 @@ const Trending = (props: Trending) => {
         setTrending,
         trendingPeriod,
         setTrendingPeriod,
-        trendingResult
+        result
     } = props
 
     return (
@@ -26,7 +26,10 @@ const Trending = (props: Trending) => {
             <Container>
                 <div className={styles.trendingContainer}>
                     <div className={styles.Top}>
-                        <p className='Headings'>Trending</p>
+                        <div className='HeadingsContainer'>
+                            <p className='Headings'>Trending</p>
+                            <span className='HeadingSub'>Top trending shows</span>
+                        </div>
                         <div className={styles.select}>
                             <div className={`${styles.selectTrending}`}>
                                 {
@@ -56,7 +59,7 @@ const Trending = (props: Trending) => {
                             </div>
                         </div>
                     </div>
-                    <TrendingResults trendingResult={trendingResult} />
+                    <TrendingResults result={result} />
                 </div>
             </Container>
         </div>

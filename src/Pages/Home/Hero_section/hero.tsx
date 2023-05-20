@@ -12,7 +12,7 @@ import Info from "./Content/content";
 
 const Hero = (props: heroType) => {
     const {
-        trendingResult,
+        result,
         current,
         setCurrent
     } = props
@@ -39,7 +39,7 @@ const Hero = (props: heroType) => {
     }, [])
 
     //get the top n to be used in a slide show carousel 
-    const top10 = trendingResult.slice(0, 10)
+    const top10 = result.slice(0, 10)
     //function to toggle the next showcase
     const next = () => {
         setCurrent(current === top10.length - 1 ? 0 : current + 1)

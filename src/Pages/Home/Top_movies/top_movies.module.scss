@@ -1,0 +1,12 @@
+.topMovies{
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 10rem;
+    .top{
+        display: flex;
+    }
+}
+.topMovies::-webkit-scrollbar {
+    display: none;
+}

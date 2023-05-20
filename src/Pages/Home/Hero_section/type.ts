@@ -1,5 +1,5 @@
 export type heroType = {
-    trendingResult: [],
+    result: [],
     current: number,
     setCurrent: React.Dispatch<React.SetStateAction<number>>
 }

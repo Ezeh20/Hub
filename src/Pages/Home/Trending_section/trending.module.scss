@@ -2,13 +2,10 @@
 @use '../../../scss/utils/functions'as fn;
 
 .trending {
-    margin-top: 2rem;
-    padding-bottom: 10rem;
-
     .trendingContainer {
         .Top {
             display: flex;
-           
+
             flex-direction: column;
 
             .select {
