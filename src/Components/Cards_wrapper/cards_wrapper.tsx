@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './cards_wrapper.module.scss'
 import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from "react-icons/tb";
 
 type Children = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    id: string
 }
 
-const CardsWrapper = ({ children }: Children) => {
+const CardsWrapper = ({ children, id }: Children) => {
+
+    const slider = useRef(null)
+
+    const ScrollRight = () => {
+        const right: any = document.getElementById(id)
+        right.scrollLeft = right.scrollLeft + 500
+    }
+
+    const ScrollLeft = () => {
+        const left: any = document.getElementById(id)
+        left.scrollLeft = left.scrollLeft - 500
+    }
     return (
         <div className={styles.con}>
-            <div className={styles.Wrapper}>
+            <div id={id} ref={slider} className={styles.Wrapper}>
                 <div className={styles.content}>
                     {children}
                 </div>
             </div>
-            <TbSquareRoundedArrowLeftFilled className={` ${styles.arr} ${styles.arrLeft}`} />
-            <TbSquareRoundedArrowRightFilled className={`${styles.arr} ${styles.arrRight}`} />
+            <TbSquareRoundedArrowLeftFilled className={` ${styles.arr} ${styles.arrLeft}`} onClick={ScrollLeft} />
+            <TbSquareRoundedArrowRightFilled className={`${styles.arr} ${styles.arrRight}`} onClick={ScrollRight} />
         </div>
     )
 }

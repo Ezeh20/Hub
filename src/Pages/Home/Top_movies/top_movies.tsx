@@ -1,4 +1,3 @@
-import styles from './top_movies.module.scss'
 import Container from "../../../Components/Container/container"
 import requestApi from '../../../api/tmdb_api_config'
 import DisplayCard from '../../../Components/Display_card/display_card'
@@ -31,7 +30,7 @@ const TopMovies = () => {
                 <p className='Headings'>Top rated</p>
                 <span className='HeadingSub'>Top movies to watch</span>
             </div>
-            <CardsWrapper>
+            <CardsWrapper id='top_rated'>
                 <DisplayCard result={result} />
             </CardsWrapper>
         </Container>

@@ -11,7 +11,7 @@ const TrendingResults = (props: Result) => {
 
     return (
         <div className={styles.TrendingResults}>
-            <CardsWrapper>
+            <CardsWrapper id='trending'>
                 <DisplayCard result={result} />
             </CardsWrapper>
         </div>
