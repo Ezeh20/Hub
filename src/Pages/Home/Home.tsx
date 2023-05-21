@@ -4,6 +4,7 @@ import styles from './home.module.scss'
 import Hero from "./Hero_section/hero"
 import Trending from "./Trending_section/trending"
 import TopMovies from "./Top_movies/top_movies"
+import TvOnair from "./Tv/tv_onair"
 
 const Home = () => {
   const [trending, setTrending] = useState<string>('movie')
@@ -38,6 +39,7 @@ const Home = () => {
         result={result}
       />
       <TopMovies />
+      <TvOnair />
     </div>
   )
 }

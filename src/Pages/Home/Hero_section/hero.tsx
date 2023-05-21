@@ -17,6 +17,7 @@ const Hero = (props: heroType) => {
         setCurrent
     } = props
 
+
     const [autoPlay, setAutoPlay] = useState<boolean>(true)
     const [genre, setGenre] = useState<[]>([])
     let play: any = null;
@@ -31,12 +32,15 @@ const Hero = (props: heroType) => {
 
     useEffect(() => {
         const genre = async () => {
-            const req = requestApi.movieGenres()
+            const req = requestApi.movieGenres('')
             const { genres } = await (await req).data
             setGenre(genres)
         }
         genre()
     }, [])
+
+
+
 
     //get the top n to be used in a slide show carousel 
     const top10 = result.slice(0, 10)
@@ -66,10 +70,10 @@ const Hero = (props: heroType) => {
                         overview,
                         name
                     }: Content = item
+
                     const genreArr: [] = []
                     genre_ids && genre_ids.forEach((e: number) => {
                         genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
-
                     })
 
                     const rating = vote_average * 10

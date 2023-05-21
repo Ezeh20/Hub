@@ -12,7 +12,8 @@ export type Content = {
     vote_average: number,
     poster_path: string,
     overview: string,
-    name: undefined | string | any
+    name: undefined | string | any,
+    media_type: string
 }
 
 export type Filter = {
