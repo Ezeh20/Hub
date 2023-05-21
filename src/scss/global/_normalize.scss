@@ -70,6 +70,16 @@ img {
   max-width: 100%;
 }
 
+::-webkit-scrollbar {
+  display: inline-flex;
+  width: .4vw;
+  background-color: $Dark-altbg;
+}
+
+::-webkit-scrollbar-thumb {
+  background:linear-gradient(transparent, $Primary-color);
+  border-radius: 20px;
+}
 body {
   margin: 0;
   padding: 0;
