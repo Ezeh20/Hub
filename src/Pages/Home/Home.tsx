@@ -5,6 +5,9 @@ import Hero from "./Hero_section/hero"
 import Trending from "./Trending_section/trending"
 import TopMovies from "./Top_movies/top_movies"
 import TvOnair from "./Tv/tv_onair"
+import ComingSoon from "./Coming_soon/coming_soon"
+import People from "../People/people"
+
 
 const Home = () => {
   const [trending, setTrending] = useState<string>('movie')
@@ -40,6 +43,8 @@ const Home = () => {
       />
       <TopMovies />
       <TvOnair />
+      <ComingSoon />
+      <People />
     </div>
   )
 }

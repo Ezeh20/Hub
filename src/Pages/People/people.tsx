@@ -1,7 +1,11 @@
+import PeopleCard from "../../Components/People_card/people_card"
+
 
 const People = () => {
     return (
-        <div>People</div>
+        <div>
+            <PeopleCard />
+        </div>
     )
 }
 

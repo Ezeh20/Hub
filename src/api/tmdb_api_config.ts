@@ -68,8 +68,8 @@ const requestApi = {
         const url = `/tv/${id}/${path}?${key}`
         return axiosConfig.get(url)
     },
-    people: (params: number) => {
-        const url = `/person/popular?${key}&page=${params}`
+    people: () => {
+        const url = `/person/popular?${key}`
         return axiosConfig.get(url)
     },
     trending: (path: string, params: string) => {
