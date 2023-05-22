@@ -4,12 +4,12 @@ import Movies from './Pages/Movies/Movies'
 import PageNotFound from './Pages/404/404'
 import MovieDetails from './Routes/Movie_details/movie_details'
 import Tv from './Pages/Tv/tv'
-import People from './Pages/People/people'
 import TvDetails from './Routes/Tv_details/tv_details'
 import PeopleDetails from './Routes/People_details/people_details'
 import Layout from './Layout/layout'
 import { useContext } from 'react'
 import { ThemeContext } from './Context/theme_context'
+import People from './Pages/People/people'
 
 function App() {
   const { theme } = useContext(ThemeContext)

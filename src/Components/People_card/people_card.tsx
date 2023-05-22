@@ -27,7 +27,10 @@ const PeopleCard = () => {
           const { name, id, known_for_department, profile_path } = itm
           return (
             <div key={id} className={styles.person}>
-              <img src={apiConfig.small(profile_path)} alt="person" className={styles.img} />
+              {
+                profile_path ? <img src={apiConfig.small(profile_path)} alt="person" className={styles.img} />
+                  : <p>No image</p>
+              }
               <div className={styles.overlay}>
                 <div className={styles.content}>
                   <p>{known_for_department}</p>

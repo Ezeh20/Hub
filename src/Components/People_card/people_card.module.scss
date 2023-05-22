@@ -1,4 +1,5 @@
 @use '../../scss/utils/functions'as fn;
+@use '../../scss/utils/fonts'as *;
 
 .people {
     display: flex;
@@ -9,7 +10,7 @@
         width: fn.rem(200);
         height: fn.rem(200);
         border-radius: 50%;
-        object-fit: cover;
+        
 
         &:hover {
             cursor: pointer;
@@ -30,7 +31,8 @@
             justify-content: center;
             color: #fff;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, .5);
+            background-color: rgba(0, 0, 0, .7);
+            font-family: $secondary-font;
             inset: 0;
             transition: all 500ms ease-in-out;
 
@@ -41,6 +43,7 @@
             .content {
                 text-align: center;
                 margin-top: 6rem;
+                opacity: .9;
             }
         }
     }

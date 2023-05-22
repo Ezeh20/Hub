@@ -1,0 +1,51 @@
+@use '../../scss/global/colors'as *;
+@use '../../scss/utils/functions'as fn;
+@use '../../scss/utils/fonts'as *;
+
+.footer {
+    margin-top: 4rem;
+    margin-bottom: 4.5rem;
+    background-color: $Dark-bg;
+
+    @media screen and (min-width:768px) {
+        margin-bottom: 0;
+    }
+
+    .footerContent {
+        padding-block: 2rem;
+        color: $Light-altbg;
+        font-family: $secondary-font;
+
+        .logos {
+            display: flex;
+            gap: 1rem;
+
+            @media screen and (min-width:768px) {
+                gap: 1.5rem;
+            }
+
+            .logo {
+                width: fn.rem(50);
+
+                @media screen and (min-width:768px) {
+                    width: fn.rem(100);
+                }
+            }
+
+
+        }
+
+        .text {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            text-align: center;
+
+            @media screen and (min-width:768px) {
+                font-size: fn.rem(20);
+            }
+        }
+    }
+
+}
