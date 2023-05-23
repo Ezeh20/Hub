@@ -5,7 +5,7 @@ import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from 
 type Children = {
     children: React.ReactNode,
     id: string,
-    alt: boolean
+    alt?: boolean
 }
 
 const CardsWrapper = ({ children, id, alt }: Children) => {

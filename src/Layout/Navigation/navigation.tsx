@@ -3,6 +3,7 @@ import logo from '../../../public/main-logo.svg'
 import CustomSelect from '../../Components/Custom_select/custom_select'
 import { Link, NavLink } from 'react-router-dom'
 import menuData from './data'
+import Input from '../../Components/Input/input'
 
 const Navigation = () => {
 
@@ -13,6 +14,7 @@ const Navigation = () => {
                     <Link className={styles.logo} to='/'>
                         <img src={logo} alt="logo" />
                     </Link>
+                    <Input />
                     <div className={styles.menu}>
                         {
                             menuData.map(itm => {
@@ -33,8 +35,9 @@ const Navigation = () => {
                                 )
                             })
                         }
+                        <CustomSelect />
                     </div>
-                    <CustomSelect />
+
                 </nav>
             </header>
 

@@ -7,7 +7,8 @@ import requestApi from '../../api/tmdb_api_config';
 
 
 type Display = {
-    result: []
+    result: [],
+    varient?: string|any
 }
 type Items = {
     id: number,
@@ -24,7 +25,7 @@ type Filter = {
     name: string
 }
 const DisplayCard = (props: Display) => {
-    const { result } = props
+    const { result, varient } = props
     const [genre, setGenre] = useState<[]>([])
 
     useEffect(() => {
@@ -37,7 +38,7 @@ const DisplayCard = (props: Display) => {
     }, [])
 
     return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${styles[varient]}`}>
             {
                 result && result.map(itm => {
                     const {

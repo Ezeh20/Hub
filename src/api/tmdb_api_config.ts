@@ -80,12 +80,12 @@ const requestApi = {
         const url = `/genre/${mediaType}/list?${key}`
         return axiosConfig.get(url)
     },
-    search: (mediaType: string, query: string) => {
-        const url = `/search/${mediaType}?${key}&query=${query}`
+    search: (mediaType: string, query: string, params: number) => {
+        const url = `/search/${mediaType}?${key}&query=${query}&page=${params}`
         return axiosConfig.get(url)
     },
-    discover: (mediaType: string, genre: number | null) => {
-        const url = `/discover/${mediaType}?${key}&with_genres=${genre}`
+    discover: (mediaType: string, genre: number | null, params: number) => {
+        const url = `/discover/${mediaType}?${key}&with_genres=${genre}&page=${params}`
         return axiosConfig.get(url)
     }
 }

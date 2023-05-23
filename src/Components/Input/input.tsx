@@ -7,7 +7,8 @@ import styles from './input.module.scss'
 type Input = {
     placeholder: string,
     setResult: React.Dispatch<React.SetStateAction<[]>>,
-    mediaType: string
+    mediaType: string,
+    page: number
 }
 
 const Input = ({ placeholder, setResult, mediaType }: Input) => {
@@ -19,7 +20,8 @@ const Input = ({ placeholder, setResult, mediaType }: Input) => {
     useEffect(() => {
         const searchQuery = async () => {
             try {
-                const { data } = await requestApi.search(mediaType, search)
+                const { data } = await requestApi.search(mediaType, search,1)
+                console.log(data)
                 setResult(data.results)
             } catch (error) {
                 if (error instanceof Error)

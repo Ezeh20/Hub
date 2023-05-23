@@ -4,7 +4,7 @@
 
 .card {
     display: flex;
-    column-gap: 1.5rem;
+    gap: 1.5rem;
 
     .displayCard {
         width: fn.rem(250);
@@ -83,6 +83,32 @@
                         font-size: 14px;
                         opacity: .95;
                     }
+                }
+            }
+        }
+    }
+}
+
+.general {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, .7fr));
+
+    @media screen and (max-width: 350px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    @media screen and (min-width: 650px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .displayCard {
+        width: 100%;
+
+        .overlay {
+            .info {
+                .genre {
+                    display: none;
                 }
             }
         }
