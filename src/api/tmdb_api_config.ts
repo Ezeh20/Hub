@@ -79,6 +79,14 @@ const requestApi = {
     movieGenres: (mediaType: string) => {
         const url = `/genre/${mediaType}/list?${key}`
         return axiosConfig.get(url)
+    },
+    search: (mediaType: string, query: string) => {
+        const url = `/search/${mediaType}?${key}&query=${query}`
+        return axiosConfig.get(url)
+    },
+    discover: (mediaType: string, genre: number | null) => {
+        const url = `/discover/${mediaType}?${key}&with_genres=${genre}`
+        return axiosConfig.get(url)
     }
 }
 

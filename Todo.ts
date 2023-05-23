@@ -40,3 +40,10 @@
  * 
  * Using the design pattern, implement the homepage using the needed api method already defined
  */
+
+/**
+ * 
+ * phase 4
+ * 
+ * Implement the movies page which includes a search funtionality
+ */
