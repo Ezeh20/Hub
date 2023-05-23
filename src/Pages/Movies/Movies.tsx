@@ -3,11 +3,11 @@ import Container from '../../Components/Container/container'
 import requestApi from '../../api/tmdb_api_config'
 import styles from './movie.module.scss'
 import Input from '../../Components/Input/input'
+import Genre from '../../Components/Genre_list/genre'
 
 const Movies = () => {
   const [genre, setGenre] = useState<null>(null)
   const [result, setResult] = useState<[]>([])
-
 
   useEffect(() => {
     const discover = async () => {
@@ -29,6 +29,8 @@ const Movies = () => {
         <Input placeholder='search for a movie' setResult={setResult}
           mediaType='movie' />
       </div>
+      <Genre setGenre={setGenre} genre={genre} />
+
     </Container>
   )
 }

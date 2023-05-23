@@ -36,6 +36,7 @@ input,
 textarea,
 select {
   outline: none;
+  border: none;
 
   &:hover {
     cursor: pointer;
@@ -77,9 +78,10 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background:linear-gradient(transparent, $Primary-color);
+  background: linear-gradient(transparent, $Primary-color);
   border-radius: 20px;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -141,6 +143,43 @@ body {
     background-color: #faf8f8;
     color: #000;
   }
+
+  .btns {
+    background-color: $Dark-headings;
+    color: #aaa;
+
+    &:hover {
+      background-color: #666;
+    }
+  }
+
+  .disabled {
+    background-color: #aaa;
+    opacity: .5;
+    color: #333;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #aaa;
+      opacity: .5;
+    }
+  }
+
+  .inputs {
+    background-color: $Light-headings;
+  }
+
+  .inpColor {
+    color: $Dark-headings;
+    opacity: .9;
+    font-family: $secondary-font;
+  }
+
+  .inpColor::placeholder {
+    font-family: $primary-font;
+    opacity: 1;
+    color: #aaa;
+  }
 }
 
 .dark {
@@ -156,5 +195,42 @@ body {
   .cardBg {
     background-color: #000;
     color: #eee;
+  }
+
+  .btns {
+    background-color: $Light-headings;
+    color: #eee;
+
+    &:hover {
+      background-color: #aaa;
+    }
+  }
+
+  .disabled {
+    background-color: #aaa;
+    opacity: .5;
+    color: #333;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #aaa;
+      opacity: .5;
+    }
+  }
+
+  .inputs {
+    background-color: $Dark-headings;
+  }
+
+  .inpColor {
+    color: $Light-headings;
+    font-size: 16px;
+    font-family: $secondary-font;
+  }
+
+  .inpColor::placeholder {
+    font-family: $primary-font;
+    opacity: 1;
+    color: #aaa;
   }
 }

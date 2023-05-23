@@ -1,0 +1,13 @@
+.input {
+    display: flex;
+    gap: 1rem;
+    padding: .5rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    width: max-content;
+
+    .inp {
+        padding-inline: 1rem;
+        background-color: transparent
+    }
+}

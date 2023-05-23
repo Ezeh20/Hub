@@ -5,12 +5,20 @@
         overflow: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
-        scroll-behavior:smooth;
-
+        scroll-behavior: smooth;
+        display: flex;
+        align-items: center;
 
         .content {
             display: flex;
         }
+    }
+
+    .WrapperAlt {
+        @media screen and (min-width: 1024px) {
+            margin-inline: 2.5rem;
+        }
+
     }
 
     .Wrapper::-webkit-scrollbar {
@@ -26,8 +34,9 @@
         transition: all 500ms ease-in-out;
         display: none;
 
+
         @media screen and (min-width: 1024px) {
-            display: block;
+            display: flex;
         }
 
         &:hover {
@@ -36,11 +45,31 @@
         }
     }
 
+
+
     .arrLeft {
         left: -1.5rem;
     }
 
     .arrRight {
         right: -1.5rem;
+    }
+
+    .altarr {
+        left: -.5rem;
+
+        @media screen and (min-width: 1024px) {
+            display: flex;
+            top: 10%;
+        }
+    }
+
+    .altarrRight {
+        right: -.5rem;
+
+        @media screen and (min-width: 1024px) {
+            display: flex;
+            top: 10%;
+        }
     }
 }

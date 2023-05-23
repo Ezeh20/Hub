@@ -1,5 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import requestApi from '../../api/tmdb_api_config'
+import Button from '../Button/button'
+import { FiSearch } from "react-icons/fi";
+import styles from './input.module.scss'
 
 type Input = {
     placeholder: string,
@@ -11,6 +14,7 @@ const Input = ({ placeholder, setResult, mediaType }: Input) => {
 
     const [searchValue, setSearchValue] = useState<string>('')
     const [search, setSearch] = useState<string>('')
+
 
     useEffect(() => {
         const searchQuery = async () => {
@@ -31,12 +35,17 @@ const Input = ({ placeholder, setResult, mediaType }: Input) => {
     }
     const query = useCallback(() => {
         setSearch(searchValue)
+
     }, [searchValue])
 
+
     return (
-        <div>
-            <input type="text" placeholder={placeholder} onChange={onChange} />
-            <button disabled={searchValue.length > 0 ? false : true} onClick={query}>press</button>
+        <div className={`${styles.input} inputs`}>
+            <input type="text" placeholder={placeholder} onChange={onChange} className={`${styles.inp} inpColor`} />
+            <Button type='button' btnType=''
+                disabled={searchValue.length > 0 ? false : true}
+                onClick={query}><FiSearch />
+            </Button>
         </div>
     )
 }

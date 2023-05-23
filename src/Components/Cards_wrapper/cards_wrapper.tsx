@@ -4,10 +4,11 @@ import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from 
 
 type Children = {
     children: React.ReactNode,
-    id: string
+    id: string,
+    alt: boolean
 }
 
-const CardsWrapper = ({ children, id }: Children) => {
+const CardsWrapper = ({ children, id, alt }: Children) => {
 
     const slider = useRef(null)
 
@@ -22,13 +23,19 @@ const CardsWrapper = ({ children, id }: Children) => {
     }
     return (
         <div className={styles.con}>
-            <div id={id} ref={slider} className={styles.Wrapper}>
+            <div id={id} ref={slider} className={`${styles.Wrapper} ${alt && styles.WrapperAlt}`}>
                 <div className={styles.content}>
                     {children}
                 </div>
             </div>
-            <TbSquareRoundedArrowLeftFilled className={` ${styles.arr} ${styles.arrLeft}`} onClick={ScrollLeft} />
-            <TbSquareRoundedArrowRightFilled className={`${styles.arr} ${styles.arrRight}`} onClick={ScrollRight} />
+            <TbSquareRoundedArrowLeftFilled className={`
+             ${styles.arr} ${styles.arrLeft} ${alt && styles.altarr}`}
+                onClick={ScrollLeft}
+            />
+            <TbSquareRoundedArrowRightFilled className={`
+            ${styles.arr} ${styles.arrRight}  ${alt &&  styles.altarrRight}`}
+                onClick={ScrollRight}
+            />
         </div>
     )
 }
