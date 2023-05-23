@@ -42,7 +42,7 @@ const Input = ({ placeholder, setResult, mediaType }: Input) => {
     return (
         <div className={`${styles.input} inputs`}>
             <input type="text" placeholder={placeholder} onChange={onChange} className={`${styles.inp} inpColor`} />
-            <Button type='button' btnType=''
+            <Button type='button' btnType='search'
                 disabled={searchValue.length > 0 ? false : true}
                 onClick={query}><FiSearch />
             </Button>

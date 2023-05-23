@@ -144,14 +144,6 @@ body {
     color: #000;
   }
 
-  .btns {
-    background-color: $Dark-headings;
-    color: #aaa;
-
-    &:hover {
-      background-color: #666;
-    }
-  }
 
   .disabled {
     background-color: #aaa;
@@ -171,6 +163,7 @@ body {
 
   .inpColor {
     color: $Dark-headings;
+    font-size: 14px;
     opacity: .9;
     font-family: $secondary-font;
   }
@@ -197,15 +190,6 @@ body {
     color: #eee;
   }
 
-  .btns {
-    background-color: $Light-headings;
-    color: #eee;
-
-    &:hover {
-      background-color: #aaa;
-    }
-  }
-
   .disabled {
     background-color: #aaa;
     opacity: .5;
@@ -224,7 +208,7 @@ body {
 
   .inpColor {
     color: $Light-headings;
-    font-size: 16px;
+    font-size: 14px;
     font-family: $secondary-font;
   }
 
@@ -233,4 +217,5 @@ body {
     opacity: 1;
     color: #aaa;
   }
+
 }

@@ -10,7 +10,7 @@ type genre = {
 }
 
 const Genre = ({ setGenre, genre }: genre) => {
-    console.log(genre)
+
     const [genreList, setGenreList] = useState<[]>([])
 
     useEffect(() => {
@@ -39,7 +39,12 @@ const Genre = ({ setGenre, genre }: genre) => {
                             const { id, name } = itm
                             return (
                                 <div key={id} className={styles.genreList}>
-                                    <Button onClick={() => handleSubmit(id)}>{name}</Button>
+                                    <Button type='button'
+                                        active={genre && genre === id ? true : false}
+                                        btnType='genre'
+                                        onClick={() => handleSubmit(id)}>
+                                        {name}
+                                    </Button>
                                 </div>
                             )
                         })

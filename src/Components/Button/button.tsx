@@ -1,20 +1,35 @@
 import React from 'react'
-import styles from './button.module.scss'
+import './button.scss'
+
+
 
 type Btn = {
     children: React.ReactNode,
     type: "button" | "submit" | "reset",
     btnType: string,
     onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined,
-    disabled?: boolean
+    disabled?: boolean,
+    active?: boolean
 }
 
-const Button = ({ children, type, btnType, onClick, disabled }: Btn) => {
+type custom = {
+    [index: string]: string
+}
+
+const buttonOptions: custom = {
+    genre: 'genre',
+    search: 'search',
+}
+
+
+const Button = ({ children, type, btnType, onClick, disabled, active }: Btn) => {
 
     return (
         <button type={type} disabled={disabled}
             onClick={onClick}
-            className={`${styles.button} ${styles[btnType]} btns ${disabled && `disabled`}`}>
+            className={`CustomButton ${buttonOptions[btnType]}
+            ${active && 'activeGenre'}
+             ${disabled && `disabled`}`}>
             {children}
         </button>
     )

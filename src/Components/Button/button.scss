@@ -1,0 +1,87 @@
+@use '../../scss/global/colors'as *;
+@use '../../scss/utils/functions'as fn;
+@use '../../scss/utils/fonts'as *;
+
+
+.CustomButton {
+    width: max-content;
+    padding: .6rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-size: fn.rem(14);
+    transition: all 500ms ease-in-out;
+    font-family:$secondary-font;
+    font-weight: 500;
+  
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 600px) {
+        padding: .8rem;
+        gap: .5rem;
+        font-size: fn.rem(16);
+    }
+}
+
+
+.light {
+    .CustomButton {
+        color: #666;
+      
+
+        &:hover {
+            background-color: #666;
+        }
+
+        &.genre {
+            background-color: $Dark-text;
+            color: rgba(0, 0, 0, .5);
+
+            &:hover {
+                background-color: $Light-headings;
+                color: rgba(255, 255, 255, .85);
+            }
+        }
+
+        &.search {
+            background-color: $Dark-headings;
+            color: #aaa;
+        }
+        &.activeGenre{
+            background-color: $Light-headings;
+            color: #eee;
+        }
+
+    }
+
+}
+
+.dark {
+    .CustomButton {
+        color: #fff;
+
+        &:hover {
+            background-color: #666;
+        }
+
+        &.genre {
+            background-color: $Dark-altbg;
+            color: #555;
+
+            &:hover {
+                background-color: $Dark-headings;
+            }
+        }
+
+        &.search {
+            background-color: $Light-headings;
+            color: #eee;
+        }
+        &.activeGenre{
+            background-color: $Dark-headings;
+        }
+    }
+}
