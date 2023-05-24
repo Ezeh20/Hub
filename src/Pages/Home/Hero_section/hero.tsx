@@ -26,7 +26,8 @@ const Hero = (props: heroType) => {
     useEffect(() => {
         play = autoPlay ? setTimeout(() => {
             next()
-        }, 10000) : ''
+        }, 5000) : ''
+        return () => clearTimeout(play)
     })
 
 
@@ -55,7 +56,7 @@ const Hero = (props: heroType) => {
 
     return (
         <div className={styles.carousel}
-            onMouseEnter={() => { setAutoPlay(false); clearTimeout(play) }}
+            onMouseEnter={() => { setAutoPlay(false) }}
             onMouseLeave={() => setAutoPlay(true)}>
 
             <div className={styles.carouselContainer}>

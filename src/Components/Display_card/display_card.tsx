@@ -67,7 +67,7 @@ const DisplayCard = (props: Display) => {
                                 <div className={styles.info}>
                                     <p className={styles.popular}>
                                         <IoIosPeople className={styles.people} />
-                                        {popularity.toFixed(0)}
+                                        
                                     </p>
                                     {
                                         original_title

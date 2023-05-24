@@ -10,11 +10,11 @@ import Layout from './Layout/layout'
 import { useContext } from 'react'
 import { ThemeContext } from './Context/theme_context'
 import People from './Pages/People/people'
+import Search from './Pages/Search/search'
 
 function App() {
   const { theme } = useContext(ThemeContext)
   return (
-
     <div className={`${theme}`}>
       <Layout>
         <Routes>
@@ -31,6 +31,7 @@ function App() {
             <Route index element={<People />} />
             <Route path=':id' element={<PeopleDetails />} />
           </Route>
+          <Route path='/search' element={<Search />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Layout>

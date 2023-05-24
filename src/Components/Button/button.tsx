@@ -19,6 +19,7 @@ type custom = {
 const buttonOptions: custom = {
     genre: 'genre',
     search: 'search',
+    searchIcon: 'searchIcon',
 }
 
 

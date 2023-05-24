@@ -11,9 +11,8 @@
     border-radius: 5px;
     font-size: fn.rem(14);
     transition: all 500ms ease-in-out;
-
     font-weight: 500;
-  
+
 
     &:hover {
         cursor: pointer;
@@ -24,13 +23,15 @@
         gap: .5rem;
         font-size: fn.rem(16);
     }
+
+   
 }
 
 
 .light {
     .CustomButton {
         color: #666;
-      
+
 
         &:hover {
             background-color: #666;
@@ -50,11 +51,28 @@
             background-color: $Dark-headings;
             color: #aaa;
         }
-        &.activeGenre{
+
+        &.activeGenre {
             background-color: $Light-headings;
             color: #eee;
         }
 
+        &.searchIcon {
+            background-color: transparent;
+            border: 1px solid $Primary-color;
+            color: #fff;
+            padding: .3rem 1rem;
+    
+            &:hover {
+                background-color: transparent;
+                transform: scale(1.03);
+            }
+    
+            @media screen and (min-width: 600px) {
+                font-size: fn.rem(16);
+                color: #fff;
+            }
+        }
     }
 
 }
@@ -80,8 +98,26 @@
             background-color: $Light-headings;
             color: #eee;
         }
-        &.activeGenre{
+
+        &.activeGenre {
             background-color: $Dark-headings;
+        }
+
+        &.searchIcon {
+            background-color: transparent;
+            border: 1px solid $Primary-color;
+            color: #fff;
+            padding: .3rem 1rem;
+    
+            &:hover {
+                background-color: transparent;
+                transform: scale(1.03);
+            }
+    
+            @media screen and (min-width: 600px) {
+                font-size: fn.rem(16);
+                color: #fff;
+            }
         }
     }
 }

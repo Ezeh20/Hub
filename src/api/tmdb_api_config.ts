@@ -80,8 +80,8 @@ const requestApi = {
         const url = `/genre/${mediaType}/list?${key}`
         return axiosConfig.get(url)
     },
-    search: (mediaType: string, query: string, params: number) => {
-        const url = `/search/${mediaType}?${key}&query=${query}&page=${params}`
+    search: (query: string, params: number) => {
+        const url = `/search/multi?${key}&query=${query}&page=${params}`
         return axiosConfig.get(url)
     },
     discover: (mediaType: string, genre: number | null, params: number) => {
