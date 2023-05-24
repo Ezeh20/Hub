@@ -20,6 +20,7 @@ const buttonOptions: custom = {
     genre: 'genre',
     search: 'search',
     searchIcon: 'searchIcon',
+    reload: 'reload'
 }
 
 

@@ -3,4 +3,12 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+
+    .icns {
+        font-size: 16px;
+
+        @media screen and (min-width:768px) {
+            font-size: 20px;
+        }
+    }
 }

@@ -6,17 +6,19 @@ import Button from '../Button/button'
 
 type genre = {
     setGenre: React.Dispatch<React.SetStateAction<null>>,
-    genre: null | number
+    setPage: React.Dispatch<React.SetStateAction<number>>,
+    genre: null | number,
+    mediaType: string
 }
 
-const Genre = ({ setGenre, genre }: genre) => {
+const Genre = ({ setGenre, genre, setPage, mediaType }: genre) => {
 
     const [genreList, setGenreList] = useState<[]>([])
 
     useEffect(() => {
         const getGenre = async () => {
             try {
-                const { data } = await requestApi.movieGenres('movie')
+                const { data } = await requestApi.movieGenres(mediaType)
                 setGenreList(data.genres)
             } catch (error) {
                 if (error instanceof Error)
@@ -27,6 +29,7 @@ const Genre = ({ setGenre, genre }: genre) => {
     }, [])
 
     const handleSubmit = useCallback((id: any) => {
+        setPage(1)
         setGenre(id)
     }, [genre])
 

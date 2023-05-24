@@ -1,7 +1,11 @@
+import Container from "../../Components/Container/container"
+import Discover from "../../Components/Discover/discover"
 
 const Tv = () => {
     return (
-        <div>Tv</div>
+        <Container>
+            <Discover mediaType='tv' />
+        </Container>
     )
 }
 

@@ -8,7 +8,7 @@ import requestApi from '../../api/tmdb_api_config';
 
 type Display = {
     result: [],
-    varient?: string|any
+    varient?: string | any
 }
 type Items = {
     id: number,
@@ -59,7 +59,8 @@ const DisplayCard = (props: Display) => {
                     const rating = vote_average * 10
                     return (
                         <div key={id} className={`${styles.displayCard} cardBg`}>
-                            <img src={apiConfig.small(poster_path)} alt="img" className={styles.imgCard} />
+                            <img src={poster_path ? apiConfig.small(poster_path)
+                                : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
                             <div className={styles.overlay}>
                                 <div className={styles.ratings}>
                                     <Rating rating={rating} />
@@ -67,7 +68,7 @@ const DisplayCard = (props: Display) => {
                                 <div className={styles.info}>
                                     <p className={styles.popular}>
                                         <IoIosPeople className={styles.people} />
-                                        
+                                        {popularity.toFixed(0)}
                                     </p>
                                     {
                                         original_title

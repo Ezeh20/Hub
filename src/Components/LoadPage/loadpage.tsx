@@ -1,5 +1,7 @@
 import Button from "../Button/button"
 import styles from './loadpage.module.scss'
+import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
+
 
 type Load = {
     totalPages: number,
@@ -14,14 +16,14 @@ const LoadPage = ({ totalPages, page, setPage }: Load) => {
                 page > 1 &&
                 <Button btnType='reload' type='button'
                     onClick={() => setPage(pre => pre - 1)}>
-                    Previous
+                    <BiArrowFromRight className={styles.icns} />
                 </Button>
             }
             {
                 totalPages !== page &&
                 <Button btnType='reload' type='button'
                     onClick={() => setPage(pre => pre + 1)}>
-                    Next
+                    <BiArrowFromLeft className={styles.icns} />
                 </Button>
             }
         </div>
