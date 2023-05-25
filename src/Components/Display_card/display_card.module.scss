@@ -87,6 +87,15 @@
             }
         }
     }
+    .person{
+        width: fn.rem(250);
+        position: relative;
+        .imgCard {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+    }
 }
 
 .general {

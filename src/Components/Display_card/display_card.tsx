@@ -77,7 +77,9 @@ const DisplayCard = (props: Display) => {
                         <div key={id} onClick={() => navFunction(media_type, id)}>
                             {
                                 media_type === 'person' || typeOfMedia === 'person' ?
-                                    <div className={`${styles.displayCard} cardBg`}>
+                                    <div className={`${styles.displayCard} 
+                                    ${media_type || typeOfMedia === 'person' && styles.person}
+                                    cardBg`}>
                                         <img src={profile_path ? apiConfig.small(profile_path)
                                             : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
                                         <div className={styles.overlay}>

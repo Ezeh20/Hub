@@ -69,7 +69,8 @@ const Hero = (props: heroType) => {
                         vote_average,
                         poster_path,
                         overview,
-                        name
+                        name,
+                        media_type,
                     }: Content = item
 
                     const genreArr: [] = []
@@ -90,6 +91,8 @@ const Hero = (props: heroType) => {
                                         rating={rating}
                                         genreArr={genreArr}
                                         name={name}
+                                        id={id}
+                                        media_type={media_type}
                                     />
                                 </Container>
                             </div>
