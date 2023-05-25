@@ -19,7 +19,7 @@ const Search = () => {
                 const req = await requestApi.search(search, page)
                 const { results } = await req.data
                 setTotalPages(req.data.total_pages)
-                setResult(results)
+                setResult(results)                
             } catch (error) {
                 if (error instanceof Error)
                     throw new Error(error.message)
@@ -32,6 +32,7 @@ const Search = () => {
             <Container>
                 <Input setSearch={setSearch} />
                 <DisplayCard result={result} varient='general' />
+
                 {
                     result.length > 0 && <LoadPage page={page} setPage={setPage} totalPages={totalpages} />
                 }

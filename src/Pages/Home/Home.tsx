@@ -6,7 +6,7 @@ import Trending from "./Trending_section/trending"
 import TopMovies from "./Top_movies/top_movies"
 import TvOnair from "./Tv/tv_onair"
 import ComingSoon from "./Coming_soon/coming_soon"
-import PopularPeople from "./Popular_People/people"
+
 
 
 const Home = () => {
@@ -44,7 +44,6 @@ const Home = () => {
       <TopMovies />
       <TvOnair />
       <ComingSoon />
-      <PopularPeople />
     </div>
   )
 }

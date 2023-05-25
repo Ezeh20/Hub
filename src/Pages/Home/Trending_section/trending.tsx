@@ -21,6 +21,9 @@ const Trending = (props: Trending) => {
         result
     } = props
 
+
+    
+
     return (
         <div className={styles.trending}>
             <Container>

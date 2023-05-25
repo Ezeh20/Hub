@@ -17,7 +17,7 @@ const menuData = [
     {
         id: 4,
         text: 'People',
-        to: `/people`
+        to: `/person`
     }
 ]
 

@@ -26,7 +26,7 @@ const menuDataFixed = [
         id: 4,
         text: 'People',
         icon: <BiUser />,
-        to: `/people`
+        to: `/person`
     }
 ]
 

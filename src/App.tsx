@@ -27,7 +27,7 @@ function App() {
             <Route index element={<Tv />} />
             <Route path=':id' element={<TvDetails />} />
           </Route>
-          <Route path='/people'>
+          <Route path='/person'>
             <Route index element={<People />} />
             <Route path=':id' element={<PeopleDetails />} />
           </Route>

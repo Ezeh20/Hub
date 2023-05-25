@@ -30,7 +30,7 @@ const TvOnair = () => {
                 <span className='HeadingSub'>Top rated series</span>
             </div>
             <CardsWrapper id='onAir'>
-                <DisplayCard result={result} />
+                <DisplayCard result={result} typeOfMedia='tv'/>
             </CardsWrapper>
         </Container>
     )

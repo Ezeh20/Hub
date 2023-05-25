@@ -31,7 +31,7 @@ const TopMovies = () => {
                 <span className='HeadingSub'>Top movies to watch</span>
             </div>
             <CardsWrapper id='top_rated'>
-                <DisplayCard result={result} />
+                <DisplayCard result={result} typeOfMedia="movie" />
             </CardsWrapper>
         </Container>
     )

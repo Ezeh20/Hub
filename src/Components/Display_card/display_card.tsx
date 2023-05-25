@@ -4,11 +4,13 @@ import Rating from '../Rating/rating'
 import styles from './display_card.module.scss'
 import { IoIosPeople } from "react-icons/io";
 import requestApi from '../../api/tmdb_api_config';
+import { useNavigate } from 'react-router';
 
 
 type Display = {
     result: [],
-    varient?: string | any
+    varient?: string | any,
+    typeOfMedia?: string
 }
 type Items = {
     id: number,
@@ -17,7 +19,9 @@ type Items = {
     poster_path: string,
     popularity: number,
     name: string,
-    genre_ids: []
+    genre_ids: [],
+    media_type: string,
+    profile_path: string
 }
 
 type Filter = {
@@ -25,8 +29,9 @@ type Filter = {
     name: string
 }
 const DisplayCard = (props: Display) => {
-    const { result, varient } = props
+    const { result, varient, typeOfMedia } = props
     const [genre, setGenre] = useState<[]>([])
+    const nav = useNavigate()
 
     useEffect(() => {
         const genre = async () => {
@@ -36,6 +41,13 @@ const DisplayCard = (props: Display) => {
         }
         genre()
     }, [])
+
+    const navFunction = (media, id) => {
+        if (typeOfMedia)
+            return nav(`/${typeOfMedia}/${id}`)
+        nav(`/${media}/${id}`)
+    }
+
 
     return (
         <div className={`${styles.card} ${styles[varient]}`}>
@@ -48,6 +60,8 @@ const DisplayCard = (props: Display) => {
                         poster_path,
                         popularity,
                         genre_ids,
+                        media_type,
+                        profile_path,
                         name
                     }: Items = itm
                     const lists: [] = []
@@ -58,37 +72,55 @@ const DisplayCard = (props: Display) => {
 
                     const rating = vote_average * 10
                     return (
-                        <div key={id} className={`${styles.displayCard} cardBg`}>
-                            <img src={poster_path ? apiConfig.small(poster_path)
-                                : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
-                            <div className={styles.overlay}>
-                                <div className={styles.ratings}>
-                                    <Rating rating={rating} />
-                                </div>
-                                <div className={styles.info}>
-                                    <p className={styles.popular}>
-                                        <IoIosPeople className={styles.people} />
-                                        {popularity.toFixed(0)}
-                                    </p>
-                                    {
-                                        original_title
-                                            ? <p className={styles.title}>{original_title}</p>
-                                            : <p className={styles.title}>{name}</p>
-                                    }
-                                    <div className={styles.genre}>
-                                        {
-                                            lists.map(itm => {
-                                                const { id, name } = itm
-                                                return (
-                                                    <div key={id} className={styles.lis}>
-                                                        {name}
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                        <div key={id} onClick={() => navFunction(media_type, id)}>
+                            {
+                                media_type !== 'movie' || 'tv' ?
+                                    <div className={`${styles.displayCard} cardBg`}>
+                                        <img src={profile_path ? apiConfig.small(profile_path)
+                                            : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
+                                        <div className={styles.overlay}>
+                                            <div className={styles.info}>
+                                                <p className={styles.popular}>
+                                                    <IoIosPeople className={styles.people} />
+                                                    {popularity.toFixed(0)}
+                                                </p>
+                                                <p className={styles.title}>{name}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    : <div className={`${styles.displayCard} cardBg`}>
+                                        <img src={poster_path ? apiConfig.small(poster_path)
+                                            : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
+                                        <div className={styles.overlay}>
+                                            <div className={styles.ratings}>
+                                                <Rating rating={rating} />
+                                            </div>
+                                            <div className={styles.info}>
+                                                <p className={styles.popular}>
+                                                    <IoIosPeople className={styles.people} />
+                                                    {popularity.toFixed(0)}
+                                                </p>
+                                                {
+                                                    original_title
+                                                        ? <p className={styles.title}>{original_title}</p>
+                                                        : <p className={styles.title}>{name}</p>
+                                                }
+                                                <div className={styles.genre}>
+                                                    {
+                                                        lists.map(itm => {
+                                                            const { id, name } = itm
+                                                            return (
+                                                                <div key={id} className={styles.lis}>
+                                                                    {name}
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            }
                         </div>
                     )
                 })

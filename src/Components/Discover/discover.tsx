@@ -35,7 +35,7 @@ const Discover = ({ mediaType }: disCover) => {
     return (
         <div className={styles.movie}>
             <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
-            <DisplayCard result={result} varient='general' />
+            <DisplayCard result={result} varient='general' typeOfMedia={mediaType}/>
             <LoadPage totalPages={totalPages} setPage={setPage}
                 page={page} />
         </div>

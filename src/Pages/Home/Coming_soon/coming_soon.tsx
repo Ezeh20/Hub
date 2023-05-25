@@ -28,7 +28,7 @@ const ComingSoon = () => {
                 <span className='HeadingSub'>UpComing movies to see</span>
             </div>
             <CardsWrapper id='upComing'>
-                <DisplayCard result={result} />
+                <DisplayCard result={result} typeOfMedia="movie"/>
             </CardsWrapper>
         </Container>
     )
