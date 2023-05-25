@@ -31,7 +31,7 @@ const Search = () => {
         <div className={styles.search}>
             <Container>
                 <Input setSearch={setSearch} />
-                <DisplayCard result={result} varient='general' />
+                <DisplayCard result={result} varient='general'/>
 
                 {
                     result.length > 0 && <LoadPage page={page} setPage={setPage} totalPages={totalpages} />

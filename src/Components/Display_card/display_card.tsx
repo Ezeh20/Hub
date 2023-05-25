@@ -12,6 +12,8 @@ type Display = {
     varient?: string | any,
     typeOfMedia?: string
 }
+
+
 type Items = {
     id: number,
     original_title: string,
@@ -42,7 +44,7 @@ const DisplayCard = (props: Display) => {
         genre()
     }, [])
 
-    const navFunction = (media, id) => {
+    const navFunction = (media: string, id: number) => {
         if (typeOfMedia)
             return nav(`/${typeOfMedia}/${id}`)
         nav(`/${media}/${id}`)
@@ -74,7 +76,7 @@ const DisplayCard = (props: Display) => {
                     return (
                         <div key={id} onClick={() => navFunction(media_type, id)}>
                             {
-                                media_type !== 'movie' || 'tv' ?
+                                media_type === 'person' || typeOfMedia === 'person' ?
                                     <div className={`${styles.displayCard} cardBg`}>
                                         <img src={profile_path ? apiConfig.small(profile_path)
                                             : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
