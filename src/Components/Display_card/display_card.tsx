@@ -44,10 +44,10 @@ const DisplayCard = (props: Display) => {
         genre()
     }, [])
 
-    const navFunction = (media: string, id: number) => {
+    const navFunction = (media: string, id: number, name: string, original_title: string) => {
         if (typeOfMedia)
-            return nav(`/${typeOfMedia}/${id}`)
-        nav(`/${media}/${id}`)
+            return nav(`/${typeOfMedia}/${name || original_title}`, { state: id })
+        nav(`/${media}/${name || original_title}`, { state: id })
     }
 
 
@@ -72,9 +72,9 @@ const DisplayCard = (props: Display) => {
                             .map(itm => lists.push(itm))
                     })
 
-                    const rating = vote_average * 10
+                    
                     return (
-                        <div key={id} onClick={() => navFunction(media_type, id)}>
+                        <div key={id} onClick={() => navFunction(media_type, id, name, original_title)}>
                             {
                                 media_type === 'person' || typeOfMedia === 'person' ?
                                     <div className={`${styles.displayCard} 
@@ -97,7 +97,7 @@ const DisplayCard = (props: Display) => {
                                             : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
                                         <div className={styles.overlay}>
                                             <div className={styles.ratings}>
-                                                <Rating rating={rating} />
+                                                <Rating rating={vote_average} />
                                             </div>
                                             <div className={styles.info}>
                                                 <p className={styles.popular}>

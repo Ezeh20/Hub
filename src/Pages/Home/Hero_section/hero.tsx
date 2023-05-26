@@ -78,7 +78,6 @@ const Hero = (props: heroType) => {
                         genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
                     })
 
-                    const rating = vote_average * 10
                     return (
                         <div key={id} className={idx === current ? `${styles.hero} ${styles.heroActive}` : `${styles.hero}`}>
                             <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop}
@@ -88,7 +87,7 @@ const Hero = (props: heroType) => {
                                     <Info original_title={original_title}
                                         poster_path={poster_path}
                                         overview={overview}
-                                        rating={rating}
+                                        rating={vote_average}
                                         genreArr={genreArr}
                                         name={name}
                                         id={id}
