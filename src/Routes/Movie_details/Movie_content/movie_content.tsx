@@ -7,6 +7,11 @@ import requestApi from '../../../api/tmdb_api_config'
 import styles from './movie_content.module.scss'
 import { TbPlayerPlayFilled } from "react-icons/tb";
 import { AiOutlineClose } from "react-icons/ai";
+import { HiOutlineStatusOnline } from "react-icons/hi";
+import { RxLapTimer } from "react-icons/rx";
+
+
+
 
 
 type Result = {
@@ -16,16 +21,35 @@ type Result = {
     vote_average: number,
     original_title: string,
     overview: string,
+    runtime: number,
+    status: string,
+    iframeKey: string,
+    setIframeKey: React.Dispatch<React.SetStateAction<string>>,
+    show: boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
     genres: []
 }
 
 
-const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, original_title, overview }: Result) => {
+const MovieHero = ({
+    id,
+    backdrop_path,
+    poster_path,
+    vote_average,
+    genres,
+    original_title,
+    overview,
+    status,
+    runtime,
+    iframeKey,
+    setIframeKey
+}: Result) => {
 
     const [videoLink, setVideoLink] = useState<[]>([])
     const [show, setShow] = useState(false)
 
-    
+
+
     useEffect(() => {
         const teaser = async () => {
             try {
@@ -63,6 +87,10 @@ const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, origi
                             <Rating rating={vote_average} />
                             <span className={styles.title}>{original_title}</span>
                             <span className={styles.overView}>{overview}</span>
+                            <div className={styles.status}>
+                                <span className={styles.stusIcn}><HiOutlineStatusOnline />{status}</span>
+                                <span className={styles.stusIcn}><RxLapTimer /> {runtime} mins</span>
+                            </div>
                             <div className={styles.Genre}>
                                 {
                                     genres && genres.map((itm) => {
@@ -75,9 +103,17 @@ const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, origi
                                     })
                                 }
                             </div>
-                            <Button type='button' btnType='watch' onClick={() => setShow(true)}>
-                                <TbPlayerPlayFilled className={styles.btnPlay} />
-                            </Button>
+                            {
+                                getKey && getKey.filter((_, idx) => idx === 0).map((itm: any) => {
+                                    const { key } = itm
+                                    return (
+                                        <Button type='button' btnType='watch' onClick={() => setShow(true)}>
+                                            <TbPlayerPlayFilled className={styles.btnPlay} />
+                                        </Button>
+                                    )
+                                })
+                            }
+
                         </div>
 
                     </div>
@@ -85,19 +121,12 @@ const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, origi
             </div>
             {
                 show && <div className={styles.teaserOverlayContainer}>
-                    {
-                        getKey && getKey.filter((_, idx) => idx === 0).map((itm: any) => {
-                            const { key } = itm
-                            return (
-                                <div key={key} className={styles.teaserOverlay}>
-                                    <span className={styles.close} onClick={() => setShow(false)}>
-                                        <AiOutlineClose className={styles.icn} />
-                                    </span>
-                                    <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${key}?autoplay=1`} frameBorder="0" allow="autoplay"></iframe>
-                                </div>
-                            )
-                        })
-                    }
+                    <div className={styles.teaserOverlay}>
+                        <span className={styles.close} onClick={() => setShow(false)}>
+                            <AiOutlineClose className={styles.icn} />
+                        </span>
+                        <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${iframeKey}?autoplay=1`} frameBorder="0" allow="autoplay"></iframe>
+                    </div>
                 </div>
             }
         </div>

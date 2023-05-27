@@ -1,0 +1,29 @@
+.mainInfo {
+    width: 100%;
+
+    @media screen and (min-width: 1440px) {
+        width: 100%;
+    }
+
+    .vids {
+        position: relative;
+        width: 450px;
+        height: 250px;
+        margin-right: 3rem;
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, .5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .play {
+                font-size: 27px;
+            }
+        }
+    }
+
+    
+}

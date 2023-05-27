@@ -1,0 +1,36 @@
+.MovieInfo {
+    margin-block: 2rem;
+
+    .top {
+        width: 100%;
+
+        .cas {
+            margin-block: 2rem;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        flex-direction: column;
+        column-gap: 5%;
+
+        @media screen and (min-width: 1440px) {
+            flex-direction: row;
+        }
+
+        .wrapper {
+            width: 100%;
+            @media screen and (min-width: 1440px) {
+                width: 75%;
+            }
+        }
+
+        .others {
+            width: 100%;
+
+            @media screen and (min-width: 1440px) {
+                width: 25%;
+            }
+        }
+    }
+}

@@ -98,6 +98,23 @@
                     }
                 }
 
+                .status {
+                    display: flex;
+                    font-size: 14px;
+                    font-family: $secondary-font;
+                    gap: .5rem;
+                    @media screen and (min-width:768px){
+                        font-size: 20px;
+                    }
+
+                    .stusIcn {
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+                      
+                    }
+                }
+
                 .btnPlay {
                     font-size: fn.rem(20);
 

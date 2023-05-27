@@ -78,6 +78,16 @@
             background-color: $Light-headings;
             color: #eeee;
         }
+        &.watch {
+            padding: .6rem 1.5em;
+            background-color: rgb(255, 0, 0);
+            color: #eee;
+
+            &:hover {
+                color: rgb(255, 0, 0);
+                background-color: #eee;
+            }
+        }
 
     }
 

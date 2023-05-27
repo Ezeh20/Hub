@@ -45,11 +45,10 @@ const DisplayCard = (props: Display) => {
     }, [])
 
     const navFunction = (media: string, id: number, name: string, original_title: string) => {
-        const name_nos = name && name.replaceAll(' ', '')
-        const title_nos =original_title && original_title.replaceAll(' ', '')
+
         if (typeOfMedia)
-            return nav(`/${typeOfMedia}/${name_nos || title_nos}`, { state: id })
-        nav(`/${media}/${name_nos || title_nos}`, { state: id })
+            return nav(`/${typeOfMedia}/${id}`, { state: id })
+        nav(`/${media}/${id}`, { state: id })
     }
 
 

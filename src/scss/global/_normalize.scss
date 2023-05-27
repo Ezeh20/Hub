@@ -113,6 +113,16 @@ body {
   }
 }
 
+.HeadingsAlt {
+  font-size: fn.rem(25);
+  margin-block: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: fn.rem(35);
+    margin-block: 2.5rem;
+  }
+}
+
 .HeadingsContainer {
   margin-block: 2rem;
 
