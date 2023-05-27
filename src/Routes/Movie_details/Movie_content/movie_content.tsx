@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Button from '../../../Components/Button/button'
 import Container from '../../../Components/Container/container'
 import Rating from '../../../Components/Rating/rating'
@@ -6,6 +6,7 @@ import apiConfig from '../../../api/api_config'
 import requestApi from '../../../api/tmdb_api_config'
 import styles from './movie_content.module.scss'
 import { TbPlayerPlayFilled } from "react-icons/tb";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 type Result = {
@@ -22,31 +23,33 @@ type Result = {
 const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, original_title, overview }: Result) => {
 
     const [videoLink, setVideoLink] = useState<[]>([])
+    const [show, setShow] = useState(false)
 
-
-    const [op, setOp] = useState(false)
+    
     useEffect(() => {
         const teaser = async () => {
             try {
-                const { data } = await requestApi.movieInfo(id && id, 'videos')
+                const { data } = await requestApi.movieInfo(id, 'videos')
                 setVideoLink(data.results)
             } catch (error) {
-                if (error instanceof Error)
-                    throw error.message
+                //
             }
         }
         teaser()
     }, [id])
 
-    //Loop through the object of arrays and return those whose name value contains 'Trailer'
-    const arr: [] = []
 
+    //Loop through the object of arrays and return those whose name value contains 'Trailer'
     const keY = () => {
+        const arr: [] = []
         videoLink && videoLink.filter((itm: any) => itm.name.toLowerCase().includes('trailer'))
             .map(itm => arr.push(itm))
+        return arr
     }
 
-    op && keY()
+    //memorize the result of the keY function
+    const getKey = useMemo(() => keY(), [videoLink])
+
 
 
     return (
@@ -72,7 +75,7 @@ const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, origi
                                     })
                                 }
                             </div>
-                            <Button type='button' btnType='watch' onClick={() => setOp(true)}>
+                            <Button type='button' btnType='watch' onClick={() => setShow(true)}>
                                 <TbPlayerPlayFilled className={styles.btnPlay} />
                             </Button>
                         </div>
@@ -81,12 +84,15 @@ const MovieHero = ({ id, backdrop_path, poster_path, vote_average, genres, origi
                 </Container>
             </div>
             {
-                op && <div className={styles.teaserOverlayContainer}>
+                show && <div className={styles.teaserOverlayContainer}>
                     {
-                        arr && arr.filter((_, idx) => idx === 0).map((itm: any) => {
+                        getKey && getKey.filter((_, idx) => idx === 0).map((itm: any) => {
                             const { key } = itm
                             return (
                                 <div key={key} className={styles.teaserOverlay}>
+                                    <span className={styles.close} onClick={() => setShow(false)}>
+                                        <AiOutlineClose className={styles.icn} />
+                                    </span>
                                     <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${key}?autoplay=1`} frameBorder="0" allow="autoplay"></iframe>
                                 </div>
                             )

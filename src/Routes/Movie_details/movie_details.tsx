@@ -15,8 +15,7 @@ const MovieDetails = () => {
                 const { data } = await requestApi.movieDetails(state)
                 setResult(data)
             } catch (error) {
-                if (error instanceof Error)
-                    throw error.message
+                //ignore
             }
         }
         movieDetails()
@@ -44,13 +43,13 @@ const MovieDetails = () => {
 
     return (
         <div>
-            <MovieHero backdrop_path={backdrop_path}
+            {id && <MovieHero backdrop_path={backdrop_path}
                 poster_path={poster_path}
                 vote_average={vote_average}
                 id={id}
                 genres={genres}
                 original_title={original_title}
-                overview={overview} />
+                overview={overview} />}
         </div>
     )
 }
