@@ -19,7 +19,7 @@ export const moviePath: globalType = {
 
 export const movieInfo: globalType = {
     credits: "credits",
-    video: "video",
+    videos: "videos",
     similar: "similar",
     recommendations: "recommendations",
     release_dates: "release_dates",

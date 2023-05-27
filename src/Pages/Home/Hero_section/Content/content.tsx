@@ -20,9 +20,18 @@ const Info = (props: Props) => {
     const { poster_path, rating, original_title, overview, genreArr, name, id, media_type } = props
 
     const nav = useNavigate()
-    const navigate = (id: number, mediaType: string) => {
-        nav(`/${mediaType}/${id}`)
+    /**
+     * navigate to the movie/tv details page while using the media name as the path(without whitespace)
+     * if original_title(movie) is undifined use the name(tv) it can either be any of them as they indicate
+     * the current trending call from the api (movie || tv)
+     * pass the id of the current media which will be used to make a caall in the details page
+     */
+    const navigate = (id: number, mediaType: string, original_title: string, name: string) => {
+        const title_no = original_title && original_title.replaceAll(' ', '')
+        const name_no = name && name.replaceAll(' ', '')
+        nav(`/${mediaType}/${title_no || name_no}`, { state: id })
     }
+
     return (
         <div className={styles.content}>
             <img src={apiConfig.small(poster_path)} alt="poster" className={styles.poster} />
@@ -48,7 +57,7 @@ const Info = (props: Props) => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button type='button' btnType='' onClick={() => navigate(id, media_type)}>
+                    <Button type='button' btnType='' onClick={() => navigate(id, media_type, original_title, name)}>
                         view
                         <BsArrowBarRight className={styles.icn} />
                     </Button>

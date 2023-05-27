@@ -26,6 +26,7 @@
     }
 
 
+
 }
 
 
@@ -127,6 +128,17 @@
         &.reload {
             background-color: $Dark-headings;
             color: #111;
+        }
+
+        &.watch {
+            padding: .6rem 1.5em;
+            background-color: rgb(255, 0, 0);
+            color: #eee;
+
+            &:hover {
+                color: rgb(255, 0, 0);
+                background-color: #eee;
+            }
         }
     }
 }
