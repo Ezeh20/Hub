@@ -8,7 +8,7 @@
     width: 100%;
     justify-content: space-between;
     background-color: $Dark-bg;
-    padding: 1rem;
+    padding: 1rem 1rem;
     z-index: 10;
 
     .ul {
@@ -17,11 +17,16 @@
                 font-size: fn.rem(25);
                 font-weight: 700;
 
-                .span {
+                .spann {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-
+                    .icon{
+                        font-size: fn.rem(23);
+                        @media screen and (min-width: 500px) {
+                            font-size: fn.rem(30);
+                        }
+                    }
                     .text {
                         font-size: fn.rem(12);
                         font-weight: 300;

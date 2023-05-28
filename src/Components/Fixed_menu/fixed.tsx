@@ -17,10 +17,10 @@ const Fixed = () => {
                                         ? `${`${styles.lists} ${styles.active}`}`
                                         : `${styles.lists} textFixed`
                                 }}>
-                                    <span className={`${styles.span}`}>
-                                        <p className={`${styles.icon}`}>{icon}</p>
-                                        <p className={styles.text}>{text}</p>
-                                    </span>
+                                    <div className={`${styles.spann}`}>
+                                        <span className={`${styles.icon}`}>{icon}</span>
+                                        <span className={styles.text}>{text}</span>
+                                    </div>
                                 </NavLink>
                             </li>
                         </ul>

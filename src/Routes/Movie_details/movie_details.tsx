@@ -65,7 +65,11 @@ const MovieDetails = () => {
                     <MovieInformation id={id} original_language={original_language}
                         budget={budget} revenue={revenue} release_date={release_date}
                         popularity={popularity}
-                        homepage={homepage} />
+                        homepage={homepage}
+                        iframeKey={iframeKey}
+                        setIframeKey={setIframeKey}
+                        show={show}
+                        setShow={setShow} />
                 </div>
             }
         </>

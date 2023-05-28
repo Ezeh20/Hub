@@ -42,11 +42,12 @@ const MovieHero = ({
     status,
     runtime,
     iframeKey,
-    setIframeKey
+    setIframeKey,
+    show,
+    setShow
 }: Result) => {
 
     const [videoLink, setVideoLink] = useState<[]>([])
-    const [show, setShow] = useState(false)
 
 
 
@@ -74,7 +75,10 @@ const MovieHero = ({
     //memorize the result of the keY function
     const getKey = useMemo(() => keY(), [videoLink])
 
-
+    const playMedia = (key: string) => {
+        setShow(true)
+        setIframeKey(key)
+    }
 
     return (
         <div className={styles.movieHero}>
@@ -107,7 +111,7 @@ const MovieHero = ({
                                 getKey && getKey.filter((_, idx) => idx === 0).map((itm: any) => {
                                     const { key } = itm
                                     return (
-                                        <Button type='button' btnType='watch' onClick={() => setShow(true)}>
+                                        <Button type='button' btnType='watch' onClick={() => playMedia(key)}>
                                             <TbPlayerPlayFilled className={styles.btnPlay} />
                                         </Button>
                                     )

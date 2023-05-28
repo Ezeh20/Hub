@@ -5,11 +5,19 @@ import Button from "../../../../Components/Button/button"
 import { TbPlayerPlayFilled } from "react-icons/tb";
 
 type videoType = {
-    videoLink: []
+    videoLink: [],
+    iframeKey: string,
+    setIframeKey: React.Dispatch<React.SetStateAction<string>>,
+    show: boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
 }
-const BaseInformation = ({ videoLink }: videoType) => {
+const BaseInformation = ({ videoLink, show, setShow, iframeKey, setIframeKey }: videoType) => {
 
-    const [show, setShow] = useState(false)
+    const play = (key: string) => {
+        setShow(true)
+        setIframeKey(key)
+    }
+
 
     return (
         <div className={styles.mainInfo}>
@@ -21,7 +29,7 @@ const BaseInformation = ({ videoLink }: videoType) => {
                             <div key={key} className={styles.vids}>
                                 <iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${key}?autoplay=0`} frameBorder="0" allow="autoplay"></iframe>
                                 <div className={styles.overlay}>
-                                    <Button type="button" btnType="watch">
+                                    <Button type="button" btnType="watch" onClick={() => play(key)}>
                                         <TbPlayerPlayFilled className={styles.play} />
                                     </Button>
                                 </div>

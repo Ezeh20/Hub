@@ -14,10 +14,26 @@ type Info = {
     release_date: string,
     popularity: number,
     homepage: string,
+    iframeKey: string,
+    setIframeKey: React.Dispatch<React.SetStateAction<string>>,
+    show: boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
 
 }
 
-const MovieInformation = ({ id, original_language, budget, revenue, release_date, homepage, popularity }: Info) => {
+const MovieInformation = ({
+    id,
+    original_language,
+    budget,
+    revenue,
+    release_date,
+    homepage,
+    popularity,
+    iframeKey,
+    setIframeKey,
+    show,
+    setShow
+}: Info) => {
     const [result, setResult] = useState<[]>([])
     const [videoLink, setVideoLink] = useState<[]>([])
 
@@ -54,7 +70,11 @@ const MovieInformation = ({ id, original_language, budget, revenue, release_date
                 <div className={styles.MovieInfo}>
                     <p className={`${styles.head} HeadingsAlt`}>Media</p>
                     <div className={styles.top}>
-                        <BaseInformation videoLink={videoLink} />
+                        <BaseInformation videoLink={videoLink}
+                            show={show}
+                            setShow={setShow}
+                            iframeKey={iframeKey}
+                            setIframeKey={setIframeKey} />
                     </div>
                     <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
                     <div className={styles.bottom}>
