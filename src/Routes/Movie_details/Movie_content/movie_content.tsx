@@ -44,7 +44,7 @@ const MovieHero = ({
     iframeKey,
     setIframeKey,
     show,
-    setShow
+    setShow,
 }: Result) => {
 
     const [videoLink, setVideoLink] = useState<[]>([])
@@ -67,7 +67,7 @@ const MovieHero = ({
     //Loop through the object of arrays and return those whose name value contains 'Trailer'
     const keY = () => {
         const arr: [] = []
-        videoLink && videoLink.filter((itm: any) => itm.name.toLowerCase().includes('trailer'))
+        videoLink && videoLink.filter((itm: any) => itm.name.toLowerCase().includes('trailer' || 'official'))
             .map(itm => arr.push(itm))
         return arr
     }
@@ -111,7 +111,7 @@ const MovieHero = ({
                                 getKey && getKey.filter((_, idx) => idx === 0).map((itm: any) => {
                                     const { key } = itm
                                     return (
-                                        <Button type='button' btnType='watch' onClick={() => playMedia(key)}>
+                                        <Button key={key} type='button' btnType='watch' onClick={() => playMedia(key)}>
                                             <TbPlayerPlayFilled className={styles.btnPlay} />
                                         </Button>
                                     )

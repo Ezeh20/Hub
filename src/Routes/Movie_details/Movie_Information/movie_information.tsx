@@ -5,6 +5,13 @@ import requestApi from '../../../api/tmdb_api_config'
 import DisplayCard from '../../../Components/Display_card/display_card'
 import CardsWrapper from '../../../Components/Cards_wrapper/cards_wrapper'
 import BaseInformation from './Base_information/base_information'
+import { IoIosPeople } from "react-icons/io";
+import { BsCalendar2Date } from "react-icons/bs";
+import { FaLanguage } from "react-icons/fa";
+import { BiLinkAlt } from "react-icons/bi";
+import Recommended from './Recommended/recommended'
+import { Link } from 'react-router-dom'
+
 
 type Info = {
     id: number,
@@ -18,7 +25,6 @@ type Info = {
     setIframeKey: React.Dispatch<React.SetStateAction<string>>,
     show: boolean,
     setShow: React.Dispatch<React.SetStateAction<boolean>>
-
 }
 
 const MovieInformation = ({
@@ -32,24 +38,22 @@ const MovieInformation = ({
     iframeKey,
     setIframeKey,
     show,
-    setShow
+    setShow,
 }: Info) => {
     const [result, setResult] = useState<[]>([])
     const [videoLink, setVideoLink] = useState<[]>([])
-
 
     useEffect(() => {
         const casts = async () => {
             try {
                 const { data } = await requestApi.movieInfo(id, 'credits')
                 setResult(data.cast)
-
             } catch (error) {
 
             }
         }
         casts()
-    }, [])
+    }, [id])
 
     useEffect(() => {
         const teaser = async () => {
@@ -69,24 +73,58 @@ const MovieInformation = ({
             <Container>
                 <div className={styles.MovieInfo}>
                     <p className={`${styles.head} HeadingsAlt`}>Media</p>
-                    <div className={styles.top}>
-                        <BaseInformation videoLink={videoLink}
-                            show={show}
-                            setShow={setShow}
-                            iframeKey={iframeKey}
-                            setIframeKey={setIframeKey} />
-                    </div>
+                    {
+                        videoLink && videoLink.length > 0 ? <div className={styles.top}>
+                            <BaseInformation videoLink={videoLink}
+                                show={show}
+                                setShow={setShow}
+                                iframeKey={iframeKey}
+                                setIframeKey={setIframeKey} />
+                        </div> : 'No media to display'
+                    }
                     <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
                     <div className={styles.bottom}>
                         <div className={styles.wrapper}>
-                            <CardsWrapper id='casts'>
-                                <DisplayCard result={result} typeOfMedia='person' />
-                            </CardsWrapper>
+                            <div>
+                                <CardsWrapper id='casts'>
+                                    <DisplayCard result={result} typeOfMedia='person' />
+                                </CardsWrapper>
+                            </div>
+                            <div>
+                                <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
+                                <Recommended id={id}
+                                    setShow={setShow} />
+                            </div>
                         </div>
-                        <div className={styles.others}>money</div>
+                        <div className={styles.others}>
+                            {
+                                homepage && <Link to={homepage} className={styles.link}>
+                                    <BiLinkAlt />
+                                    <p className={styles.linktext}>Homepage</p>
+                                </Link>
+                            }
+                            <p className={styles.linkalt}>
+                                <FaLanguage />
+                                {original_language}
+                            </p>
+                            <p className={styles.linkalt}>
+                                <IoIosPeople className={styles.people} />
+                                {popularity.toFixed(0)}
+                            </p>
+                            <p className={styles.linkalt}>
+                                <BsCalendar2Date />
+                                {release_date}
+                            </p>
+                            <p className={styles.money}>
+                                <span>Budget</span>
+                                {budget}
+                            </p>
+                            <p className={styles.money}>
+                                <span>Revenue</span>
+                                {revenue}
+                            </p>
+                        </div>
                     </div>
-
-
                 </div>
             </Container>
         </div>

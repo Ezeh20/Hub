@@ -24,8 +24,7 @@ const Discover = ({ mediaType }: disCover) => {
                 setTotalPages(req.data.total_pages)
                 setResult(results)
             } catch (error) {
-                if (error instanceof Error)
-                    throw new Error(error.message)
+                //do nothing
             }
         }
         discover()

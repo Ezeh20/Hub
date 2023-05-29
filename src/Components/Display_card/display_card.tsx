@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 type Display = {
     result: [],
     varient?: string | any,
+    setShow?: any,
     typeOfMedia?: string
 }
 
@@ -31,7 +32,7 @@ type Filter = {
     name: string
 }
 const DisplayCard = (props: Display) => {
-    const { result, varient, typeOfMedia } = props
+    const { result, varient, typeOfMedia, setShow } = props
     const [genre, setGenre] = useState<[]>([])
     const nav = useNavigate()
 
@@ -44,11 +45,13 @@ const DisplayCard = (props: Display) => {
         genre()
     }, [])
 
-    const navFunction = (media: string, id: number, name: string, original_title: string) => {
-
-        if (typeOfMedia)
-            return nav(`/${typeOfMedia}/${id}`, { state: id })
+    const navFunction = (media: string, id: number) => {
+        if (typeOfMedia) {
+            nav(`/${typeOfMedia}/${id}`, { state: id })
+            setShow(false)
+        }
         nav(`/${media}/${id}`, { state: id })
+        setShow(false)
     }
 
 
@@ -75,7 +78,7 @@ const DisplayCard = (props: Display) => {
 
 
                     return (
-                        <div key={id} onClick={() => navFunction(media_type, id, name, original_title)}>
+                        <div key={id} onClick={() => navFunction(media_type, id)}>
                             {
                                 media_type === 'person' || typeOfMedia === 'person' ?
                                     <div className={`${styles.displayCard} 

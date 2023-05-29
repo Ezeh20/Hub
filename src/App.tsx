@@ -25,11 +25,11 @@ function App() {
           </Route>
           <Route path='/tv'>
             <Route index element={<Tv />} />
-            <Route path=':id' element={<TvDetails />} />
+            <Route path=':uid' element={<TvDetails />} />
           </Route>
           <Route path='/person'>
             <Route index element={<People />} />
-            <Route path=':id' element={<PeopleDetails />} />
+            <Route path=':uid' element={<PeopleDetails />} />
           </Route>
           <Route path='/search' element={<Search />} />
           <Route path='*' element={<PageNotFound />} />
