@@ -24,6 +24,7 @@ type Info = {
     iframeKey: string,
     setIframeKey: React.Dispatch<React.SetStateAction<string>>,
     show: boolean,
+    production_companies: [],
     setShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -38,10 +39,12 @@ const MovieInformation = ({
     iframeKey,
     setIframeKey,
     show,
+    production_companies,
     setShow,
 }: Info) => {
     const [result, setResult] = useState<[]>([])
     const [videoLink, setVideoLink] = useState<[]>([])
+
 
     useEffect(() => {
         const casts = async () => {
@@ -66,6 +69,16 @@ const MovieInformation = ({
         }
         teaser()
     }, [id])
+
+    const BudgetF = new Intl.NumberFormat('en', {
+        style: 'currency',
+        currency: 'USD',
+    }).format(Number(budget))
+
+    const RevenueF = new Intl.NumberFormat('en', {
+        style: 'currency',
+        currency: 'USD',
+    }).format(Number(revenue))
 
 
     return (
@@ -96,6 +109,7 @@ const MovieInformation = ({
                                     setShow={setShow} />
                             </div>
                         </div>
+                        <p className={`${styles.cas} HeadingsAlt`}>Info</p>
                         <div className={styles.others}>
                             {
                                 homepage && <Link to={homepage} className={styles.link}>
@@ -105,7 +119,7 @@ const MovieInformation = ({
                             }
                             <p className={styles.linkalt}>
                                 <FaLanguage />
-                                {original_language}
+                                {original_language.toUpperCase()}
                             </p>
                             <p className={styles.linkalt}>
                                 <IoIosPeople className={styles.people} />
@@ -117,12 +131,26 @@ const MovieInformation = ({
                             </p>
                             <p className={styles.money}>
                                 <span>Budget</span>
-                                {budget}
+                                <span className={styles.amount}>{BudgetF}</span>
                             </p>
                             <p className={styles.money}>
                                 <span>Revenue</span>
-                                {revenue}
+                                <span className={budget > revenue ? `${styles.amountRed}`
+                                    : `${styles.amount}`}>
+                                    {RevenueF}
+                                </span>
                             </p>
+                        </div>
+                        <p className={`${styles.cas} HeadingsAlt`}>Production</p>
+                        <div className={styles.production}>
+                            {
+                                production_companies && production_companies.map((itm) => {
+                                    const { name } = itm
+                                    return (
+                                        <p key={name} className={styles.company}>{name}</p>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 </div>

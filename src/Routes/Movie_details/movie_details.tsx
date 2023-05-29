@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
 import requestApi from '../../api/tmdb_api_config'
-import { useLocation, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import MovieHero from './Movie_content/movie_content'
 import MovieInformation from './Movie_Information/movie_information'
 import styles from './movie.module.scss'
 
 
 const MovieDetails = () => {
-    const location = useLocation()
     const { uid } = useParams()
     const [result, setResult] = useState<object>({})
     const [iframeKey, setIframeKey] = useState('')
@@ -43,7 +42,8 @@ const MovieDetails = () => {
         original_language,
         runtime,
         status,
-        vote_average
+        vote_average,
+        production_companies
     }: any = result
 
 
@@ -73,6 +73,7 @@ const MovieDetails = () => {
                         setIframeKey={setIframeKey}
                         show={show}
                         setShow={setShow}
+                        production_companies={production_companies}
                     />
                 </div>
             }
