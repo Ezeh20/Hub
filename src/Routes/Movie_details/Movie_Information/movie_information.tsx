@@ -13,36 +13,28 @@ import Recommended from './Recommended/recommended'
 import { Link } from 'react-router-dom'
 
 
-type Info = {
-    id: number,
-    original_language: string,
-    budget: string,
-    revenue: string,
-    release_date: string,
-    popularity: number,
-    homepage: string,
+type Types = {
+    result: {},
     iframeKey: string,
     setIframeKey: React.Dispatch<React.SetStateAction<string>>,
     show: boolean,
-    production_companies: [],
     setShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const MovieInformation = ({
-    id,
-    original_language,
-    budget,
-    revenue,
-    release_date,
-    homepage,
-    popularity,
-    iframeKey,
-    setIframeKey,
-    show,
-    production_companies,
-    setShow,
-}: Info) => {
-    const [result, setResult] = useState<[]>([])
+const MovieInformation = ({ result, iframeKey, setIframeKey, show, setShow }: Types) => {
+
+    const {
+        id,
+        original_language,
+        budget,
+        revenue,
+        release_date,
+        homepage,
+        popularity,
+        production_companies,
+    }: any = result
+
+    const [results, setResults] = useState<[]>([])
     const [videoLink, setVideoLink] = useState<[]>([])
 
 
@@ -50,7 +42,7 @@ const MovieInformation = ({
         const casts = async () => {
             try {
                 const { data } = await requestApi.movieInfo(id, 'credits')
-                setResult(data.cast)
+                setResults(data.cast)
             } catch (error) {
 
             }
@@ -100,7 +92,7 @@ const MovieInformation = ({
                         <div className={styles.wrapper}>
                             <div>
                                 <CardsWrapper id='casts'>
-                                    <DisplayCard result={result} typeOfMedia='person' />
+                                    <DisplayCard result={results} typeOfMedia='person' />
                                 </CardsWrapper>
                             </div>
                             <div>
@@ -144,7 +136,7 @@ const MovieInformation = ({
                         <p className={`${styles.cas} HeadingsAlt`}>Production</p>
                         <div className={styles.production}>
                             {
-                                production_companies && production_companies.map((itm) => {
+                                production_companies && production_companies.map((itm: any) => {
                                     const { name } = itm
                                     return (
                                         <p key={name} className={styles.company}>{name}</p>

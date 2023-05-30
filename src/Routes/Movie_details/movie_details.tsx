@@ -20,7 +20,7 @@ const MovieDetails = () => {
                     setResult(data)
                 }
             } catch (error) {
-                //ignore
+                //ignore for now
             }
         }
         movieDetails()
@@ -28,22 +28,7 @@ const MovieDetails = () => {
 
 
     const {
-        backdrop_path,
-        budget,
-        genres,
-        homepage,
-        id,
-        original_title,
-        overview,
-        popularity,
-        poster_path,
-        release_date,
-        revenue,
-        original_language,
-        runtime,
-        status,
-        vote_average,
-        production_companies
+        id
     }: any = result
 
 
@@ -51,29 +36,17 @@ const MovieDetails = () => {
         <>
             {
                 id && <div className={styles.motherStyle}>
-                    <MovieHero backdrop_path={backdrop_path}
-                        poster_path={poster_path}
-                        vote_average={vote_average}
-                        id={id}
-                        genres={genres}
-                        original_title={original_title}
-                        overview={overview}
-                        runtime={runtime}
-                        status={status}
+                    <MovieHero
+                        result={result}
                         iframeKey={iframeKey}
-                        setIframeKey={setIframeKey}
                         show={show}
-                        setShow={setShow}
                     />
-                    <MovieInformation id={id} original_language={original_language}
-                        budget={budget} revenue={revenue} release_date={release_date}
-                        popularity={popularity}
-                        homepage={homepage}
+                    <MovieInformation
+                        result={result}
                         iframeKey={iframeKey}
                         setIframeKey={setIframeKey}
                         show={show}
                         setShow={setShow}
-                        production_companies={production_companies}
                     />
                 </div>
             }

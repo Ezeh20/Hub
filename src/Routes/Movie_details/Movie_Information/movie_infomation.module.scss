@@ -25,6 +25,10 @@
             gap: .5rem;
             flex-wrap: wrap;
 
+            @media screen and (min-width:1200px) {
+                width: 40%;
+            }
+
             .link {
                 display: flex;
                 align-items: center;
@@ -71,6 +75,10 @@
             display: flex;
             flex-wrap: wrap;
             gap: .5rem;
+
+            @media screen and (min-width:1200px) {
+                width: 40%;
+            }
 
             .company {
                 border: 1px solid #eee;
