@@ -26,10 +26,8 @@ const Info = (props: Props) => {
      * the current trending call from the api (movie || tv)
      * pass the id of the current media which will be used to make a caall in the details page
      */
-    const navigate = (id: number, mediaType: string, original_title: string, name: string) => {
-        const title_no = original_title && original_title.replaceAll(' ', '')
-        const name_no = name && name.replaceAll(' ', '')
-        nav(`/${mediaType}/${title_no || name_no}`, { state: id })
+    const navigate = (id: number, mediaType: string) => {
+        nav(`/${mediaType}/${id}`, { state: id })
     }
 
     return (
@@ -57,7 +55,7 @@ const Info = (props: Props) => {
                     }
                 </div>
                 <div className={styles.btn}>
-                    <Button type='button' btnType='' onClick={() => navigate(id, media_type, original_title, name)}>
+                    <Button type='button' btnType='' onClick={() => navigate(id, media_type)}>
                         view
                         <BsArrowBarRight className={styles.icn} />
                     </Button>

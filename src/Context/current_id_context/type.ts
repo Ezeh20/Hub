@@ -5,7 +5,11 @@ export type ChildrenNode = {
     children: ReactNode
 }
 export type ID = {
-    mediaId: number,
-    setMediaId: (e: number) => void
+    result: {},
+    setResult: React.Dispatch<React.SetStateAction<{}>>,
+    iframeKey: string,
+    setIframeKey: React.Dispatch<React.SetStateAction<string>>,
+    show: boolean,
+    setShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 

@@ -1,15 +1,14 @@
-import { useContext, useEffect} from 'react'
+import { useContext, useEffect } from 'react'
 import requestApi from '../../api/tmdb_api_config'
 import { useParams } from 'react-router'
-import MovieHero from '../../Components/MediaHero/Movie_content/movie_content'
-import MovieInformation from './Movie_Information/movie_information'
+import MovieHero from './Movie_content/movie_content'
 import { CurrentIdContext } from '../../Context/current_id_context/current_id'
 
 
-const MovieDetails = () => {
+const MediaHeroDisplay = () => {
     const { uid } = useParams()
 
-    const { result, setResult, iframeKey, setIframeKey, show, setShow } = useContext(CurrentIdContext)
+    const { result, setResult, iframeKey, show } = useContext(CurrentIdContext)
 
     useEffect(() => {
         const movieDetails = async () => {
@@ -40,17 +39,10 @@ const MovieDetails = () => {
                         iframeKey={iframeKey}
                         show={show}
                     />
-                    <MovieInformation
-                        result={result}
-                        iframeKey={iframeKey}
-                        setIframeKey={setIframeKey}
-                        show={show}
-                        setShow={setShow}
-                    />
                 </>
             }
         </>
     )
 }
 
-export default MovieDetails
+export default MediaHeroDisplay

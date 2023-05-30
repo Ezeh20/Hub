@@ -1,22 +1,23 @@
-import { createContext, useEffect, useState } from "react";
-import { ChildrenNode, ID } from './type';
+import { createContext, useState } from "react";
+import { ChildrenNode, ID } from './type'
 
-
-export const MediaIdContext = createContext<ID>({
-    mediaId: 0,
-    setMediaId: (e: number) => e
+export const CurrentIdContext = createContext<ID>({
+    result: {},
+    setResult: (e: {}) => e,
+    iframeKey: '',
+    setIframeKey: (e) => e,
+    show: false,
+    setShow: (e) => e
 })
 
-export const MediaIdProvider = ({ children }: ChildrenNode) => {
+export const CurrentIdProvider = ({ children }: ChildrenNode) => {
 
-    const [mediaId, setMediaId] = useState<number>(0)
+    const [result, setResult] = useState<object>({})
+    const [iframeKey, setIframeKey] = useState('')
+    const [show, setShow] = useState(false)
 
-    useEffect(() => {
-        localStorage.setItem('mediaUIDD', JSON.stringify(mediaId))
-    }, [mediaId])
-
-    const value = { mediaId, setMediaId }
+    const values = { result, setResult, iframeKey, setIframeKey, show, setShow }
     return (
-        <MediaIdContext.Provider value={value}>{children}</MediaIdContext.Provider>
+        <CurrentIdContext.Provider value={values}>{children}</CurrentIdContext.Provider>
     )
 }

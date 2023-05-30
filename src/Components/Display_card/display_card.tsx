@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import apiConfig from '../../api/api_config'
 import Rating from '../Rating/rating'
 import styles from './display_card.module.scss'
 import { IoIosPeople } from "react-icons/io";
 import requestApi from '../../api/tmdb_api_config';
 import { useNavigate } from 'react-router';
+import { CurrentIdContext } from '../../Context/current_id_context/current_id';
 
 
 type Display = {
     result: [],
     varient?: string | any,
-    setShow?: any,
     typeOfMedia?: string
 }
 
@@ -32,9 +32,10 @@ type Filter = {
     name: string
 }
 const DisplayCard = (props: Display) => {
-    const { result, varient, typeOfMedia, setShow } = props
+    const { result, varient, typeOfMedia } = props
     const [genre, setGenre] = useState<[]>([])
     const nav = useNavigate()
+    const { setShow } = useContext(CurrentIdContext)
 
     useEffect(() => {
         const genre = async () => {
@@ -46,14 +47,11 @@ const DisplayCard = (props: Display) => {
     }, [])
 
     const navFunction = (media: string, id: number) => {
-        if (typeOfMedia) {
-            nav(`/${typeOfMedia}/${id}`, { state: id })
-            setShow(false)
-        }
-        nav(`/${media}/${id}`, { state: id })
+
+        typeOfMedia ? nav(`/${typeOfMedia}/${id}`)
+            : nav(`/${media}/${id}`)
         setShow(false)
     }
-
 
     return (
         <div className={`${styles.card} ${styles[varient]}`}>

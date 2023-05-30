@@ -1,5 +1,5 @@
-import Container from '../../../Components/Container/container'
-import Rating from '../../../Components/Rating/rating'
+import Container from '../../Container/container'
+import Rating from '../../Rating/rating'
 import apiConfig from '../../../api/api_config'
 import styles from './movie_content.module.scss'
 import { HiOutlineStatusOnline } from "react-icons/hi";
@@ -42,7 +42,7 @@ const MovieHero = ({ result, iframeKey, show }: ResulT) => {
                             </div>
                             <div className={styles.Genre}>
                                 {
-                                    genres && genres.map((itm: any) => {
+                                    show || genres && genres.map((itm: any) => {
                                         const { id, name } = itm
                                         return (
                                             <div key={id} className={styles.GenreList}>

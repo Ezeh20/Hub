@@ -1,30 +1,40 @@
-import { useLocation, useParams } from "react-router"
+import { useParams } from "react-router"
 import requestApi from "../../api/tmdb_api_config"
-import { useContext, useEffect } from "react"
-import { MediaIdContext } from '../../Context/current_id_context/current_id'
-
+import { useEffect, useState } from "react"
+import TvHero from "./Tv_hero_section/tv_hero"
 
 const TvDetails = () => {
-  const location = useLocation()
   const { uid } = useParams()
-  const { state } = location
-  const { setMediaId } = useContext(MediaIdContext)
+  const [result, setResult] = useState<object>({})
+  const [iframeKey, setIframeKey] = useState('')
+  const [show, setShow] = useState(false)
 
-  setMediaId(Number(uid))
 
   useEffect(() => {
     const tvDetails = async () => {
       try {
-        const { data } = await requestApi.tvDetails(state)
-        console.log(data)
+        const { data } = await requestApi.tvDetails(Number(uid))
+        setResult(data)
       } catch (error) {
-
+        //ignore
       }
     }
     tvDetails()
-  }, [])
+  }, [uid])
+
+  const {
+    id
+  }: any = result
+
   return (
-    <div>Tv 1</div>
+    <>
+      {
+        id &&
+        <>
+          <TvHero />
+        </>
+      }
+    </>
   )
 }
 
