@@ -4,7 +4,6 @@ import styles from './discover.module.scss'
 import Genre from '../../Components/Genre_list/genre'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import DisplayCard from '../Display_card/display_card'
-import Footer from '../../Layout/Footer/footer'
 
 type disCover = {
     mediaType: string
@@ -45,7 +44,6 @@ const Discover = ({ mediaType }: disCover) => {
             <DisplayCard result={result} varient='general' typeOfMedia={mediaType} />
             <LoadPage totalPages={totalPages} setPage={setPage}
                 page={page} />
-            <Footer />
         </div>
     )
 }

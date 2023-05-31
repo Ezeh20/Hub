@@ -5,7 +5,6 @@ import Container from '../../Components/Container/container'
 import styles from './people.module.scss'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import { PageCountContext } from '../../Context/Presist_page/presist_page'
-import Footer from '../../Layout/Footer/footer'
 
 const People = () => {
     const [result, setResult] = useState<[]>([])
@@ -35,7 +34,6 @@ const People = () => {
                 <DisplayCard result={result} varient='general' typeOfMedia='person' />
             </div>
             <LoadPage totalPages={totalPages} page={page} setPage={setPage} />
-            <Footer />
         </Container>
     )
 }

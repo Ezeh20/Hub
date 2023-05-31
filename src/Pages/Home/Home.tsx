@@ -6,7 +6,6 @@ import Trending from "./Trending_section/trending"
 import TopMovies from "./Top_movies/top_movies"
 import TvOnair from "./Tv/tv_onair"
 import ComingSoon from "./Coming_soon/coming_soon"
-import Footer from "../../Layout/Footer/footer"
 
 const Home = () => {
   const [trending, setTrending] = useState<string>('movie')
@@ -43,7 +42,6 @@ const Home = () => {
       <TopMovies />
       <TvOnair />
       <ComingSoon />
-      <Footer />
     </div>
   )
 }

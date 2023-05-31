@@ -1,18 +1,17 @@
 @use '../../scss/utils/fonts'as *;
+@use '../../scss/utils/functions'as fn;
+@use '../../scss/global/colors'as *;
 
 .people {
     width: 100%;
 
-  
-
-
     .imgContainer {
         position: relative;
         background-color: #000;
-        height: 200px;
+        height: fn.rem(200);
 
         @media screen and (min-width:650px) {
-            height: 250px;
+            height: fn.rem(250);
         }
 
         .backDrop {
@@ -22,85 +21,133 @@
         }
 
         .displayPic {
+            display: flex;
             position: absolute;
             top: 70%;
-            left: .6rem;
-            width: 120px;
-            height: 120px;
+            left: .65rem;
+            width: fn.rem(120);
+            height: fn.rem(120);
             object-fit: cover;
             border-radius: 50%;
             padding: .3rem;
 
             @media screen and (min-width:650px) {
-                width: 150px;
-                height: 150px;
+                width: fn.rem(150);
+                height: fn.rem(150);
                 left: 1rem;
-                top: 70%;
             }
 
             @media screen and (min-width:1440px) {
-                width: 200px;
-                height: 200px;
-                top: 58%;
+                width: fn.rem(200);
+                height: fn.rem(200);
+                top: 55%;
+            }
+        }
+    }
+
+    .personInfomation {
+        display: flex;
+        flex-direction: column;
+        margin: 3.8rem 0 0 .65rem;
+        gap: .8rem;
+
+        @media screen and (min-width:650px) {
+            margin-top: 4.8rem;
+            margin-left: 1rem;
+        }
+
+        @media screen and (min-width:1440px) {
+            margin-top: 5.2rem;
+        }
+
+
+        .at {
+            display: flex;
+            flex-direction: column;
+            line-height: fn.rem(-100);
+
+            .theAt {
+                opacity: .8;
+                font-family: $secondary-font;
+            }
+
+            .name {
+                font-size: fn.rem(25);
+
+                @media screen and (min-width:650px) {
+                    font-size: fn.rem(35);
+                }
+
+                @media screen and (min-width:1440px) {
+                    font-size: fn.rem(40);
+                }
             }
         }
 
-        .personInfomation {
-            position: absolute;
+
+        .other {
             display: flex;
             flex-direction: column;
-            height: max-content;
-            gap: 1rem;
-            top: 256px;
-            left: 1rem;
-            margin-bottom: 200px;
+            gap: .3rem;
 
-            
-  
-            @media screen and (min-width:650px) {
-                top: 325px;
+            .dep {
+                font-weight: 300;
+                word-spacing: .5rem;
             }
 
-            @media screen and (min-width:1440px) {
-                top: 350px;
-            }
-
-            .at {
+            .icnPeople {
                 display: flex;
-                flex-direction: column;
-                line-height: -100px;
 
-                .name {
-                    font-size: 28px;
+                align-items: center;
+                gap: .5rem;
 
-                    @media screen and (min-width:650px) {
-                        font-size: 35px;
-                    }
-
-                    @media screen and (min-width:1440px) {
-                        font-size: 40px;
-                    }
-                }
-            }
-
-
-            .other {
-                display: flex;
-                flex-direction: column;
-                gap: .3rem;
-
-                .dep {
-                    font-weight: 300;
-                    word-spacing: .5rem;
-                }
-
-                .icnPeople {
-                    display: flex;
-                    font-family: $secondary-font;
-                    align-items: center;
-                    gap: .5rem;
+                .icnicn {
+                    font-size: fn.rem(18);
                 }
             }
         }
     }
+
+    .renderOption {
+        display: flex;
+        margin-top: 2rem;
+        justify-content: space-between;
+       
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            padding: 1rem 1rem 0 1rem;
+            opacity: .5;
+            transition: all 500ms ease-in-out;
+            @media screen and (min-width:600px) {
+                padding: 1rem 3rem 0 3rem;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color:rgba(255, 255, 255, .08);
+                opacity: 1;
+            }
+
+            .indicator {
+                width: 100%;
+                height: 2px;
+                background-color: $Primary-color;
+            }
+        }
+
+        .optionsAlt {
+            opacity: 1;
+        }
+    }
+
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: #999;
+        opacity: .5;
+    }
+
 }

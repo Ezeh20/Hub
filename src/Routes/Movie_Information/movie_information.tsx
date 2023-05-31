@@ -11,7 +11,6 @@ import Container from '../../Components/Container/container'
 import Recommended from '../../Components/Recommended/recommended'
 import BaseInformation from '../../Components/Base_information/base_information'
 import Credits from '../../Components/Credits/credits';
-import Footer from '../../Layout/Footer/footer';
 
 const MovieInformation = () => {
     const { result } = useContext(CurrentIdContext)
@@ -102,7 +101,6 @@ const MovieInformation = () => {
                     </div>
                 </div>
             </Container>
-            <Footer/>
         </div>
     )
 }

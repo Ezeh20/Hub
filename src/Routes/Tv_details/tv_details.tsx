@@ -11,7 +11,6 @@ import { BiLinkAlt } from "react-icons/bi";
 import Recommended from "../../Components/Recommended/recommended"
 import { Link } from "react-router-dom"
 import Container from '../../Components/Container/container'
-import Footer from '../../Layout/Footer/footer'
 
 
 const TvDetails = () => {
@@ -93,7 +92,6 @@ const TvDetails = () => {
           </div>
         </div>
       </Container>
-      <Footer/>
     </div>
   )
 }
