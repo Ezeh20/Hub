@@ -40,29 +40,32 @@ const BaseInformation = ({ media, id }: videoType) => {
 
     return (
         <div className={styles.mainInfo}>
-            <CardsWrapper id='media'>
-                {
-                    videoLink.map((itm) => {
-                        const { key } = itm
-                        return (
-                            <div key={key} className={styles.vids}>
-                                <iframe width="100%" height="100%" src={`https://www.youtube-nocookie.com/embed/${key}?autoplay=0`} frameBorder="0" allow="autoplay"></iframe>
-                                <div className={styles.overlay}>
-                                    {
-                                        iframeKey === key ? <Button type="button" btnType="watch" onClick={() => stop()}>
-                                            <TbPlayerStopFilled className={styles.play} />
-                                        </Button>
-                                            : <Button type="button" btnType="watch" onClick={() => play(key)}>
-                                                <TbPlayerPlayFilled className={styles.play} />
-                                            </Button>
-                                    }
-                                </div>
+            {
+                videoLink.length > 0 ?
+                    <CardsWrapper id='media'>
+                        {
+                            videoLink.map((itm) => {
+                                const { key } = itm
+                                return (
+                                    <div key={key} className={styles.vids}>
+                                        <iframe width="100%" height="100%" src={`https://www.youtube-nocookie.com/embed/${key}?autoplay=0`} frameBorder="0" allow="autoplay"></iframe>
+                                        <div className={styles.overlay}>
+                                            {
+                                                iframeKey === key ? <Button type="button" btnType="watch" onClick={() => stop()}>
+                                                    <TbPlayerStopFilled className={styles.play} />
+                                                </Button>
+                                                    : <Button type="button" btnType="watch" onClick={() => play(key)}>
+                                                        <TbPlayerPlayFilled className={styles.play} />
+                                                    </Button>
+                                            }
+                                        </div>
 
-                            </div>
-                        )
-                    })
-                }
-            </CardsWrapper>
+                                    </div>
+                                )
+                            })
+                        }
+                    </CardsWrapper> : <p>No media to display</p>
+            }
         </div>
     )
 }

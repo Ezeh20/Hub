@@ -1,40 +1,82 @@
-import { useParams } from "react-router"
-import requestApi from "../../api/tmdb_api_config"
-import { useEffect, useState } from "react"
-import TvHero from "./Tv_hero_section/tv_hero"
+import styles from './tv.module.scss'
+import { useContext } from "react"
+import { CurrentIdContext } from "../../Context/current_id_context/current_id"
+import MediaHeroDisplay from "../../Components/MediaHero/media_hero"
+import BaseInformation from "../../Components/Base_information/base_information"
+import Credits from "../../Components/Credits/credits"
+import { IoIosPeople } from "react-icons/io";
+import { FaLanguage } from "react-icons/fa";
+import { BiLinkAlt } from "react-icons/bi";
+import Recommended from "../../Components/Recommended/recommended"
+import { Link } from "react-router-dom"
+import Container from '../../Components/Container/container'
+
 
 const TvDetails = () => {
-  const { uid } = useParams()
-  const [result, setResult] = useState<object>({})
-  const [iframeKey, setIframeKey] = useState('')
-  const [show, setShow] = useState(false)
 
-
-  useEffect(() => {
-    const tvDetails = async () => {
-      try {
-        const { data } = await requestApi.tvDetails(Number(uid))
-        setResult(data)
-      } catch (error) {
-        //ignore
-      }
-    }
-    tvDetails()
-  }, [uid])
+  const { result } = useContext(CurrentIdContext)
 
   const {
-    id
+    id,
+    original_language,
+    homepage,
+    popularity,
+    production_companies,
   }: any = result
 
+
+
   return (
-    <>
-      {
-        id &&
-        <>
-          <TvHero />
-        </>
-      }
-    </>
+
+    <div>
+      <Container>
+        <MediaHeroDisplay media="tv" />
+        <div className={styles.MovieInfo}>
+          <p className={`${styles.head} HeadingsAlt`}>Media</p>
+          <div className={styles.top}>
+            <BaseInformation media='tv' id={id} />
+          </div>
+          <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
+          <div className={styles.bottom}>
+            <div className={styles.wrapper}>
+              <Credits media='tv' id={id} />
+              <div>
+                <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
+                <Recommended media='tv' id={id} />
+              </div>
+            </div>
+            <p className={`${styles.cas} HeadingsAlt`}>Info</p>
+            <div className={styles.others}>
+              {
+                homepage && <Link to={homepage} className={styles.link}>
+                  <BiLinkAlt />
+                  <p className={styles.linktext}>Homepage</p>
+                </Link>
+              }
+              <p className={styles.linkalt}>
+                <FaLanguage />
+                {original_language}
+              </p>
+              <p className={styles.linkalt}>
+                <IoIosPeople className={styles.people} />
+                {popularity}
+              </p>
+            </div>
+            <p className={`${styles.cas} HeadingsAlt`}>Production</p>
+            <div className={styles.production}>
+              {
+                production_companies && production_companies.map((itm: any) => {
+                  const { name } = itm
+                  return (
+                    <p key={name} className={styles.company}>{name}</p>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
   )
 }
 
