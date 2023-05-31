@@ -59,6 +59,10 @@ const requestApi = {
         const url = `/person/${id}?${key}`
         return axiosConfig.get(url)
     },
+    peopleCredits: (id: number) => {
+        const url = `/person/${id}/combined_credits?${key}`
+        return axiosConfig.get(url)
+    },
     peopleImg: (id: number) => {
         const url = `/person/${id}/images?${key}`
         return axiosConfig.get(url)

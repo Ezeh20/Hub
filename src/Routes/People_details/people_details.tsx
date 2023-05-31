@@ -129,8 +129,8 @@ const PeopleDetails = () => {
       <div>
         {
           current === 0 ? <Bio biography={biography} />
-            : current === 1 ? <KnownFor />
-              : current === 2 ? <Media /> : ''
+            : current === 1 ? <KnownFor id={id} />
+              : current === 2 ? <Media id={id} /> : ''
         }
       </div>
     </>

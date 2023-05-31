@@ -24,7 +24,8 @@ type Items = {
     name: string,
     genre_ids: [],
     media_type: string,
-    profile_path: string
+    profile_path: string,
+    file_path: string
 }
 
 type Filter = {
@@ -56,7 +57,7 @@ const DisplayCard = (props: Display) => {
     return (
         <div className={`${styles.card} ${styles[varient]}`}>
             {
-                result && result.map(itm => {
+                result && result.map((itm, idx) => {
                     const {
                         id,
                         original_title,
@@ -66,6 +67,7 @@ const DisplayCard = (props: Display) => {
                         genre_ids,
                         media_type,
                         profile_path,
+                        file_path,
                         name
                     }: Items = itm
                     const lists: [] = []
@@ -74,58 +76,76 @@ const DisplayCard = (props: Display) => {
                             .map(itm => lists.push(itm))
                     })
 
-
                     return (
-                        <div key={id} onClick={() => navFunction(media_type, id)}>
+                        <div key={idx}>
                             {
                                 media_type === 'person' || typeOfMedia === 'person' ?
-                                    <div className={`${styles.displayCard} 
+
+                                    (<div className={`${styles.displayCard} 
                                     ${media_type || typeOfMedia === 'person' && styles.person}
-                                    cardBg`}>
-                                        <img src={profile_path ? apiConfig.small(profile_path)
+                                    cardBg`} onClick={() => navFunction(media_type, id)}>
+                                        <img src={profile_path || file_path ? apiConfig.small(profile_path || file_path)
                                             : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
                                         <div className={styles.overlay}>
                                             <div className={styles.info}>
                                                 <p className={styles.popular}>
-                                                    <IoIosPeople className={styles.people} />
-                                                    {popularity.toFixed(0)}
+                                                    {popularity && <IoIosPeople className={styles.people} />}
+                                                    {popularity && popularity.toFixed(0)}
                                                 </p>
                                                 <p className={styles.title}>{name}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    : <div className={`${styles.displayCard} cardBg`}>
-                                        <img src={poster_path ? apiConfig.small(poster_path)
-                                            : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
-                                        <div className={styles.overlay}>
-                                            <div className={styles.ratings}>
-                                                <Rating rating={vote_average} />
-                                            </div>
-                                            <div className={styles.info}>
-                                                <p className={styles.popular}>
-                                                    <IoIosPeople className={styles.people} />
-                                                    {popularity.toFixed(0)}
-                                                </p>
-                                                {
-                                                    original_title
-                                                        ? <p className={styles.title}>{original_title}</p>
-                                                        : <p className={styles.title}>{name}</p>
-                                                }
-                                                <div className={styles.genre}>
-                                                    {
-                                                        lists.map(itm => {
-                                                            const { id, name } = itm
-                                                            return (
-                                                                <div key={id} className={styles.lis}>
-                                                                    {name}
-                                                                </div>
-                                                            )
-                                                        })
-                                                    }
+                                    </div>)
+
+                                    : typeOfMedia === 'personAlt' ?
+                                        (<div className={`${styles.displayCard} 
+                                    ${typeOfMedia === 'personAlt' && styles.person}
+                                    cardBg`}>
+                                            <img src={profile_path || file_path ? apiConfig.small(profile_path || file_path)
+                                                : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
+                                            <div className={styles.overlay}>
+                                                <div className={styles.info}>
+                                                    <p className={styles.popular}>
+                                                        {popularity && <IoIosPeople className={styles.people} />}
+                                                        {popularity && popularity.toFixed(0)}
+                                                    </p>
+                                                    <p className={styles.title}>{name}</p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </div>)
+                                        
+                                        : (<div className={`${styles.displayCard} cardBg`} onClick={() => navFunction(media_type, id)}>
+                                            <img src={poster_path ? apiConfig.small(poster_path)
+                                                : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
+                                            <div className={styles.overlay}>
+                                                <div className={styles.ratings}>
+                                                    <Rating rating={vote_average} />
+                                                </div>
+                                                <div className={styles.info}>
+                                                    <p className={styles.popular}>
+                                                        <IoIosPeople className={styles.people} />
+                                                        {popularity.toFixed(0)}
+                                                    </p>
+                                                    {
+                                                        original_title
+                                                            ? <p className={styles.title}>{original_title}</p>
+                                                            : <p className={styles.title}>{name}</p>
+                                                    }
+                                                    <div className={styles.genre}>
+                                                        {
+                                                            lists.map((itm, idx) => {
+                                                                const { name } = itm
+                                                                return (
+                                                                    <div key={idx} className={styles.lis}>
+                                                                        {name}
+                                                                    </div>
+                                                                )
+                                                            })
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>)
                             }
                         </div>
                     )
