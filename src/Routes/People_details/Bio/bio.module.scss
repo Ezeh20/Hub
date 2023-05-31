@@ -1,7 +1,12 @@
-@use '../../../scss/utils/fonts' as *;
+@use '../../../scss/utils/fonts'as *;
+
 .bio {
     padding-inline: 1rem;
     font-weight: 200;
     text-align: justify;
     line-height: 2rem;
+
+    @media screen and (min-width:1440px) {
+        padding-inline: 0;
+    }
 }

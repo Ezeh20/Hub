@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Container from '../../../Components/Container/container'
 import DisplayCard from '../../../Components/Display_card/display_card'
 import requestApi from '../../../api/tmdb_api_config'
+import styles from './known_for.module.scss'
 
 type Types = {
     id: number
@@ -24,7 +25,7 @@ const KnownFor = ({ id }: Types) => {
         credits()
     }, [id])
     return (
-        <div>
+        <div className={styles.known}>
             <Container variant={true}>
                 <DisplayCard result={result} varient='general' />
             </Container>
