@@ -13,7 +13,7 @@ const MediaHeroDisplay = () => {
     useEffect(() => {
         const movieDetails = async () => {
             try {
-                if (Number(uid) > 0) {
+                if (uid !== undefined) {
                     const { data } = await requestApi.movieDetails(Number(uid))
                     setResult(data)
                 }

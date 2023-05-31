@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styles from './movie_infomation.module.scss'
 import Container from '../../../Components/Container/container'
 import requestApi from '../../../api/tmdb_api_config'
@@ -11,17 +11,13 @@ import { FaLanguage } from "react-icons/fa";
 import { BiLinkAlt } from "react-icons/bi";
 import Recommended from './Recommended/recommended'
 import { Link } from 'react-router-dom'
+import MediaHeroDisplay from '../../../Components/MediaHero/media_hero'
+import { CurrentIdContext } from '../../../Context/current_id_context/current_id'
 
-
-type Types = {
-    result: {},
-    iframeKey: string,
-    setIframeKey: React.Dispatch<React.SetStateAction<string>>,
-    show: boolean,
-    setShow: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const MovieInformation = ({ result, iframeKey, setIframeKey, show, setShow }: Types) => {
+const MovieInformation = () => {
+    const { result, iframeKey, setIframeKey, setShow, show } = useContext(CurrentIdContext)
+    const [results, setResults] = useState<[]>([])
+    const [videoLink, setVideoLink] = useState<[]>([])
 
     const {
         id,
@@ -34,15 +30,13 @@ const MovieInformation = ({ result, iframeKey, setIframeKey, show, setShow }: Ty
         production_companies,
     }: any = result
 
-    const [results, setResults] = useState<[]>([])
-    const [videoLink, setVideoLink] = useState<[]>([])
-
-
     useEffect(() => {
         const casts = async () => {
             try {
-                const { data } = await requestApi.movieInfo(id, 'credits')
-                setResults(data.cast)
+                if (id) {
+                    const { data } = await requestApi.movieInfo(id, 'credits')
+                    setResults(data.cast)
+                }
             } catch (error) {
 
             }
@@ -53,14 +47,17 @@ const MovieInformation = ({ result, iframeKey, setIframeKey, show, setShow }: Ty
     useEffect(() => {
         const teaser = async () => {
             try {
-                const { data } = await requestApi.movieInfo(id, 'videos')
-                setVideoLink(data.results)
+                if (id) {
+                    const { data } = await requestApi.movieInfo(id, 'videos')
+                    setVideoLink(data.results)
+                }
             } catch (error) {
                 //
             }
         }
         teaser()
     }, [id])
+
 
     const BudgetF = new Intl.NumberFormat('en', {
         style: 'currency',
@@ -75,6 +72,7 @@ const MovieInformation = ({ result, iframeKey, setIframeKey, show, setShow }: Ty
 
     return (
         <div>
+            <MediaHeroDisplay />
             <Container>
                 <div className={styles.MovieInfo}>
                     <p className={`${styles.head} HeadingsAlt`}>Media</p>
@@ -111,11 +109,11 @@ const MovieInformation = ({ result, iframeKey, setIframeKey, show, setShow }: Ty
                             }
                             <p className={styles.linkalt}>
                                 <FaLanguage />
-                                {original_language.toUpperCase()}
+                                {original_language}
                             </p>
                             <p className={styles.linkalt}>
                                 <IoIosPeople className={styles.people} />
-                                {popularity.toFixed(0)}
+                                {popularity}
                             </p>
                             <p className={styles.linkalt}>
                                 <BsCalendar2Date />

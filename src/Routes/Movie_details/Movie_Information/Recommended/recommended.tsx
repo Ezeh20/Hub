@@ -15,8 +15,10 @@ const Recommended = ({ id, setShow }: Types) => {
     useEffect(() => {
         const Similar = async () => {
             try {
-                const { data } = await requestApi.movieInfo(id, 'recommendations')
-                setResult(data.results)
+                if (id) {
+                    const { data } = await requestApi.movieInfo(id, 'recommendations')
+                    setResult(data.results)
+                }
 
             } catch (error) {
                 //do nothing fo now
