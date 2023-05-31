@@ -4,6 +4,7 @@ import styles from './discover.module.scss'
 import Genre from '../../Components/Genre_list/genre'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import DisplayCard from '../Display_card/display_card'
+import Footer from '../../Layout/Footer/footer'
 
 type disCover = {
     mediaType: string
@@ -12,8 +13,15 @@ type disCover = {
 const Discover = ({ mediaType }: disCover) => {
     const [genre, setGenre] = useState<null>(null)
     const [result, setResult] = useState<[]>([])
-    const [page, setPage] = useState<number>(1)
     const [totalPages, setTotalPages] = useState<number>(0)
+
+    const storage: any = localStorage.getItem(`CurrentPage${mediaType}`)
+    const thePage = JSON.parse(storage)
+    const [page, setPage] = useState<number>(thePage ?? 1)
+
+    useEffect(() => {
+        localStorage.setItem(`CurrentPage${mediaType}`, JSON.stringify(page))
+    }, [thePage, page])
 
 
     useEffect(() => {
@@ -34,9 +42,10 @@ const Discover = ({ mediaType }: disCover) => {
     return (
         <div className={styles.movie}>
             <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
-            <DisplayCard result={result} varient='general' typeOfMedia={mediaType}/>
+            <DisplayCard result={result} varient='general' typeOfMedia={mediaType} />
             <LoadPage totalPages={totalPages} setPage={setPage}
                 page={page} />
+            <Footer />
         </div>
     )
 }

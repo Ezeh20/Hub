@@ -11,6 +11,10 @@
     background: #000;
     z-index: 2;
 
+    @media (orientation: landscape) {
+        position: relative;
+    }
+
     @media screen and (min-width: 768px) {
         position: relative;
         height: fn.rem(550);

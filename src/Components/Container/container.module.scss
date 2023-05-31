@@ -1,8 +1,17 @@
 .container {
     margin-inline: 1rem;
     max-width: 1440px;
-    
+
     @media screen and (min-width: 1440px) {
+        margin-inline: auto;
+    }
+}
+
+.containerAlt {
+    margin-inline: 0;
+    max-width: 1000px;
+
+    @media screen and (min-width: 1000px) {
         margin-inline: auto;
     }
 }

@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import Footer from "./Footer/footer"
 import Navigation from "./Navigation/navigation"
 import styles from './layout.module.scss'
 import Fixed from "../Components/Fixed_menu/fixed"
@@ -13,7 +12,6 @@ const Layout = ({ children }: node) => {
             <Navigation />
             {children}
             <Fixed />
-            <Footer />
         </div>
     )
 }

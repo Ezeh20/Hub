@@ -55,6 +55,14 @@ const requestApi = {
         const url = `/person/popular?${key}&page=${params}`
         return axiosConfig.get(url)
     },
+    peopleDetails: (id: number) => {
+        const url = `/person/${id}?${key}`
+        return axiosConfig.get(url)
+    },
+    peopleImg: (id: number) => {
+        const url = `/person/${id}/images?${key}`
+        return axiosConfig.get(url)
+    },
     trending: (path: string, params: string) => {
         const url = `/trending/${path}/${params}?${key}`
         return axiosConfig.get(url)

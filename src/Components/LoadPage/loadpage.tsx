@@ -9,20 +9,23 @@ type Load = {
     setPage: React.Dispatch<React.SetStateAction<number>>
 }
 
+
 const LoadPage = ({ totalPages, page, setPage }: Load) => {
+
     return (
         <div className={styles.load}>
             {
                 page > 1 &&
                 <Button btnType='reload' type='button'
-                    onClick={() => setPage(pre => pre - 1)}>
+                    onClick={() => setPage((pre) => pre - 1)}>
                     <BiArrowFromRight className={styles.icns} />
                 </Button>
             }
+            <span>{page}</span>
             {
                 totalPages !== page &&
                 <Button btnType='reload' type='button'
-                    onClick={() => setPage(pre => pre + 1)}>
+                    onClick={() => setPage((pre) => pre + 1)}>
                     <BiArrowFromLeft className={styles.icns} />
                 </Button>
             }
