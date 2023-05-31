@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import requestApi from '../../../../api/tmdb_api_config'
-import DisplayCard from '../../../../Components/Display_card/display_card'
-import CardsWrapper from '../../../../Components/Cards_wrapper/cards_wrapper'
+import requestApi from '../../api/tmdb_api_config'
+import DisplayCard from '../Display_card/display_card'
+import CardsWrapper from '../Cards_wrapper/cards_wrapper'
 
 type Types = {
-    id: number,
-    setShow: any
+    media: string,
+    id: number
 }
 
-const Recommended = ({ id, setShow }: Types) => {
+const Recommended = ({ media, id }: Types) => {
 
     const [result, setResult] = useState<[]>([])
 
@@ -16,7 +16,7 @@ const Recommended = ({ id, setShow }: Types) => {
         const Similar = async () => {
             try {
                 if (id) {
-                    const { data } = await requestApi.movieInfo(id, 'recommendations')
+                    const { data } = await requestApi.mediaInfo(media, id, 'recommendations')
                     setResult(data.results)
                 }
 
@@ -30,7 +30,7 @@ const Recommended = ({ id, setShow }: Types) => {
     return (
         <div>
             <CardsWrapper id='similar'>
-                <DisplayCard result={result} setShow={setShow} />
+                <DisplayCard result={result} />
             </CardsWrapper>
         </div>
     )

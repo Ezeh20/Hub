@@ -1,16 +1,32 @@
-import CardsWrapper from "../../../../Components/Cards_wrapper/cards_wrapper"
-import styles from './base.module.scss'
-import Button from "../../../../Components/Button/button"
 import { TbPlayerPlayFilled, TbPlayerStopFilled } from "react-icons/tb";
+import CardsWrapper from '../Cards_wrapper/cards_wrapper';
+import Button from '../Button/button';
+import { useContext, useEffect, useState } from 'react';
+import requestApi from '../../api/tmdb_api_config';
+import { CurrentIdContext } from '../../Context/current_id_context/current_id';
+import styles from './base_information.module.scss'
 
 type videoType = {
-    videoLink: [],
-    iframeKey: string,
-    setIframeKey: React.Dispatch<React.SetStateAction<string>>,
-    show: boolean,
-    setShow: React.Dispatch<React.SetStateAction<boolean>>
+    media: string,
+    id: number
 }
-const BaseInformation = ({ videoLink, setShow, setIframeKey, iframeKey }: videoType) => {
+const BaseInformation = ({ media, id }: videoType) => {
+    const { setShow, setIframeKey, iframeKey } = useContext(CurrentIdContext)
+    const [videoLink, setVideoLink] = useState<[]>([])
+
+    useEffect(() => {
+        const teaser = async () => {
+            try {
+                if (id) {
+                    const { data } = await requestApi.mediaInfo(media, id, 'videos')
+                    setVideoLink(data.results)
+                }
+            } catch (error) {
+                //
+            }
+        }
+        teaser()
+    }, [id])
 
     const play = (key: string) => {
         setShow(true)
@@ -47,9 +63,6 @@ const BaseInformation = ({ videoLink, setShow, setIframeKey, iframeKey }: videoT
                     })
                 }
             </CardsWrapper>
-            <div className={styles.modal}>
-
-            </div>
         </div>
     )
 }

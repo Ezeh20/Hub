@@ -17,13 +17,6 @@ export const moviePath: globalType = {
     upcoming: "upcoming",
 }
 
-export const movieInfo: globalType = {
-    credits: "credits",
-    videos: "videos",
-    recommendations: "recommendations",
-    release_dates: "release_dates",
-}
-
 export const tvPath: globalType = {
     airing_today: "airing_today",
     on_the_air: "on_the_air",
@@ -31,13 +24,13 @@ export const tvPath: globalType = {
     top_rated: "top_rated",
 }
 
-export const tvInfo: globalType = {
+export const mediaInfo: globalType = {
     credits: "credits",
-    video: "video",
+    videos: "videos",
     recommendations: "recommendations",
+    release_dates: "release_dates",
     episode_groups: "episode_groups",
 }
-
 
 
 //API request endpoints to call
@@ -46,24 +39,16 @@ const requestApi = {
         const url = `/movie/${moviePath[path]}?${key}&page=${params}`
         return axiosConfig.get(url)
     },
-    movieDetails: (id: number) => {
-        const url = `/movie/${id}?${key}`
+    mediaDetails: (media: string, id: number) => {
+        const url = `/${media}/${id}?${key}`
         return axiosConfig.get(url)
     },
-    movieInfo: (id: number, path: string) => {
-        const url = `/movie/${id}/${movieInfo[path]}?${key}`
+    mediaInfo: (media: string, id: number, path: string) => {
+        const url = `/${media}/${id}/${mediaInfo[path]}?${key}`
         return axiosConfig.get(url)
     },
     tv: (path: string, params: number) => {
         const url = `/tv/${tvPath[path]}?${key}&page=${params}`
-        return axiosConfig.get(url)
-    },
-    tvDetails: (id: number) => {
-        const url = `/tv/${id}?${key}`
-        return axiosConfig.get(url)
-    },
-    tvInfo: (id: number, path: string) => {
-        const url = `/tv/${id}/${path}?${key}`
         return axiosConfig.get(url)
     },
     people: (params: number) => {

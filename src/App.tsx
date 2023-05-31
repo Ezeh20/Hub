@@ -10,7 +10,7 @@ import { useContext } from 'react'
 import { ThemeContext } from './Context/theme_context'
 import People from './Pages/People/people'
 import Search from './Pages/Search/search'
-import MovieInformation from './Routes/Movie_details/Movie_Information/movie_information'
+import MovieInformation from './Routes/Movie_Information/movie_information'
 
 function App() {
   const { theme } = useContext(ThemeContext)

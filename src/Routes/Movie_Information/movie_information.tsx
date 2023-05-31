@@ -1,23 +1,19 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import styles from './movie_infomation.module.scss'
-import Container from '../../../Components/Container/container'
-import requestApi from '../../../api/tmdb_api_config'
-import DisplayCard from '../../../Components/Display_card/display_card'
-import CardsWrapper from '../../../Components/Cards_wrapper/cards_wrapper'
-import BaseInformation from './Base_information/base_information'
 import { IoIosPeople } from "react-icons/io";
 import { BsCalendar2Date } from "react-icons/bs";
 import { FaLanguage } from "react-icons/fa";
 import { BiLinkAlt } from "react-icons/bi";
-import Recommended from './Recommended/recommended'
 import { Link } from 'react-router-dom'
-import MediaHeroDisplay from '../../../Components/MediaHero/media_hero'
-import { CurrentIdContext } from '../../../Context/current_id_context/current_id'
+import MediaHeroDisplay from '../../Components/MediaHero/media_hero'
+import { CurrentIdContext } from '../../Context/current_id_context/current_id'
+import Container from '../../Components/Container/container'
+import Recommended from '../../Components/Recommended/recommended'
+import BaseInformation from '../../Components/Base_information/base_information'
+import Credits from '../../Components/Credits/credits';
 
 const MovieInformation = () => {
-    const { result, iframeKey, setIframeKey, setShow, show } = useContext(CurrentIdContext)
-    const [results, setResults] = useState<[]>([])
-    const [videoLink, setVideoLink] = useState<[]>([])
+    const { result } = useContext(CurrentIdContext)
 
     const {
         id,
@@ -29,35 +25,6 @@ const MovieInformation = () => {
         popularity,
         production_companies,
     }: any = result
-
-    useEffect(() => {
-        const casts = async () => {
-            try {
-                if (id) {
-                    const { data } = await requestApi.movieInfo(id, 'credits')
-                    setResults(data.cast)
-                }
-            } catch (error) {
-
-            }
-        }
-        casts()
-    }, [id])
-
-    useEffect(() => {
-        const teaser = async () => {
-            try {
-                if (id) {
-                    const { data } = await requestApi.movieInfo(id, 'videos')
-                    setVideoLink(data.results)
-                }
-            } catch (error) {
-                //
-            }
-        }
-        teaser()
-    }, [id])
-
 
     const BudgetF = new Intl.NumberFormat('en', {
         style: 'currency',
@@ -72,31 +39,20 @@ const MovieInformation = () => {
 
     return (
         <div>
-            <MediaHeroDisplay />
+            <MediaHeroDisplay media='movie' />
             <Container>
                 <div className={styles.MovieInfo}>
                     <p className={`${styles.head} HeadingsAlt`}>Media</p>
-                    {
-                        videoLink && videoLink.length > 0 ? <div className={styles.top}>
-                            <BaseInformation videoLink={videoLink}
-                                show={show}
-                                setShow={setShow}
-                                iframeKey={iframeKey}
-                                setIframeKey={setIframeKey} />
-                        </div> : 'No media to display'
-                    }
+                    <div className={styles.top}>
+                        <BaseInformation media='movie' id={id} />
+                    </div>
                     <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
                     <div className={styles.bottom}>
                         <div className={styles.wrapper}>
-                            <div>
-                                <CardsWrapper id='casts'>
-                                    <DisplayCard result={results} typeOfMedia='person' />
-                                </CardsWrapper>
-                            </div>
+                            <Credits media='movie' id={id} />
                             <div>
                                 <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
-                                <Recommended id={id}
-                                    setShow={setShow} />
+                                <Recommended media='movie' id={id} />
                             </div>
                         </div>
                         <p className={`${styles.cas} HeadingsAlt`}>Info</p>
