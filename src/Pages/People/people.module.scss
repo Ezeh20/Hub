@@ -1,3 +1,11 @@
-.people{
-    margin-top: 3rem;
+.peopleContainer {
+
+    .people {
+        margin-top: 3rem;
+    }
+    .ast{
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+    }
 }

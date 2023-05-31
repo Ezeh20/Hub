@@ -11,7 +11,7 @@ export const ThemeContextProvider = ({ children }: childrenNode) => {
     //get the current state saved in localStorage
     const currentTheme = localStorage.getItem('cjMovies-Theme')
     //set the initial state to 'light' if the Countries-Theme key exists in localStorage
-    const [theme, setTheme] = useState(currentTheme ?? 'light')
+    const [theme, setTheme] = useState(currentTheme ?? 'dark')
 
     //presist the theme state in local storage
     useEffect(() => {

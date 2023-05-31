@@ -4,6 +4,7 @@ import styles from './discover.module.scss'
 import Genre from '../../Components/Genre_list/genre'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import DisplayCard from '../Display_card/display_card'
+import Loading from '../Loading-spinner/loading'
 
 type disCover = {
     mediaType: string
@@ -39,11 +40,17 @@ const Discover = ({ mediaType }: disCover) => {
 
 
     return (
-        <div className={styles.movie}>
-            <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
-            <DisplayCard result={result} varient='general' typeOfMedia={mediaType} />
-            <LoadPage totalPages={totalPages} setPage={setPage}
-                page={page} />
+        <div className={styles.MovieContainer}>
+            {
+                result.length > 0 ? <div className={styles.movie}>
+                    <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
+                    <DisplayCard result={result} varient='general' typeOfMedia={mediaType} />
+                    <LoadPage totalPages={totalPages} setPage={setPage}
+                        page={page} />
+                </div> : <div className={styles.ast}>
+                    <Loading />
+                </div>
+            }
         </div>
     )
 }

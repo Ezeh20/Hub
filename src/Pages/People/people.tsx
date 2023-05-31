@@ -5,6 +5,7 @@ import Container from '../../Components/Container/container'
 import styles from './people.module.scss'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import { PageCountContext } from '../../Context/Presist_page/presist_page'
+import Loading from '../../Components/Loading-spinner/loading'
 
 const People = () => {
     const [result, setResult] = useState<[]>([])
@@ -29,12 +30,18 @@ const People = () => {
         person()
     }, [page])
     return (
-        <Container>
-            <div className={styles.people}>
-                <DisplayCard result={result} varient='general' typeOfMedia='person' />
-            </div>
-            <LoadPage totalPages={totalPages} page={page} setPage={setPage} />
-        </Container>
+        <div className={styles.peopleContainer}>
+            {
+                result.length > 0 ? <Container>
+                    <div className={styles.people}>
+                        <DisplayCard result={result} varient='general' typeOfMedia='person' />
+                    </div>
+                    <LoadPage totalPages={totalPages} page={page} setPage={setPage} />
+                </Container> : <div className={styles.ast}>
+                    <Loading />
+                </div>
+            }
+        </div>
     )
 }
 

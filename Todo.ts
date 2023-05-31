@@ -47,3 +47,11 @@
  * 
  * Implement the movies page which includes a search funtionality
  */
+
+/**
+ * 
+ * phase 5
+ * 
+ * reuse the components used in the movie section as they as similar to that ov the tv
+ * with litte variations
+ */

@@ -1,0 +1,13 @@
+.MovieContainer{
+  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .ast{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 4rem;
+    }
+}

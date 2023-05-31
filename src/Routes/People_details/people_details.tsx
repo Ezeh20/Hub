@@ -56,6 +56,8 @@ const PeopleDetails = () => {
     profile_path,
     also_known_as
   }: any = result
+  console.log(img);
+
 
   return (
     <>
@@ -63,14 +65,17 @@ const PeopleDetails = () => {
         <Container variant={true}>
           <div className={styles.imgContainer}>
             {
-              img && img.filter((_, idx) => idx === 2).map((itm, idx) => {
+              img && img.filter((_, idx) => idx === 1).map((itm, idx) => {
                 const { file_path } = itm
                 return (
-                  <img key={idx} src={file_path && apiConfig.originalImg(file_path)} alt="backdrop" className={styles.backDrop} />
+                  <img key={idx}
+                    src={file_path ? apiConfig.originalImg(file_path) : '/public/main-logo.svg'}
+                    alt="backdrop" className={styles.backDrop} />
                 )
               })
             }
-            <img src={profile_path && apiConfig.small(profile_path)} alt="displayPic" className={`${styles.displayPic} displayPic`} />
+            <img src={profile_path ? apiConfig.small(profile_path) : '/public/no-img.jpg'}
+              alt="displayPic" className={`${styles.displayPic} displayPic`} />
           </div>
 
           <div className={styles.personInfomation}>

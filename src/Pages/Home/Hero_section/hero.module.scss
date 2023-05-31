@@ -2,6 +2,8 @@
 
 .carousel {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: fn.rem(400);
     position: relative;
@@ -97,6 +99,5 @@
         }
 
     }
-
 
 }

@@ -2,6 +2,8 @@
 @use '../../../scss/utils/functions'as fn;
 
 .trending {
+
+
     .trendingContainer {
         .Top {
             display: flex;
@@ -61,5 +63,10 @@
                 }
             }
         }
+    }
+
+    .ast {
+        display: flex;
+        justify-content: center;
     }
 }

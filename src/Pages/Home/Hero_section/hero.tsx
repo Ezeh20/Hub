@@ -8,6 +8,7 @@ import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from 
 import requestApi from "../../../api/tmdb_api_config";
 import { heroType, Filter, Content } from "./type";
 import Info from "./Content/content";
+import Loading from "../../../Components/Loading-spinner/loading";
 
 
 const Hero = (props: heroType) => {
@@ -59,53 +60,56 @@ const Hero = (props: heroType) => {
             onMouseEnter={() => { setAutoPlay(false) }}
             onMouseLeave={() => setAutoPlay(true)}>
 
-            <div className={styles.carouselContainer}>
-                {top10.map((item, idx) => {
-                    const {
-                        backdrop_path,
-                        genre_ids,
-                        id,
-                        original_title,
-                        vote_average,
-                        poster_path,
-                        overview,
-                        name,
-                        media_type,
-                    }: Content = item
+            {
+                top10.length > 0 ? <div className={styles.carouselContainer}>
+                    {top10.map((item, idx) => {
+                        const {
+                            backdrop_path,
+                            genre_ids,
+                            id,
+                            original_title,
+                            vote_average,
+                            poster_path,
+                            overview,
+                            name,
+                            media_type,
+                        }: Content = item
 
-                    const genreArr: [] = []
-                    genre_ids && genre_ids.forEach((e: number) => {
-                        genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
-                    })
+                        const genreArr: [] = []
+                        genre_ids && genre_ids.forEach((e: number) => {
+                            genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
+                        })
 
-                    return (
-                        <div key={id} className={idx === current ? `${styles.hero} ${styles.heroActive}` : `${styles.hero}`}>
-                            <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop}
-                            />
-                            <div className={styles.overlay}>
-                                <Container>
-                                    <Info original_title={original_title}
-                                        poster_path={poster_path}
-                                        overview={overview}
-                                        rating={vote_average}
-                                        genreArr={genreArr}
-                                        name={name}
-                                        id={id}
-                                        media_type={media_type}
-                                    />
-                                </Container>
+                        return (
+                            <div key={id} className={idx === current ? `${styles.hero} ${styles.heroActive}` : `${styles.hero}`}>
+                                <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop}
+                                />
+                                <div className={styles.overlay}>
+                                    <Container>
+                                        <Info original_title={original_title}
+                                            poster_path={poster_path}
+                                            overview={overview}
+                                            rating={vote_average}
+                                            genreArr={genreArr}
+                                            name={name}
+                                            id={id}
+                                            media_type={media_type}
+                                        />
+                                    </Container>
+                                </div>
+
+                                <button onClick={prev} className={styles.btn}>
+                                    <TbSquareRoundedArrowLeftFilled />
+                                </button>
+                                <button onClick={next} className={styles.btn2}>
+                                    <TbSquareRoundedArrowRightFilled />
+                                </button>
                             </div>
+                        )
+                    })}
+                </div> : <Loading />
 
-                            <button onClick={prev} className={styles.btn}>
-                                <TbSquareRoundedArrowLeftFilled />
-                            </button>
-                            <button onClick={next} className={styles.btn2}>
-                                <TbSquareRoundedArrowRightFilled />
-                            </button>
-                        </div>
-                    )
-                })}
-            </div>
+            }
         </div>
     )
 }
