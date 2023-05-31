@@ -1,9 +1,15 @@
+import Container from '../../../Components/Container/container'
+import styles from './bio.module.scss'
 
-
-const Bio = () => {
+type Type = {
+    biography: string
+}
+const Bio = ({ biography }: Type) => {
 
     return (
-        <div>Bio</div>
+        <Container variant={true}>
+            <p className={styles.bio}>{biography}</p>
+        </Container>
     )
 }
 

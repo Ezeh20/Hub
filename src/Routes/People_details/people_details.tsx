@@ -48,7 +48,6 @@ const PeopleDetails = () => {
   const { biography,
     birthday,
     deathday,
-    homepage,
     id,
     known_for_department,
     place_of_birth,
@@ -87,7 +86,7 @@ const PeopleDetails = () => {
               }
             </div>
             <div className={styles.other}>
-              <span className={styles.dep}>{known_for_department} || {popularity}</span>
+              <span className={styles.dep}>{known_for_department} || {popularity} || </span>
               <span className={styles.icnPeople}>
                 <HiLocationMarker className={styles.icnicn} />
                 {place_of_birth}
