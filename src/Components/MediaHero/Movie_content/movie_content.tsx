@@ -20,6 +20,7 @@ const MovieHero = ({ result, iframeKey, show }: ResulT) => {
         vote_average,
         genres,
         original_title,
+        name,
         overview,
         status,
         runtime
@@ -34,11 +35,13 @@ const MovieHero = ({ result, iframeKey, show }: ResulT) => {
                         <img src={apiConfig.small(poster_path)} alt="poster" className={styles.imgPoster} />
                         <div className={styles.content}>
                             <Rating rating={vote_average} />
-                            <span className={styles.title}>{original_title}</span>
+                            <span className={styles.title}>{original_title || name}</span>
                             <span className={styles.overView}>{overview}</span>
                             <div className={styles.status}>
                                 <span className={styles.stusIcn}><HiOutlineStatusOnline />{status}</span>
-                                <span className={styles.stusIcn}><RxLapTimer /> {runtime} mins</span>
+                                {
+                                    runtime && <span className={styles.stusIcn}><RxLapTimer /> {runtime} mins</span>
+                                }
                             </div>
                             <div className={styles.Genre}>
                                 {

@@ -29,9 +29,11 @@ const Recommended = ({ media, id }: Types) => {
 
     return (
         <div>
-            <CardsWrapper id='similar'>
-                <DisplayCard result={result} />
-            </CardsWrapper>
+            {
+                result && result.length > 0 ? <CardsWrapper id='similar'>
+                    <DisplayCard result={result} />
+                </CardsWrapper> : 'None for now'
+            }
         </div>
     )
 }

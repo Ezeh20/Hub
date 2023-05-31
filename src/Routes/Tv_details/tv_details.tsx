@@ -5,6 +5,7 @@ import MediaHeroDisplay from "../../Components/MediaHero/media_hero"
 import BaseInformation from "../../Components/Base_information/base_information"
 import Credits from "../../Components/Credits/credits"
 import { IoIosPeople } from "react-icons/io";
+import { BsCalendar2Date } from "react-icons/bs";
 import { FaLanguage } from "react-icons/fa";
 import { BiLinkAlt } from "react-icons/bi";
 import Recommended from "../../Components/Recommended/recommended"
@@ -19,9 +20,12 @@ const TvDetails = () => {
   const {
     id,
     original_language,
+    first_air_date,
     homepage,
     popularity,
     production_companies,
+    number_of_seasons,
+    number_of_episodes
   }: any = result
 
 
@@ -29,8 +33,8 @@ const TvDetails = () => {
   return (
 
     <div>
-      <Container>
         <MediaHeroDisplay media="tv" />
+        <Container>
         <div className={styles.MovieInfo}>
           <p className={`${styles.head} HeadingsAlt`}>Media</p>
           <div className={styles.top}>
@@ -60,6 +64,18 @@ const TvDetails = () => {
               <p className={styles.linkalt}>
                 <IoIosPeople className={styles.people} />
                 {popularity}
+              </p>
+              <p className={styles.linkalt}>
+                <BsCalendar2Date />
+                {first_air_date}
+              </p>
+              <p className={styles.money}>
+                <span>Seasons</span>
+                <span>{number_of_seasons}</span>
+              </p>
+              <p className={styles.money}>
+                <span>Episodes</span>
+                <span >{number_of_episodes}</span>
               </p>
             </div>
             <p className={`${styles.cas} HeadingsAlt`}>Production</p>
