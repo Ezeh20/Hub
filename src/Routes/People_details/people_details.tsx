@@ -11,6 +11,7 @@ import { FaBirthdayCake } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { GiDeathSkull } from "react-icons/gi";
 import Animated from "../../Components/AnimatedRoutes/animated"
+import Footer from "../../Layout/Footer/footer"
 
 const PeopleDetails = () => {
   const [current, setCurrent] = useState(0)
@@ -139,6 +140,7 @@ const PeopleDetails = () => {
           }
         </div>
       </>
+      <Footer />
     </Animated>
   )
 }

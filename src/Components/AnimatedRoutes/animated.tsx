@@ -19,18 +19,17 @@ const Animated = ({ children, home, people }: Type) => {
     }
 
     const animsPeople = {
-        initial: { opacity: 0, scale: .5 },
+        initial: { opacity: 0, scale: 0 },
         animate: { opacity: 1, scale: 1 },
-        exit: { opacity: 0 }
+      
     }
     return (
         <motion.div
-            variants={anims}
+            variants={home === 'home' ? anims : people === 'people' ? animsPeople : anims}
             initial="initial"
             animate="animate"
-            transition={{ duration: 1, when: 'beforeChildren' }}
-            exit={{ opacity: 0, transition: { duration: 1, ease: easeInOut } }}
-
+            transition={{ duration: .5, when: 'beforeChildren' }}
+            exit={{ opacity: 0, transition: { duration: .5, ease: easeInOut } }}
         >
             {children}
         </motion.div>

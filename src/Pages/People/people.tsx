@@ -7,6 +7,7 @@ import LoadPage from '../../Components/LoadPage/loadpage'
 import { PageCountContext } from '../../Context/Presist_page/presist_page'
 import Loading from '../../Components/Loading-spinner/loading'
 import Animated from '../../Components/AnimatedRoutes/animated'
+import Footer from '../../Layout/Footer/footer'
 
 const People = () => {
     const [result, setResult] = useState<[]>([])
@@ -44,6 +45,7 @@ const People = () => {
                     </div>
                 }
             </div>
+            <Footer />
         </Animated>
     )
 }

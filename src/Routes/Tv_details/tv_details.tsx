@@ -12,6 +12,7 @@ import Recommended from "../../Components/Recommended/recommended"
 import { Link } from "react-router-dom"
 import Container from '../../Components/Container/container'
 import Animated from '../../Components/AnimatedRoutes/animated'
+import Footer from '../../Layout/Footer/footer'
 
 
 const TvDetails = () => {
@@ -94,6 +95,7 @@ const TvDetails = () => {
           </div>
         </Container>
       </div>
+      <Footer />
     </Animated>
   )
 }
