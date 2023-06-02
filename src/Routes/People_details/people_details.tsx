@@ -10,7 +10,7 @@ import apiConfig from "../../api/api_config"
 import { FaBirthdayCake } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { GiDeathSkull } from "react-icons/gi";
-
+import Animated from "../../Components/AnimatedRoutes/animated"
 
 const PeopleDetails = () => {
   const [current, setCurrent] = useState(0)
@@ -56,89 +56,90 @@ const PeopleDetails = () => {
     profile_path,
     also_known_as
   }: any = result
-  console.log(img);
 
 
   return (
-    <>
-      <div className={styles.people}>
-        <Container variant={true}>
-          <div className={styles.imgContainer}>
-            {
-              img && img.filter((_, idx) => idx === 1).map((itm, idx) => {
-                const { file_path } = itm
-                return (
-                  <img key={idx}
-                    src={file_path ? apiConfig.originalImg(file_path) : '/public/main-logo.svg'}
-                    alt="backdrop" className={styles.backDrop} />
-                )
-              })
-            }
-            <img src={profile_path ? apiConfig.small(profile_path) : '/public/no-img.jpg'}
-              alt="displayPic" className={`${styles.displayPic} displayPic`} />
-          </div>
+    <Animated>
+      <>
+        <div className={styles.people}>
+          <Container variant={true}>
+            <div className={styles.imgContainer}>
+              {
+                img && img.filter((_, idx) => idx === 1).map((itm, idx) => {
+                  const { file_path } = itm
+                  return (
+                    <img key={idx}
+                      src={file_path ? apiConfig.originalImg(file_path) : '/public/main-logo.svg'}
+                      alt="backdrop" className={styles.backDrop} />
+                  )
+                })
+              }
+              <img src={profile_path ? apiConfig.small(profile_path) : '/public/no-img.jpg'}
+                alt="displayPic" className={`${styles.displayPic} displayPic`} />
+            </div>
 
-          <div className={styles.personInfomation}>
-            <div className={styles.at}>
-              <span className={styles.name}>{name}</span>
-              {
-                also_known_as && also_known_as.length > 0 && also_known_as.filter((_: string, idx: number) => idx === 0)
-                  .map((itm: string) => {
-                    return (
-                      <span key={itm} className={styles.theAt}>@{itm}</span>
-                    )
-                  })
-              }
-            </div>
-            <div className={styles.other}>
-              <span className={styles.dep}>{known_for_department} || {popularity} || </span>
-              <span className={styles.icnPeople}>
-                <HiLocationMarker className={styles.icnicn} />
-                {place_of_birth}
-              </span>
-              {
-                birthday && <span className={styles.icnPeople}>
-                  <FaBirthdayCake className={styles.icnicn} />
-                  {birthday}
+            <div className={styles.personInfomation}>
+              <div className={styles.at}>
+                <span className={styles.name}>{name}</span>
+                {
+                  also_known_as && also_known_as.length > 0 && also_known_as.filter((_: string, idx: number) => idx === 0)
+                    .map((itm: string) => {
+                      return (
+                        <span key={itm} className={styles.theAt}>@{itm}</span>
+                      )
+                    })
+                }
+              </div>
+              <div className={styles.other}>
+                <span className={styles.dep}>{known_for_department} || {popularity} || </span>
+                <span className={styles.icnPeople}>
+                  <HiLocationMarker className={styles.icnicn} />
+                  {place_of_birth}
                 </span>
-              }
-              {
-                deathday && <span className={styles.icnPeople}>
-                  <GiDeathSkull className={styles.icnicn} />
-                  {birthday}
-                </span>
-              }
+                {
+                  birthday && <span className={styles.icnPeople}>
+                    <FaBirthdayCake className={styles.icnicn} />
+                    {birthday}
+                  </span>
+                }
+                {
+                  deathday && <span className={styles.icnPeople}>
+                    <GiDeathSkull className={styles.icnicn} />
+                    {birthday}
+                  </span>
+                }
+              </div>
             </div>
-          </div>
-          <section className={styles.renderOption}>
-            {
-              renderOps.map((itm, idx) => {
-                return (
-                  <div key={idx}
-                    className={current === idx ?
-                      `${styles.options} ${styles.optionsAlt}`
-                      : styles.options}
-                    onClick={() => setCurrent(idx)}>
-                    <p>{itm}</p>
-                    {
-                      current === idx && <div className={styles.indicator} />
-                    }
-                  </div>
-                )
-              })
-            }
-          </section>
-          <div className={styles.line} />
-        </Container>
-      </div>
-      <div>
-        {
-          current === 0 ? <Bio biography={biography} />
-            : current === 1 ? <KnownFor id={id} />
-              : current === 2 ? <Media id={id} /> : ''
-        }
-      </div>
-    </>
+            <section className={styles.renderOption}>
+              {
+                renderOps.map((itm, idx) => {
+                  return (
+                    <div key={idx}
+                      className={current === idx ?
+                        `${styles.options} ${styles.optionsAlt}`
+                        : styles.options}
+                      onClick={() => setCurrent(idx)}>
+                      <p>{itm}</p>
+                      {
+                        current === idx && <div className={styles.indicator} />
+                      }
+                    </div>
+                  )
+                })
+              }
+            </section>
+            <div className={styles.line} />
+          </Container>
+        </div>
+        <div>
+          {
+            current === 0 ? <Bio biography={biography} />
+              : current === 1 ? <KnownFor id={id} />
+                : current === 2 ? <Media id={id} /> : ''
+          }
+        </div>
+      </>
+    </Animated>
   )
 }
 

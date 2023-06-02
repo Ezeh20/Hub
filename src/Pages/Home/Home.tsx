@@ -6,6 +6,7 @@ import Trending from "./Trending_section/trending"
 import TopMovies from "./Top_movies/top_movies"
 import TvOnair from "./Tv/tv_onair"
 import ComingSoon from "./Coming_soon/coming_soon"
+import Animated from "../../Components/AnimatedRoutes/animated"
 
 const Home = () => {
   const [trending, setTrending] = useState<string>('movie')
@@ -30,18 +31,20 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <Hero
-        result={result}
-        current={current} setCurrent={setCurrent}
-      />
-      <Trending
-        trending={trending} setTrending={setTrending}
-        trendingPeriod={trendingPeriod} setTrendingPeriod={setTrendingPeriod}
-        result={result}
-      />
-      <TopMovies />
-      <TvOnair />
-      <ComingSoon />
+      <Animated home="home">
+        <Hero
+          result={result}
+          current={current} setCurrent={setCurrent}
+        />
+        <Trending
+          trending={trending} setTrending={setTrending}
+          trendingPeriod={trendingPeriod} setTrendingPeriod={setTrendingPeriod}
+          result={result}
+        />
+        <TopMovies />
+        <TvOnair />
+        <ComingSoon />
+      </Animated>
     </div>
   )
 }

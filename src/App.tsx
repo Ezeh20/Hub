@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import Movies from './Pages/Movies/Movies'
 import PageNotFound from './Pages/404/404'
@@ -11,29 +11,33 @@ import { ThemeContext } from './Context/theme_context'
 import People from './Pages/People/people'
 import Search from './Pages/Search/search'
 import MovieInformation from './Routes/Movie_Information/movie_information'
+import { AnimatePresence } from 'framer-motion'
 
 function App() {
   const { theme } = useContext(ThemeContext)
+  const location = useLocation()
   return (
     <div className={`${theme}`}>
       <Layout>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='/movie'>
-            <Route index element={<Movies />} />
-            <Route path=':uid' element={<MovieInformation />} />
-          </Route>
-          <Route path='/tv'>
-            <Route index element={<Tv />} />
-            <Route path=':uid' element={<TvDetails />} />
-          </Route>
-          <Route path='/person'>
-            <Route index element={<People />} />
-            <Route path=':uid' element={<PeopleDetails />} />
-          </Route>
-          <Route path='/search' element={<Search />} />
-          <Route path='*' element={<PageNotFound />} />
-        </Routes>
+        <AnimatePresence mode='wait'>
+          <Routes key={location.pathname} location={location}>
+            <Route index element={<Home />} />
+            <Route path='/movie'>
+              <Route index element={<Movies />} />
+              <Route path=':uid' element={<MovieInformation />} />
+            </Route>
+            <Route path='/tv'>
+              <Route index element={<Tv />} />
+              <Route path=':uid' element={<TvDetails />} />
+            </Route>
+            <Route path='/person'>
+              <Route index element={<People />} />
+              <Route path=':uid' element={<PeopleDetails />} />
+            </Route>
+            <Route path='/search' element={<Search />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+        </AnimatePresence>
       </Layout>
     </div>
   )

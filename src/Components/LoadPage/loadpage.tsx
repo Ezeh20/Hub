@@ -1,6 +1,7 @@
 import Button from "../Button/button"
 import styles from './loadpage.module.scss'
 import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
+import { useEffect } from 'react'
 
 
 type Load = {
@@ -11,6 +12,10 @@ type Load = {
 
 
 const LoadPage = ({ totalPages, page, setPage }: Load) => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [page])
 
     return (
         <div className={styles.load}>

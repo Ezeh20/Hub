@@ -6,7 +6,7 @@ import { IoIosPeople } from "react-icons/io";
 import requestApi from '../../api/tmdb_api_config';
 import { useNavigate } from 'react-router';
 import { CurrentIdContext } from '../../Context/current_id_context/current_id';
-
+import { motion } from 'framer-motion'
 
 type Display = {
     result: [],
@@ -77,7 +77,12 @@ const DisplayCard = (props: Display) => {
                     })
 
                     return (
-                        <div key={idx}>
+                        <motion.div
+                            initial={{ y: varient ? 100 : -100, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 1.5, delay: idx * .1 }}
+                            viewport={{ once: true }}
+                            key={idx}>
                             {
                                 media_type === 'person' || typeOfMedia === 'person' ?
 
@@ -113,7 +118,7 @@ const DisplayCard = (props: Display) => {
                                                 </div>
                                             </div>
                                         </div>)
-                                        
+
                                         : (<div className={`${styles.displayCard} cardBg`} onClick={() => navFunction(media_type, id)}>
                                             <img src={poster_path ? apiConfig.small(poster_path)
                                                 : '/public/no-img.jpg'} alt="img" className={styles.imgCard} />
@@ -147,7 +152,7 @@ const DisplayCard = (props: Display) => {
                                             </div>
                                         </div>)
                             }
-                        </div>
+                        </motion.div>
                     )
                 })
             }

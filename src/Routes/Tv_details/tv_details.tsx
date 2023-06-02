@@ -11,6 +11,7 @@ import { BiLinkAlt } from "react-icons/bi";
 import Recommended from "../../Components/Recommended/recommended"
 import { Link } from "react-router-dom"
 import Container from '../../Components/Container/container'
+import Animated from '../../Components/AnimatedRoutes/animated'
 
 
 const TvDetails = () => {
@@ -31,68 +32,69 @@ const TvDetails = () => {
 
 
   return (
-
-    <div>
+    <Animated>
+      <div>
         <MediaHeroDisplay media="tv" />
         <Container>
-        <div className={styles.MovieInfo}>
-          <p className={`${styles.head} HeadingsAlt`}>Media</p>
-          <div className={styles.top}>
-            <BaseInformation media='tv' id={id} />
-          </div>
-          <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
-          <div className={styles.bottom}>
-            <div className={styles.wrapper}>
-              <Credits media='tv' id={id} />
-              <div>
-                <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
-                <Recommended media='tv' id={id} />
+          <div className={styles.MovieInfo}>
+            <p className={`${styles.head} HeadingsAlt`}>Media</p>
+            <div className={styles.top}>
+              <BaseInformation media='tv' id={id} />
+            </div>
+            <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
+            <div className={styles.bottom}>
+              <div className={styles.wrapper}>
+                <Credits media='tv' id={id} />
+                <div>
+                  <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
+                  <Recommended media='tv' id={id} />
+                </div>
+              </div>
+              <p className={`${styles.cas} HeadingsAlt`}>Info</p>
+              <div className={styles.others}>
+                {
+                  homepage && <Link to={homepage} className={styles.link}>
+                    <BiLinkAlt />
+                    <p className={styles.linktext}>Homepage</p>
+                  </Link>
+                }
+                <p className={styles.linkalt}>
+                  <FaLanguage />
+                  {original_language}
+                </p>
+                <p className={styles.linkalt}>
+                  <IoIosPeople className={styles.people} />
+                  {popularity}
+                </p>
+                <p className={styles.linkalt}>
+                  <BsCalendar2Date />
+                  {first_air_date}
+                </p>
+                <p className={styles.money}>
+                  <span>Seasons</span>
+                  <span>{number_of_seasons}</span>
+                </p>
+                <p className={styles.money}>
+                  <span>Episodes</span>
+                  <span >{number_of_episodes}</span>
+                </p>
+              </div>
+              <p className={`${styles.cas} HeadingsAlt`}>Production</p>
+              <div className={styles.production}>
+                {
+                  production_companies && production_companies.map((itm: any) => {
+                    const { name } = itm
+                    return (
+                      <p key={name} className={styles.company}>{name}</p>
+                    )
+                  })
+                }
               </div>
             </div>
-            <p className={`${styles.cas} HeadingsAlt`}>Info</p>
-            <div className={styles.others}>
-              {
-                homepage && <Link to={homepage} className={styles.link}>
-                  <BiLinkAlt />
-                  <p className={styles.linktext}>Homepage</p>
-                </Link>
-              }
-              <p className={styles.linkalt}>
-                <FaLanguage />
-                {original_language}
-              </p>
-              <p className={styles.linkalt}>
-                <IoIosPeople className={styles.people} />
-                {popularity}
-              </p>
-              <p className={styles.linkalt}>
-                <BsCalendar2Date />
-                {first_air_date}
-              </p>
-              <p className={styles.money}>
-                <span>Seasons</span>
-                <span>{number_of_seasons}</span>
-              </p>
-              <p className={styles.money}>
-                <span>Episodes</span>
-                <span >{number_of_episodes}</span>
-              </p>
-            </div>
-            <p className={`${styles.cas} HeadingsAlt`}>Production</p>
-            <div className={styles.production}>
-              {
-                production_companies && production_companies.map((itm: any) => {
-                  const { name } = itm
-                  return (
-                    <p key={name} className={styles.company}>{name}</p>
-                  )
-                })
-              }
-            </div>
           </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </Animated>
   )
 }
 

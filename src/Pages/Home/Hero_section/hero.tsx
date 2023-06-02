@@ -8,8 +8,6 @@ import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from 
 import requestApi from "../../../api/tmdb_api_config";
 import { heroType, Filter, Content } from "./type";
 import Info from "./Content/content";
-import Loading from "../../../Components/Loading-spinner/loading";
-
 
 const Hero = (props: heroType) => {
     const {
@@ -61,7 +59,7 @@ const Hero = (props: heroType) => {
             onMouseLeave={() => setAutoPlay(true)}>
 
             {
-                top10.length > 0 ? <div className={styles.carouselContainer}>
+                <div className={styles.carouselContainer}>
                     {top10.map((item, idx) => {
                         const {
                             backdrop_path,
@@ -107,7 +105,7 @@ const Hero = (props: heroType) => {
                             </div>
                         )
                     })}
-                </div> : <Loading />
+                </div>
 
             }
         </div>

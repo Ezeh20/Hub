@@ -11,6 +11,8 @@ import Container from '../../Components/Container/container'
 import Recommended from '../../Components/Recommended/recommended'
 import BaseInformation from '../../Components/Base_information/base_information'
 import Credits from '../../Components/Credits/credits';
+import Animated from '../../Components/AnimatedRoutes/animated';
+
 
 const MovieInformation = () => {
     const { result } = useContext(CurrentIdContext)
@@ -38,70 +40,72 @@ const MovieInformation = () => {
 
 
     return (
-        <div>
-            <MediaHeroDisplay media='movie' />
-            <Container>
-                <div className={styles.MovieInfo}>
-                    <p className={`${styles.head} HeadingsAlt`}>Media</p>
-                    <div className={styles.top}>
-                        <BaseInformation media='movie' id={id} />
-                    </div>
-                    <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
-                    <div className={styles.bottom}>
-                        <div className={styles.wrapper}>
-                            <Credits media='movie' id={id} />
-                            <div>
-                                <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
-                                <Recommended media='movie' id={id} />
+        <Animated>
+            <div>
+                <MediaHeroDisplay media='movie' />
+                <Container>
+                    <div className={styles.MovieInfo}>
+                        <p className={`${styles.head} HeadingsAlt`}>Media</p>
+                        <div className={styles.top}>
+                            <BaseInformation media='movie' id={id} />
+                        </div>
+                        <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
+                        <div className={styles.bottom}>
+                            <div className={styles.wrapper}>
+                                <Credits media='movie' id={id} />
+                                <div>
+                                    <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
+                                    <Recommended media='movie' id={id} />
+                                </div>
+                            </div>
+                            <p className={`${styles.cas} HeadingsAlt`}>Info</p>
+                            <div className={styles.others}>
+                                {
+                                    homepage && <Link to={homepage} className={styles.link}>
+                                        <BiLinkAlt />
+                                        <p className={styles.linktext}>Homepage</p>
+                                    </Link>
+                                }
+                                <p className={styles.linkalt}>
+                                    <FaLanguage />
+                                    {original_language}
+                                </p>
+                                <p className={styles.linkalt}>
+                                    <IoIosPeople className={styles.people} />
+                                    {popularity}
+                                </p>
+                                <p className={styles.linkalt}>
+                                    <BsCalendar2Date />
+                                    {release_date}
+                                </p>
+                                <p className={styles.money}>
+                                    <span>Budget</span>
+                                    <span className={styles.amount}>{BudgetF}</span>
+                                </p>
+                                <p className={styles.money}>
+                                    <span>Revenue</span>
+                                    <span className={budget > revenue ? `${styles.amountRed}`
+                                        : `${styles.amount}`}>
+                                        {RevenueF}
+                                    </span>
+                                </p>
+                            </div>
+                            <p className={`${styles.cas} HeadingsAlt`}>Production</p>
+                            <div className={styles.production}>
+                                {
+                                    production_companies && production_companies.map((itm: any) => {
+                                        const { name } = itm
+                                        return (
+                                            <p key={name} className={styles.company}>{name}</p>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
-                        <p className={`${styles.cas} HeadingsAlt`}>Info</p>
-                        <div className={styles.others}>
-                            {
-                                homepage && <Link to={homepage} className={styles.link}>
-                                    <BiLinkAlt />
-                                    <p className={styles.linktext}>Homepage</p>
-                                </Link>
-                            }
-                            <p className={styles.linkalt}>
-                                <FaLanguage />
-                                {original_language}
-                            </p>
-                            <p className={styles.linkalt}>
-                                <IoIosPeople className={styles.people} />
-                                {popularity}
-                            </p>
-                            <p className={styles.linkalt}>
-                                <BsCalendar2Date />
-                                {release_date}
-                            </p>
-                            <p className={styles.money}>
-                                <span>Budget</span>
-                                <span className={styles.amount}>{BudgetF}</span>
-                            </p>
-                            <p className={styles.money}>
-                                <span>Revenue</span>
-                                <span className={budget > revenue ? `${styles.amountRed}`
-                                    : `${styles.amount}`}>
-                                    {RevenueF}
-                                </span>
-                            </p>
-                        </div>
-                        <p className={`${styles.cas} HeadingsAlt`}>Production</p>
-                        <div className={styles.production}>
-                            {
-                                production_companies && production_companies.map((itm: any) => {
-                                    const { name } = itm
-                                    return (
-                                        <p key={name} className={styles.company}>{name}</p>
-                                    )
-                                })
-                            }
-                        </div>
                     </div>
-                </div>
-            </Container>
-        </div>
+                </Container>
+            </div>
+        </Animated>
     )
 }
 

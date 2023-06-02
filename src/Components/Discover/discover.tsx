@@ -5,6 +5,7 @@ import Genre from '../../Components/Genre_list/genre'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import DisplayCard from '../Display_card/display_card'
 import Loading from '../Loading-spinner/loading'
+import { motion } from 'framer-motion'
 
 type disCover = {
     mediaType: string
@@ -40,7 +41,8 @@ const Discover = ({ mediaType }: disCover) => {
 
 
     return (
-        <div className={styles.MovieContainer}>
+        <motion.div
+            className={styles.MovieContainer}>
             {
                 result.length > 0 ? <div className={styles.movie}>
                     <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
@@ -51,7 +53,7 @@ const Discover = ({ mediaType }: disCover) => {
                     <Loading />
                 </div>
             }
-        </div>
+        </motion.div>
     )
 }
 
