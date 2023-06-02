@@ -1,7 +1,5 @@
 import { motion, easeInOut } from 'framer-motion'
 import { ReactNode } from 'react'
-import Footer from '../../Layout/Footer/footer'
-
 
 type Type = {
     children: ReactNode,

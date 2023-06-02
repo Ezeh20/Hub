@@ -26,9 +26,11 @@ const Credits = ({ media, id }: Type) => {
     }, [id])
     return (
         <div>
-            <CardsWrapper id='casts'>
-                <DisplayCard result={results} typeOfMedia='person' />
-            </CardsWrapper>
+            {
+                results && results.length > 0 ? <CardsWrapper id='casts'>
+                    <DisplayCard result={results} typeOfMedia='person' />
+                </CardsWrapper> : 'No cast'
+            }
         </div>
     )
 }

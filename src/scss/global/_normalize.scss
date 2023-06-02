@@ -166,9 +166,10 @@ body {
     color: #333;
 
     &:hover {
-      cursor: pointer;
-      background-color: #aaa;
-      opacity: .5;
+      cursor: not-allowed;
+      background-color: red;
+      color: #eee;
+      opacity: 1;
     }
   }
 
@@ -210,14 +211,14 @@ body {
   }
 
   .disabled {
-    background-color: #aaa;
-    opacity: .5;
+    background-color: red;
+    opacity: .9;
     color: #333;
 
     &:hover {
-      cursor: pointer;
-      background-color: #aaa;
-      opacity: .5;
+      cursor: not-allowed;
+      background-color: red;
+      opacity: .9;
     }
   }
 

@@ -13,6 +13,7 @@ type videoType = {
 const BaseInformation = ({ media, id }: videoType) => {
     const { setShow, setIframeKey, iframeKey } = useContext(CurrentIdContext)
     const [videoLink, setVideoLink] = useState<[]>([])
+    const [nowPlaying, setNowPlaying] = useState(false)
 
     useEffect(() => {
         const teaser = async () => {
@@ -28,13 +29,19 @@ const BaseInformation = ({ media, id }: videoType) => {
         teaser()
     }, [id])
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [iframeKey])
+
     const play = (key: string) => {
         setShow(true)
         setIframeKey(key)
+        setNowPlaying(true)
     }
     const stop = () => {
         setShow(false)
         setIframeKey('')
+        setNowPlaying(false)
     }
 
 
@@ -54,7 +61,9 @@ const BaseInformation = ({ media, id }: videoType) => {
                                                 iframeKey === key ? <Button type="button" btnType="watch" onClick={() => stop()}>
                                                     <TbPlayerStopFilled className={styles.play} />
                                                 </Button>
-                                                    : <Button type="button" btnType="watch" onClick={() => play(key)}>
+                                                    : <Button type="button" btnType="watch"
+                                                        disabled={nowPlaying}
+                                                        onClick={() => play(key)}>
                                                         <TbPlayerPlayFilled className={styles.play} />
                                                     </Button>
                                             }
