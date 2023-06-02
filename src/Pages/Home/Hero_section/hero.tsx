@@ -8,6 +8,7 @@ import { TbSquareRoundedArrowLeftFilled, TbSquareRoundedArrowRightFilled } from 
 import requestApi from "../../../api/tmdb_api_config";
 import { heroType, Filter, Content } from "./type";
 import Info from "./Content/content";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Hero = (props: heroType) => {
     const {
@@ -59,53 +60,60 @@ const Hero = (props: heroType) => {
             onMouseLeave={() => setAutoPlay(true)}>
 
             {
-                <div className={styles.carouselContainer}>
-                    {top10.map((item, idx) => {
-                        const {
-                            backdrop_path,
-                            genre_ids,
-                            id,
-                            original_title,
-                            vote_average,
-                            poster_path,
-                            overview,
-                            name,
-                            media_type,
-                        }: Content = item
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, transition: { duration: .2 } }}
+                        transition={{ duration: 1 }}
+                        key={current} className={styles.carouselContainer}>
+                        {top10.map((item, idx) => {
+                            const {
+                                backdrop_path,
+                                genre_ids,
+                                id,
+                                original_title,
+                                vote_average,
+                                poster_path,
+                                overview,
+                                name,
+                                media_type,
+                            }: Content = item
 
-                        const genreArr: [] = []
-                        genre_ids && genre_ids.forEach((e: number) => {
-                            genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
-                        })
+                            const genreArr: [] = []
+                            genre_ids && genre_ids.forEach((e: number) => {
+                                genre && genre.filter((itm: Filter) => itm.id === e).map(itm => genreArr.push(itm))
+                            })
 
-                        return (
-                            <div key={id} className={idx === current ? `${styles.hero} ${styles.heroActive}` : `${styles.hero}`}>
-                                <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop}
-                                />
-                                <div className={styles.overlay}>
-                                    <Container>
-                                        <Info original_title={original_title}
-                                            poster_path={poster_path}
-                                            overview={overview}
-                                            rating={vote_average}
-                                            genreArr={genreArr}
-                                            name={name}
-                                            id={id}
-                                            media_type={media_type}
-                                        />
-                                    </Container>
+                            return (
+                                <div key={id} className={idx === current ? `${styles.hero} ${styles.heroActive}` : `${styles.hero}`}>
+                                    <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop}
+                                    />
+                                    <div className={styles.overlay}>
+                                        <Container>
+                                            <Info original_title={original_title}
+                                                poster_path={poster_path}
+                                                overview={overview}
+                                                rating={vote_average}
+                                                genreArr={genreArr}
+                                                name={name}
+                                                id={id}
+                                                media_type={media_type}
+                                            />
+                                        </Container>
+                                    </div>
+
+                                    <button onClick={prev} className={styles.btn}>
+                                        <TbSquareRoundedArrowLeftFilled />
+                                    </button>
+                                    <button onClick={next} className={styles.btn2}>
+                                        <TbSquareRoundedArrowRightFilled />
+                                    </button>
                                 </div>
-
-                                <button onClick={prev} className={styles.btn}>
-                                    <TbSquareRoundedArrowLeftFilled />
-                                </button>
-                                <button onClick={next} className={styles.btn2}>
-                                    <TbSquareRoundedArrowRightFilled />
-                                </button>
-                            </div>
-                        )
-                    })}
-                </div>
+                            )
+                        })}
+                    </motion.div>
+                </AnimatePresence>
 
             }
         </div>

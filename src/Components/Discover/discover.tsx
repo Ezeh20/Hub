@@ -5,7 +5,7 @@ import Genre from '../../Components/Genre_list/genre'
 import LoadPage from '../../Components/LoadPage/loadpage'
 import DisplayCard from '../Display_card/display_card'
 import Loading from '../Loading-spinner/loading'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 type disCover = {
     mediaType: string
@@ -41,19 +41,22 @@ const Discover = ({ mediaType }: disCover) => {
 
 
     return (
-        <motion.div
-            className={styles.MovieContainer}>
-            {
-                result.length > 0 ? <div className={styles.movie}>
-                    <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
-                    <DisplayCard result={result} varient='general' typeOfMedia={mediaType} />
-                    <LoadPage totalPages={totalPages} setPage={setPage}
-                        page={page} />
-                </div> : <div className={styles.ast}>
-                    <Loading />
-                </div>
-            }
-        </motion.div>
+        <AnimatePresence mode='wait'>
+            <motion.div key={genre}
+                exit={{ opacity: 0, transition: { duration: .3 } }}
+                className={styles.MovieContainer}>
+                {
+                    result.length > 0 ? <div className={styles.movie}>
+                        <Genre setGenre={setGenre} genre={genre} setPage={setPage} mediaType={mediaType} />
+                        <DisplayCard result={result} varient='general' typeOfMedia={mediaType} />
+                        <LoadPage totalPages={totalPages} setPage={setPage}
+                            page={page} />
+                    </div> : <div className={styles.ast}>
+                        <Loading />
+                    </div>
+                }
+            </motion.div>
+        </AnimatePresence>
     )
 }
 

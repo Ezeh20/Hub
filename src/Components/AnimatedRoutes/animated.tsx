@@ -1,4 +1,4 @@
-import { motion, easeInOut, easeIn } from 'framer-motion'
+import { motion, easeInOut } from 'framer-motion'
 import { ReactNode } from 'react'
 
 type Type = {

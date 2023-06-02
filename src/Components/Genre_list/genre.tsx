@@ -37,6 +37,10 @@ const Genre = ({ setGenre, genre, setPage, mediaType }: genre) => {
         <div className={styles.GR}>
             <CardsWrapper id='genre' alt={true}>
                 <div className={styles.Genre}>
+                    <Button type='button' btnType='genre'
+                        active={genre && genre !== -1 ? false : true}
+                        onClick={() => handleSubmit('')}>
+                        All</Button>
                     {
                         genreList && genreList.map((itm) => {
                             const { id, name } = itm

@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import { CurrentIdContext } from '../../Context/current_id_context/current_id';
 import { motion } from 'framer-motion'
 
+
 type Display = {
     result: [],
     varient?: string | any,
