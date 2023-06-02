@@ -26,7 +26,7 @@ const Hero = (props: heroType) => {
     useEffect(() => {
         play = autoPlay ? setTimeout(() => {
             next()
-        }, 5000) : ''
+        }, 7000) : ''
         return () => clearTimeout(play)
     })
 

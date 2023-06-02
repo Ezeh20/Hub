@@ -41,6 +41,7 @@ const MediaHeroDisplay = ({ media }: Type) => {
                         result={result}
                         iframeKey={iframeKey}
                         show={show}
+                        id={id}
                     />
                 </>
             }

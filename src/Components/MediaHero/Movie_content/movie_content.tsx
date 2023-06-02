@@ -5,14 +5,14 @@ import styles from './movie_content.module.scss'
 import { HiOutlineStatusOnline } from "react-icons/hi";
 import { RxLapTimer } from "react-icons/rx";
 
-
 type ResulT = {
     result: {},
     show: boolean,
-    iframeKey: string
+    iframeKey: string,
+    id: number
 }
 
-const MovieHero = ({ result, iframeKey, show }: ResulT) => {
+const MovieHero = ({ result, iframeKey, show, id }: ResulT) => {
 
     const {
         backdrop_path,
