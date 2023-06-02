@@ -46,8 +46,8 @@ const Home = () => {
         <TopMovies />
         <TvOnair />
         <ComingSoon />
-        <Footer />
       </Animated>
+      <Footer />
     </div>
   )
 }

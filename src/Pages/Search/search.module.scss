@@ -1,3 +1,9 @@
-.search{
-    padding-bottom: 2rem;
+.searchContainer {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+    .search {
+        padding-bottom: 2rem;
+    }
 }

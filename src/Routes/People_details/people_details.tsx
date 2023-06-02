@@ -60,8 +60,8 @@ const PeopleDetails = () => {
 
 
   return (
-    <Animated>
-      <>
+    <div className={styles.People}>
+      <Animated>
         <div className={styles.people}>
           <Container variant={true}>
             <div className={styles.imgContainer}>
@@ -139,9 +139,10 @@ const PeopleDetails = () => {
                 : current === 2 ? <Media id={id} /> : ''
           }
         </div>
-      </>
-      <Footer />
-    </Animated>
+        <Footer />
+      </Animated>
+    </div>
+
   )
 }
 

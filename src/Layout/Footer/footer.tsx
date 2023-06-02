@@ -5,26 +5,25 @@ import styles from './footer.module.scss'
 const Footer = () => {
     return (
         <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
             className={`${styles.footer}`}>
             <Container>
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
+                <div
                     className={styles.footerContent}>
-                    <motion.div
+                    <div
                         className={styles.logos}>
                         <img src="/public/main-logo.svg" alt="logo" className={styles.logo} />
                         <span>X</span>
                         <img src="/public/tmdb-alt.svg" alt="logo-tmdb" className={styles.logo} />
-                    </motion.div>
-                    <motion.div
-
+                    </div>
+                    <div
                         className={styles.text}>
                         <p>Powered by TMDB Api</p>
                         <p>All rights reserved Cj & TMDB</p>
-                    </motion.div>
-                </motion.div>
+                    </div>
+                </div>
             </Container>
         </motion.div>
     )

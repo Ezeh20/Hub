@@ -40,8 +40,8 @@ const MovieInformation = () => {
 
 
     return (
-        <Animated>
-            <div>
+        <div className={styles.MovieContainer}>
+            <Animated>
                 <MediaHeroDisplay media='movie' />
                 <Container>
                     <div className={styles.MovieInfo}>
@@ -104,9 +104,11 @@ const MovieInformation = () => {
                         </div>
                     </div>
                 </Container>
-            </div>
+            </Animated>
             <Footer />
-        </Animated>
+        </div>
+
+
     )
 }
 

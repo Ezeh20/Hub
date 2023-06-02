@@ -1,5 +1,7 @@
 import { motion, easeInOut } from 'framer-motion'
 import { ReactNode } from 'react'
+import Footer from '../../Layout/Footer/footer'
+
 
 type Type = {
     children: ReactNode,
@@ -12,11 +14,6 @@ const Animated = ({ children, home, people }: Type) => {
         initial: { opacity: 0 },
         animate: { opacity: 1, ease: easeInOut },
     }
-    const animsDiscover = {
-        initial: { opacity: 0, y: -100 },
-        animate: { opacity: 1, y: 0 },
-
-    }
 
     const animsPeople = {
         initial: { opacity: 0, scale: 0 },
@@ -25,7 +22,7 @@ const Animated = ({ children, home, people }: Type) => {
     }
     return (
         <motion.div
-            variants={home === 'home' ? anims : people === 'people' ? animsPeople : animsDiscover}
+            variants={home === 'home' ? anims : people === 'people' ? animsPeople : anims}
             initial="initial"
             animate="animate"
             transition={{ duration: .5, when: 'beforeChildren' }}

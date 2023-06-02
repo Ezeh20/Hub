@@ -3,14 +3,10 @@
 @use '../../scss/utils/fonts'as *;
 
 .footer {
-    position: sticky;
-    top: 100%;
+   margin-top: auto;
     background-color: $Dark-bg;
 
-    @media screen and (min-width:768px) {
-        margin-top: 5rem;
-        margin-bottom: 0;
-    }
+   
 
     .footerContent {
         padding-block: 2rem;

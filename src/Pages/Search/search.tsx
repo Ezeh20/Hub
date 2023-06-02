@@ -6,6 +6,7 @@ import styles from './search.module.scss'
 import LoadPage from "../../Components/LoadPage/loadpage"
 import DisplayCard from "../../Components/Display_card/display_card"
 import Animated from "../../Components/AnimatedRoutes/animated"
+import Footer from "../../Layout/Footer/footer"
 
 const Search = () => {
 
@@ -29,18 +30,21 @@ const Search = () => {
         searchQuery()
     }, [search, page])
     return (
-        <Animated>
-            <div className={styles.search}>
-                <Container>
-                    <Input setSearch={setSearch} />
-                    <DisplayCard result={result} varient='general' />
+        <div className={styles.searchContainer}>
+            <Animated>
+                <div className={styles.search}>
+                    <Container>
+                        <Input setSearch={setSearch} />
+                        <DisplayCard result={result} varient='general' />
 
-                    {
-                        result.length > 0 && <LoadPage page={page} setPage={setPage} totalPages={totalpages} />
-                    }
-                </Container>
-            </div>
-        </Animated>
+                        {
+                            result.length > 0 && <LoadPage page={page} setPage={setPage} totalPages={totalpages} />
+                        }
+                    </Container>
+                </div>
+            </Animated>
+            <Footer />
+        </div>
     )
 }
 

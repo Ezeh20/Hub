@@ -33,8 +33,8 @@ const TvDetails = () => {
 
 
   return (
-    <Animated>
-      <div>
+    <div className={styles.TvContainer}>
+      <Animated>
         <MediaHeroDisplay media="tv" />
         <Container>
           <div className={styles.MovieInfo}>
@@ -94,9 +94,10 @@ const TvDetails = () => {
             </div>
           </div>
         </Container>
-      </div>
-      <Footer />
-    </Animated>
+        <Footer />
+      </Animated>
+    </div>
+
   )
 }
 

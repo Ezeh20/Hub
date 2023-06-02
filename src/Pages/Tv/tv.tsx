@@ -2,15 +2,18 @@ import Animated from "../../Components/AnimatedRoutes/animated"
 import Container from "../../Components/Container/container"
 import Discover from "../../Components/Discover/discover"
 import Footer from "../../Layout/Footer/footer"
+import styles from './tv.module.scss'
 
 const Tv = () => {
     return (
-        <Animated>
-            <Container>
-                <Discover mediaType='tv' />
-            </Container>
+        <div className={styles.Tv}>
+            <Animated>
+                <Container>
+                    <Discover mediaType='tv' />
+                </Container>
+            </Animated>
             <Footer />
-        </Animated>
+        </div>
     )
 }
 

@@ -1,88 +1,94 @@
-.MovieInfo {
-    margin-block: 2rem;
+.MovieContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-    .top {
-        width: 100%;
+    .MovieInfo {
+        margin-block: 2rem;
 
-        .cas {
-            margin-block: 2rem;
-        }
-    }
-
-    .bottom {
-        display: flex;
-        flex-direction: column;
-        column-gap: 5%;
-
-        .wrapper {
+        .top {
             width: 100%;
+
+            .cas {
+                margin-block: 2rem;
+            }
         }
 
-        .others {
-            width: 100%;
+        .bottom {
             display: flex;
-            align-items: center;
-            gap: .5rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+            column-gap: 5%;
 
-            @media screen and (min-width:1200px) {
-                width: 40%;
+            .wrapper {
+                width: 100%;
             }
 
-            .link {
+            .others {
+                width: 100%;
                 display: flex;
                 align-items: center;
-                color: #fff;
-                font-size: 20px;
-                gap: .5rem .6rem;
-                border: .5px solid #eee;
-                padding: .5rem;
-                justify-content: flex-start;
+                gap: .5rem;
+                flex-wrap: wrap;
 
-                .linktext {
+                @media screen and (min-width:1200px) {
+                    width: 40%;
+                }
+
+                .link {
+                    display: flex;
+                    align-items: center;
+                    color: #fff;
+                    font-size: 20px;
+                    gap: .5rem .6rem;
+                    border: .5px solid #eee;
+                    padding: .5rem;
+                    justify-content: flex-start;
+
+                    .linktext {
+                        font-size: 16px;
+                    }
+                }
+
+                .linkalt {
+                    display: flex;
+                    align-items: center;
+                    width: max-content;
+                    gap: .5rem;
                     font-size: 16px;
+                    border: 1px solid #eee;
+                    padding: .5rem .8rem;
+                }
+
+                .money {
+                    display: flex;
+                    gap: .5rem;
+                    font-size: 16px;
+                    border: 1px solid #eee;
+                    padding: .5rem 1rem;
+
+                    .amount {
+                        color: rgb(27, 206, 27);
+                    }
+
+                    .amountRed {
+                        color: red;
+                    }
                 }
             }
 
-            .linkalt {
+            .production {
                 display: flex;
-                align-items: center;
-                width: max-content;
+                flex-wrap: wrap;
                 gap: .5rem;
-                font-size: 16px;
-                border: 1px solid #eee;
-                padding: .5rem .8rem;
-            }
 
-            .money {
-                display: flex;
-                gap: .5rem;
-                font-size: 16px;
-                border: 1px solid #eee;
-                padding: .5rem 1rem;
-
-                .amount {
-                    color: rgb(27, 206, 27);
+                @media screen and (min-width:1200px) {
+                    width: 40%;
                 }
 
-                .amountRed {
-                    color: red;
+                .company {
+                    border: 1px solid #eee;
+                    padding: .5rem 1rem;
                 }
-            }
-        }
-
-        .production {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .5rem;
-
-            @media screen and (min-width:1200px) {
-                width: 40%;
-            }
-
-            .company {
-                border: 1px solid #eee;
-                padding: .5rem 1rem;
             }
         }
     }

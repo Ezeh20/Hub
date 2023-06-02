@@ -32,21 +32,23 @@ const People = () => {
         person()
     }, [page])
     return (
-        <Animated people='people'>
-            <div className={styles.peopleContainer}>
-                {
-                    result.length > 0 ? <Container>
-                        <div className={styles.people}>
-                            <DisplayCard result={result} varient='general' typeOfMedia='person' />
+        <div className={styles.People}>
+            <Animated people='people'>
+                <div className={styles.peopleContainer}>
+                    {
+                        result.length > 0 ? <Container>
+                            <div className={styles.people}>
+                                <DisplayCard result={result} varient='general' typeOfMedia='person' />
+                            </div>
+                            <LoadPage totalPages={totalPages} page={page} setPage={setPage} />
+                        </Container> : <div className={styles.ast}>
+                            <Loading />
                         </div>
-                        <LoadPage totalPages={totalPages} page={page} setPage={setPage} />
-                    </Container> : <div className={styles.ast}>
-                        <Loading />
-                    </div>
-                }
-            </div>
+                    }
+                </div>
+            </Animated>
             <Footer />
-        </Animated>
+        </div>
     )
 }
 
