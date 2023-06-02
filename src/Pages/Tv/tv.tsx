@@ -8,8 +8,8 @@ const Tv = () => {
         <Animated>
             <Container>
                 <Discover mediaType='tv' />
-                <Footer />
             </Container>
+            <Footer />
         </Animated>
     )
 }

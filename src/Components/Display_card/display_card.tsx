@@ -80,7 +80,7 @@ const DisplayCard = (props: Display) => {
                         <motion.div
                             initial={{ y: varient ? 100 : -100, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1.5, delay: idx * .1 }}
+                            transition={{ duration: 1, delay: idx * .1 }}
                             viewport={{ once: true }}
                             key={idx}>
                             {

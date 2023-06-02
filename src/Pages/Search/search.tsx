@@ -6,7 +6,6 @@ import styles from './search.module.scss'
 import LoadPage from "../../Components/LoadPage/loadpage"
 import DisplayCard from "../../Components/Display_card/display_card"
 import Animated from "../../Components/AnimatedRoutes/animated"
-import Footer from "../../Layout/Footer/footer"
 
 const Search = () => {
 
@@ -41,7 +40,6 @@ const Search = () => {
                     }
                 </Container>
             </div>
-            <Footer />
         </Animated>
     )
 }

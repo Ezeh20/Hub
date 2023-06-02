@@ -9,8 +9,8 @@ const Movies = () => {
     <Animated>
       <Container>
         <Discover mediaType='movie' />
-        <Footer />
       </Container >
+      <Footer />
     </Animated>
   )
 }

@@ -1,4 +1,4 @@
-import { motion, easeInOut } from 'framer-motion'
+import { motion, easeInOut, easeIn } from 'framer-motion'
 import { ReactNode } from 'react'
 
 type Type = {
@@ -12,20 +12,20 @@ const Animated = ({ children, home, people }: Type) => {
         initial: { opacity: 0 },
         animate: { opacity: 1, ease: easeInOut },
     }
-    const animsHome = {
-        initial: { opacity: 0 },
-        animate: { opacity: 1, },
+    const animsDiscover = {
+        initial: { opacity: 0, y: -100 },
+        animate: { opacity: 1, y: 0 },
 
     }
 
     const animsPeople = {
         initial: { opacity: 0, scale: 0 },
-        animate: { opacity: 1, scale: 1 },
-      
+        animate: { opacity: 1, scale: 1, ease: easeInOut },
+
     }
     return (
         <motion.div
-            variants={home === 'home' ? anims : people === 'people' ? animsPeople : anims}
+            variants={home === 'home' ? anims : people === 'people' ? animsPeople : animsDiscover}
             initial="initial"
             animate="animate"
             transition={{ duration: .5, when: 'beforeChildren' }}

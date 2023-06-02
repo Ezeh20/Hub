@@ -55,3 +55,17 @@
  * reuse the components used in the movie section as they as similar to that ov the tv
  * with litte variations
  */
+
+/**
+ * 
+ * phase 6
+ * 
+ * render media details gotten from the api
+ */
+
+/**
+ * 
+ * phase 7
+ * 
+ * implement the neccessary animations
+ */
