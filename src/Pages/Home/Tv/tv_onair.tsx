@@ -4,6 +4,7 @@ import requestApi from '../../../api/tmdb_api_config'
 import Container from '../../../Components/Container/container'
 import DisplayCard from '../../../Components/Display_card/display_card'
 import styles from './tv.module.scss'
+import Loading from '../../../Components/Loading-spinner/loading'
 
 const TvOnair = () => {
     const [result, setResult] = useState<[]>([])
@@ -25,15 +26,21 @@ const TvOnair = () => {
     }, [])
     return (
         <div className={styles.Tv}>
-            <Container>
-                <div className='HeadingsContainer'>
-                    <p className='Headings'>Tv</p>
-                    <span className='HeadingSub'>Top rated series</span>
-                </div>
-                <CardsWrapper id='onAir'>
-                    <DisplayCard result={result} typeOfMedia='tv' />
-                </CardsWrapper>
-            </Container>
+            {
+                result.length > 0 ?
+                    <Container>
+                        <div
+                            className='HeadingsContainer'>
+                            <p className='Headings'>Tv</p>
+                            <span className='HeadingSub'>Top rated series</span>
+                        </div>
+                        <CardsWrapper id='onAir'>
+                            <DisplayCard result={result} typeOfMedia='tv' />
+                        </CardsWrapper>
+                    </Container> : <div className={styles.ast}>
+                        <Loading />
+                    </div>
+            }
         </div>
     )
 }

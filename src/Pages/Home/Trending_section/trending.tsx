@@ -1,6 +1,7 @@
 import Container from '../../../Components/Container/container'
 import TrendingResults from './Trending_Results/trending_results'
 import styles from './trending.module.scss'
+import Loading from '../../../Components/Loading-spinner/loading'
 const options = ['movie', 'tv']
 const optionsDuration = ['week', 'day']
 
@@ -24,45 +25,51 @@ const Trending = (props: Trending) => {
 
     return (
         <div className={styles.trending}>
-            <Container>
-                <div className={styles.trendingContainer}>
-                    <div className={styles.Top}>
-                        <div className='HeadingsContainer'>
-                            <p className='Headings'>Trending</p>
-                            <span className='HeadingSub'>Top trending shows</span>
-                        </div>
-                        <div className={styles.select}>
-                            <div className={`${styles.selectTrending}`}>
-                                {
-                                    options.map((itm, idx) => {
-                                        return (
-                                            <button key={idx} onClick={() => setTrending(itm)} className={trending === itm
-                                                ? `${styles.TrendingOption}  ${styles.TrendingOptionActive}`
-                                                : `${styles.TrendingOption}`}>
-                                                {itm}
-                                            </button>
-                                        )
-                                    })
-                                }
+            {
+                result.length > 0 ?
+                    <Container>
+                        <div className={styles.trendingContainer}>
+                            <div
+                                className={styles.Top}>
+                                <div className='HeadingsContainer'>
+                                    <p className='Headings'>Trending</p>
+                                    <span className='HeadingSub'>Top trending shows</span>
+                                </div>
+                                <div className={styles.select}>
+                                    <div className={`${styles.selectTrending}`}>
+                                        {
+                                            options.map((itm, idx) => {
+                                                return (
+                                                    <button key={idx} onClick={() => setTrending(itm)} className={trending === itm
+                                                        ? `${styles.TrendingOption}  ${styles.TrendingOptionActive}`
+                                                        : `${styles.TrendingOption}`}>
+                                                        {itm}
+                                                    </button>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <div className={styles.period}>
+                                        {
+                                            optionsDuration.map((itm, idx) => {
+                                                return (
+                                                    <button key={idx} onClick={() => setTrendingPeriod(itm)} className={trendingPeriod === itm
+                                                        ? `${styles.DurationOption}  ${styles.DurationOptionActive}`
+                                                        : `${styles.DurationOption}`}>
+                                                        {itm}
+                                                    </button>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
                             </div>
-                            <div className={styles.period}>
-                                {
-                                    optionsDuration.map((itm, idx) => {
-                                        return (
-                                            <button key={idx} onClick={() => setTrendingPeriod(itm)} className={trendingPeriod === itm
-                                                ? `${styles.DurationOption}  ${styles.DurationOptionActive}`
-                                                : `${styles.DurationOption}`}>
-                                                {itm}
-                                            </button>
-                                        )
-                                    })
-                                }
-                            </div>
+                            <TrendingResults result={result} />
                         </div>
+                    </Container> : <div className={styles.ast}>
+                        <Loading />
                     </div>
-                    <TrendingResults result={result} />
-                </div>
-            </Container>
+            }
         </div>
     )
 }

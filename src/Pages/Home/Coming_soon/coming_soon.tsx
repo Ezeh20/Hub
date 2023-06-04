@@ -27,7 +27,8 @@ const ComingSoon = () => {
         <div className={styles.Coming}>
             {
                 result.length > 0 ? <Container>
-                    <div className='HeadingsContainer'>
+                    <div
+                        className='HeadingsContainer'>
                         <p className='Headings'>Coming soon</p>
                         <span className='HeadingSub'>UpComing movies to see</span>
                     </div>

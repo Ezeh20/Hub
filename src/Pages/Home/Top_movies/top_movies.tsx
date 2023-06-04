@@ -4,7 +4,8 @@ import DisplayCard from '../../../Components/Display_card/display_card'
 import { useEffect, useState } from 'react'
 import CardsWrapper from '../../../Components/Cards_wrapper/cards_wrapper'
 import styles from './top.module.scss'
-
+import { motion } from "framer-motion"
+import Loading from "../../../Components/Loading-spinner/loading"
 
 const TopMovies = () => {
     const [result, setResult] = useState<[]>([])
@@ -27,15 +28,25 @@ const TopMovies = () => {
 
     return (
         <div className={styles.top}>
-            <Container>
-                <div className='HeadingsContainer'>
-                    <p className='Headings'>Top rated</p>
-                    <span className='HeadingSub'>Top movies to watch</span>
-                </div>
-                <CardsWrapper id='top_rated'>
-                    <DisplayCard result={result} typeOfMedia="movie" />
-                </CardsWrapper>
-            </Container>
+            {
+                result.length > 0 ?
+                    <Container>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 2 }}
+                            viewport={{ once: true }}
+                            className='HeadingsContainer'>
+                            <p className='Headings'>Top rated</p>
+                            <span className='HeadingSub'>Top movies to watch</span>
+                        </motion.div>
+                        <CardsWrapper id='top_rated'>
+                            <DisplayCard result={result} typeOfMedia="movie" />
+                        </CardsWrapper>
+                    </Container> : <div className={styles.ast}>
+                        <Loading />
+                    </div>
+            }
         </div>
     )
 }
