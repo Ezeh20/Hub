@@ -49,7 +49,6 @@ const DisplayCard = (props: Display) => {
     }, [])
 
     const navFunction = (media: string, id: number) => {
-
         typeOfMedia ? nav(`/${typeOfMedia}/${id}`)
             : nav(`/${media}/${id}`)
         setShow(false)

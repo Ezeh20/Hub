@@ -24,14 +24,18 @@ const MovieHero = ({ result, iframeKey, show }: ResulT) => {
         status,
         runtime
     }: any = result
-
+    
     return (
         <div className={styles.movieHero}>
-            <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop} />
+            {
+                backdrop_path && <img src={apiConfig.originalImg(backdrop_path)} alt="backdrop" className={styles.backDrop} />
+            }
             <div className={styles.overlay}>
                 <Container>
                     <div className={styles.overlayContent}>
-                        <img src={apiConfig.small(poster_path)} alt="poster" className={styles.imgPoster} />
+                        {
+                            poster_path && <img src={apiConfig.small(poster_path)} alt="poster" className={styles.imgPoster} />
+                        }
                         <div className={styles.content}>
                             <Rating rating={vote_average} />
                             <span className={styles.title}>{original_title || name}</span>

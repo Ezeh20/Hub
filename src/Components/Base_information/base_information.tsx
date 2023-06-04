@@ -5,21 +5,26 @@ import { useContext, useEffect, useState } from 'react';
 import requestApi from '../../api/tmdb_api_config';
 import { CurrentIdContext } from '../../Context/current_id_context/current_id';
 import styles from './base_information.module.scss'
+import { useParams } from "react-router";
+import Loading from "../Loading-spinner/loading";
+
 
 type videoType = {
     media: string,
-    id: number
 }
-const BaseInformation = ({ media, id }: videoType) => {
+const BaseInformation = ({ media }: videoType) => {
     const { setShow, setIframeKey, iframeKey } = useContext(CurrentIdContext)
+    const { uid } = useParams()
     const [videoLink, setVideoLink] = useState<[]>([])
+    const [isLoading, setIsLoading] = useState<{}>({})
     const [nowPlaying, setNowPlaying] = useState(false)
 
     useEffect(() => {
         const teaser = async () => {
             try {
-                if (id) {
-                    const { data } = await requestApi.mediaInfo(media, id, 'videos')
+                if (Number(uid)) {
+                    const { data } = await requestApi.mediaInfo(media, Number(uid), 'videos')
+                    setIsLoading(data)
                     setVideoLink(data.results)
                 }
             } catch (error) {
@@ -27,7 +32,7 @@ const BaseInformation = ({ media, id }: videoType) => {
             }
         }
         teaser()
-    }, [id])
+    }, [uid])
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -44,38 +49,44 @@ const BaseInformation = ({ media, id }: videoType) => {
         setNowPlaying(false)
     }
 
-
+    const len = Object.keys(isLoading)
     return (
-        <div className={styles.mainInfo}>
+        <div>
             {
-                videoLink.length > 0 ?
-                    <CardsWrapper id='media'>
+                len.length > 0 ?
+                    <div className={styles.mainInfo}>
                         {
-                            videoLink.map((itm) => {
-                                const { key } = itm
-                                return (
-                                    <div key={key} className={styles.vids}>
-                                        <iframe width="100%" height="100%" src={`https://www.youtube-nocookie.com/embed/${key}?autoplay=0`} frameBorder="0" allow="autoplay"></iframe>
-                                        <div className={styles.overlay}>
-                                            {
-                                                iframeKey === key ? <Button type="button" btnType="watch" onClick={() => stop()}>
-                                                    <TbPlayerStopFilled className={styles.play} />
-                                                </Button>
-                                                    : <Button type="button" btnType="watch"
-                                                        disabled={nowPlaying}
-                                                        onClick={() => play(key)}>
-                                                        <TbPlayerPlayFilled className={styles.play} />
-                                                    </Button>
-                                            }
-                                        </div>
+                            videoLink.length > 0 ?
+                                <CardsWrapper id='media'>
+                                    {
+                                        videoLink.map((itm) => {
+                                            const { key } = itm
+                                            return (
+                                                <div key={key} className={styles.vids}>
+                                                    <iframe width="100%" height="100%" src={`https://www.youtube-nocookie.com/embed/${key}?autoplay=0`} frameBorder="0" allow="autoplay"></iframe>
+                                                    <div className={styles.overlay}>
+                                                        {
+                                                            iframeKey === key ? <Button type="button" btnType="watch" onClick={() => stop()}>
+                                                                <TbPlayerStopFilled className={styles.play} />
+                                                            </Button>
+                                                                : <Button type="button" btnType="watch"
+                                                                    disabled={nowPlaying}
+                                                                    onClick={() => play(key)}>
+                                                                    <TbPlayerPlayFilled className={styles.play} />
+                                                                </Button>
+                                                        }
+                                                    </div>
 
-                                    </div>
-                                )
-                            })
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </CardsWrapper> : <p>No media to display</p>
                         }
-                    </CardsWrapper> : <p>No media to display</p>
+                    </div> : <Loading />
             }
         </div>
+
     )
 }
 
