@@ -25,7 +25,7 @@ const MediaHeroDisplay = ({ media }: Type) => {
             }
         }
         movieDetails()
-    }, [uid])
+    }, [result,uid])
 
 
     const {
@@ -41,7 +41,6 @@ const MediaHeroDisplay = ({ media }: Type) => {
                         result={result}
                         iframeKey={iframeKey}
                         show={show}
-                        id={id}
                     />
                 </>
             }

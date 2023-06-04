@@ -65,7 +65,7 @@ const Hero = (props: heroType) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0, transition: { duration: .2 } }}
-                        transition={{ duration: 1 }}
+                        transition={{ duration: .5 }}
                         key={current} className={styles.carouselContainer}>
                         {top10.map((item, idx) => {
                             const {

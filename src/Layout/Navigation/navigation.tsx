@@ -33,13 +33,11 @@ const Navigation = () => {
                                             }}>
                                                 <p>{text}</p>
                                             </NavLink>
-                                            <div className={styles.line} />
                                         </li>
                                     </ul>
                                 )
                             })
                         }
-
                     </div>
                     <div className={styles.actions}>
                         <Button btnType='searchIcon' type='button' onClick={moveTo}>
@@ -49,17 +47,8 @@ const Navigation = () => {
                     </div>
                 </nav>
             </header>
-
-
         </div>
     )
 }
 
 export default Navigation
-
-/**
- * <select value={theme} onChange={(e) => setTheme(e.target.value)}>
-                <option value={`light`}>Light</option>
-                <option value={`dark`}>Dark</option>
-            </select>
- */

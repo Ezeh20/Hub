@@ -9,10 +9,9 @@ type ResulT = {
     result: {},
     show: boolean,
     iframeKey: string,
-    id: number
 }
 
-const MovieHero = ({ result, iframeKey, show, id }: ResulT) => {
+const MovieHero = ({ result, iframeKey, show }: ResulT) => {
 
     const {
         backdrop_path,

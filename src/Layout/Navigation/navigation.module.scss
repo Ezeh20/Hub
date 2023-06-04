@@ -58,24 +58,14 @@
                             }
                         }
 
-                        .active~.line {
-                            width: 100%;
-                            height: fn.rem(2);
-                            background-color: $Primary-color;
-                            margin-top: .1rem;
+                        .active {
+                            color: $Primary-color;
                         }
-                     &:hover .line{
-                        width: 100%;
-                        height: fn.rem(2);
-                        background-color: $Primary-color;
-                        margin-top: .1rem;
-                     }
-
-
                     }
                 }
             }
-            .actions{
+
+            .actions {
                 display: flex;
                 gap: 1rem;
             }

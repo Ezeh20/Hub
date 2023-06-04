@@ -23,8 +23,8 @@ const Animated = ({ children, home, people }: Type) => {
             variants={home === 'home' ? anims : people === 'people' ? animsPeople : anims}
             initial="initial"
             animate="animate"
-            transition={{ duration: .5, when: 'beforeChildren' }}
-            exit={{ opacity: 0, transition: { duration: .5, ease: easeInOut } }}
+            transition={{ duration: .2, type:"spring" }}
+            exit={{ opacity: 0, transition: { duration: .5} }}
         >
             {children}
         </motion.div>

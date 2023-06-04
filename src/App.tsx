@@ -19,7 +19,7 @@ function App() {
   return (
     <div className={`${theme}`}>
       <Layout>
-        <AnimatePresence mode='wait'>
+        <AnimatePresence >
           <Routes key={location.pathname} location={location}>
             <Route index element={<Home />} />
             <Route path='/movie'>
