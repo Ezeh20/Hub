@@ -4,13 +4,14 @@ import DisplayCard from '../Display_card/display_card'
 import CardsWrapper from '../Cards_wrapper/cards_wrapper'
 import Loading from '../Loading-spinner/loading'
 import { useParams } from 'react-router'
+import styles from './recommended.module.scss'
 
 type Types = {
     media: string,
 }
 
 const Recommended = ({ media }: Types) => {
-    const {uid} = useParams()
+    const { uid } = useParams()
     const [isLoading, setIsLoading] = useState<{}>({})
     const [result, setResult] = useState<[]>([])
 
@@ -32,7 +33,7 @@ const Recommended = ({ media }: Types) => {
 
     const len = Object.keys(isLoading)
     return (
-        <div>
+        <div className={styles.rec}>
             {
                 len.length > 0 ?
                     <div>
@@ -41,7 +42,9 @@ const Recommended = ({ media }: Types) => {
                                 <DisplayCard result={result} />
                             </CardsWrapper> : 'None for now'
                         }
-                    </div> : <Loading />
+                    </div> : <div className={styles.ast}>
+                        <Loading />
+                    </div>
             }
         </div>
     )

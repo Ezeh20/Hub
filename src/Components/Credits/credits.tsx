@@ -4,6 +4,7 @@ import DisplayCard from '../Display_card/display_card'
 import CardsWrapper from '../Cards_wrapper/cards_wrapper'
 import { useParams } from 'react-router'
 import Loading from '../Loading-spinner/loading'
+import styles from './credits.module.scss'
 
 type Type = {
     media: string,
@@ -31,7 +32,7 @@ const Credits = ({ media }: Type) => {
 
     const len = Object.keys(isLoading)
     return (
-        <div>
+        <div className={styles.Credits}>
             {
                 len.length > 0 ?
                     <div>
@@ -40,7 +41,9 @@ const Credits = ({ media }: Type) => {
                                 <DisplayCard result={results} typeOfMedia='person' />
                             </CardsWrapper> : 'No cast'
                         }
-                    </div> : <Loading />
+                    </div> : <div className={styles.ast}>
+                        <Loading />
+                    </div>
             }
         </div>
     )

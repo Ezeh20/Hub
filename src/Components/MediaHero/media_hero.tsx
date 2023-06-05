@@ -4,6 +4,7 @@ import MovieHero from './Movie_content/movie_content'
 import { CurrentIdContext } from '../../Context/current_id_context/current_id'
 import requestApi from '../../api/tmdb_api_config'
 import Loading from '../Loading-spinner/loading'
+import styles from './media_hero.module.scss'
 
 type Type = {
     media: string
@@ -29,18 +30,14 @@ const MediaHeroDisplay = ({ media }: Type) => {
     }, [uid])
 
 
-    let len = Object.keys(resultAlt)
-
     return (
-        <div>
-            {
-                len.length > 0 ? <MovieHero
-                    result={resultAlt}
-                    iframeKey={iframeKey}
-                    show={show}
-                /> : <Loading />
-            }
-        </div>
+        <>
+            <MovieHero
+                result={resultAlt}
+                iframeKey={iframeKey}
+                show={show}
+            />
+        </>
     )
 }
 

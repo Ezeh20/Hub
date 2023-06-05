@@ -18,7 +18,6 @@ const MovieInformation = () => {
     const { result } = useContext(CurrentIdContext)
 
     const {
-        id,
         original_language,
         budget,
         revenue,

@@ -3,12 +3,12 @@
 @use '../../scss/global/colors'as *;
 
 .People {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+
+
 
     .people {
         width: 100%;
+
 
         .imgContainer {
             position: relative;
@@ -114,14 +114,17 @@
         }
 
         .renderOption {
+            position: sticky;
+            top: 0;
             display: flex;
             margin-top: 2rem;
             justify-content: space-between;
 
-
             .options {
+
                 display: flex;
                 flex-direction: column;
+
                 gap: .8rem;
                 padding: 1rem 1rem 0 1rem;
                 opacity: .5;
@@ -158,5 +161,13 @@
             opacity: .5;
         }
 
+    }
+
+    .renders {
+        padding-bottom: 7rem;
+
+        @media screen and (min-width: 768px) {
+            padding-bottom: 2rem;
+        }
     }
 }

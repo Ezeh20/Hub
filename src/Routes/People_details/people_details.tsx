@@ -132,14 +132,13 @@ const PeopleDetails = () => {
             <div className={styles.line} />
           </Container>
         </div>
-        <div>
+        <div className={styles.renders}>
           {
             current === 0 ? <Bio biography={biography} />
               : current === 1 ? <KnownFor id={id} />
                 : current === 2 ? <Media id={id} /> : ''
           }
         </div>
-        <Footer />
       </Animated>
     </div>
 

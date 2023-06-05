@@ -1,4 +1,5 @@
 import { TbPlayerPlayFilled, TbPlayerStopFilled } from "react-icons/tb";
+import { MdDoNotDisturb } from "react-icons/md";
 import CardsWrapper from '../Cards_wrapper/cards_wrapper';
 import Button from '../Button/button';
 import { useContext, useEffect, useState } from 'react';
@@ -51,7 +52,7 @@ const BaseInformation = ({ media }: videoType) => {
 
     const len = Object.keys(isLoading)
     return (
-        <div>
+        <div className={styles.Main}>
             {
                 len.length > 0 ?
                     <div className={styles.mainInfo}>
@@ -72,7 +73,10 @@ const BaseInformation = ({ media }: videoType) => {
                                                                 : <Button type="button" btnType="watch"
                                                                     disabled={nowPlaying}
                                                                     onClick={() => play(key)}>
-                                                                    <TbPlayerPlayFilled className={styles.play} />
+                                                                    {
+                                                                        nowPlaying ? <MdDoNotDisturb className={styles.play} />
+                                                                            : <TbPlayerPlayFilled className={styles.play} />
+                                                                    }
                                                                 </Button>
                                                         }
                                                     </div>
@@ -83,7 +87,9 @@ const BaseInformation = ({ media }: videoType) => {
                                     }
                                 </CardsWrapper> : <p>No media to display</p>
                         }
-                    </div> : <Loading />
+                    </div> : <div className={styles.ast}>
+                        <Loading />
+                    </div>
             }
         </div>
 
