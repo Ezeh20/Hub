@@ -29,14 +29,18 @@ const MediaHeroDisplay = ({ media }: Type) => {
         movieDetails()
     }, [uid])
 
-
+    const len = Object.keys(resultAlt)
     return (
         <>
-            <MovieHero
-                result={resultAlt}
-                iframeKey={iframeKey}
-                show={show}
-            />
+            {
+                len.length > 0 ? <MovieHero
+                    result={resultAlt}
+                    iframeKey={iframeKey}
+                    show={show}
+                /> : <div className={styles.ast}>
+                    <Loading />
+                </div>
+            }
         </>
     )
 }

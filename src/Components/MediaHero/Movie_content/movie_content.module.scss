@@ -2,172 +2,164 @@
 @use '../../../scss/utils/fonts'as *;
 @use '../../../scss/global/colors'as *;
 
-.Hero {
-    .movieHero {
-        position: sticky;
-        top: 0;
-        display: flex;
-        width: 100%;
-        height: fn.rem(330);
-        background: #000;
-        z-index: 2;
+.movieHero {
+    position: sticky;
+    top: 0;
+    display: flex;
+    width: 100%;
+    height: fn.rem(330);
+    background: #000;
+    z-index: 2;
 
-        @media (orientation: landscape) {
-            position: relative;
-        }
-
-        @media screen and (min-width: 768px) {
-            position: relative;
-            height: fn.rem(550);
-        }
-
-        .backDrop {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(transparent, rgba(0, 0, 0, .8), rgba(0, 0, 0, 1));
-            width: 100%;
-
-            .overlayContent {
-                position: absolute;
-                bottom: 0;
-                color: #fff;
-                display: flex;
-                align-items: flex-end;
-                gap: 1rem;
-
-                @media screen and (min-width:768px) {
-                    gap: 3rem;
-                }
-
-                .imgPoster {
-                    width: 35%;
-                    height: 35%;
-                    object-fit: contain;
-                    border-radius: 10px 10px 0 0;
-
-                    @media screen and (min-width:1024px) {
-                        width: fn.rem(350);
-                        height: fn.rem(500);
-                        object-fit: cover;
-                    }
-                }
-
-                .content {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    position: relative;
-                    margin-bottom: .8rem;
-                    gap: .5rem;
-
-
-                    .title {
-                        font-size: fn.rem(14);
-
-                        @media screen and (min-width:768px) {
-                            font-size: fn.rem(24);
-                        }
-
-                        @media screen and (min-width:1200px) {
-                            font-size: fn.rem(32);
-                        }
-                    }
-
-                    .overView {
-                        display: none;
-                        margin-bottom: .5rem;
-                        max-width: fn.rem(800);
-
-                        @media screen and (min-width:768px) {
-                            display: flex;
-                        }
-                    }
-
-                    .Genre {
-                        display: none;
-                        margin-bottom: .5rem;
-                        font-family: $secondary-font;
-                        gap: .5rem;
-
-                        @media screen and (min-width:500px) {
-                            display: flex;
-                            flex-wrap: wrap;
-                        }
-
-                        .GenreList {
-                            border: 1px solid #fff;
-                            padding: .5rem 1rem;
-                        }
-                    }
-
-                    .status {
-                        display: flex;
-                        font-size: 14px;
-                        font-family: $secondary-font;
-                        gap: .5rem;
-
-                        @media screen and (min-width:768px) {
-                            font-size: 20px;
-                        }
-
-                        .stusIcn {
-                            display: flex;
-                            align-items: center;
-                            gap: .5rem;
-
-                        }
-                    }
-
-                    .btnPlay {
-                        font-size: fn.rem(20);
-
-                        @media screen and (min-width:768px) {
-                            font-size: fn.rem(25);
-                        }
-                    }
-                }
-            }
-        }
-
-        .teaserOverlayContainer {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            background: rgba(0, 0, 0, .85);
-            inset: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-
-            .teaserOverlay {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                width: 100%;
-                height: 100%;
-                padding-bottom: 2rem;
-
-                @media screen and (min-width:1440px) {
-                    width: 1450px;
-                }
-            }
-        }
-
-
+    @media (orientation: landscape) {
+        position: relative;
     }
 
-    .ast {
+    @media screen and (min-width: 768px) {
+        position: relative;
+        height: fn.rem(550);
+    }
+
+    .backDrop {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(transparent, rgba(0, 0, 0, .8), rgba(0, 0, 0, 1));
+        width: 100%;
+
+        .overlayContent {
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+
+            @media screen and (min-width:768px) {
+                gap: 3rem;
+            }
+
+            .imgPoster {
+                width: 35%;
+                height: 35%;
+                object-fit: contain;
+                border-radius: 10px 10px 0 0;
+
+                @media screen and (min-width:1024px) {
+                    width: fn.rem(350);
+                    height: fn.rem(500);
+                    object-fit: cover;
+                }
+            }
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                position: relative;
+                margin-bottom: .8rem;
+                gap: .5rem;
+
+
+                .title {
+                    font-size: fn.rem(14);
+
+                    @media screen and (min-width:768px) {
+                        font-size: fn.rem(24);
+                    }
+
+                    @media screen and (min-width:1200px) {
+                        font-size: fn.rem(32);
+                    }
+                }
+
+                .overView {
+                    display: none;
+                    margin-bottom: .5rem;
+                    max-width: fn.rem(800);
+
+                    @media screen and (min-width:768px) {
+                        display: flex;
+                    }
+                }
+
+                .Genre {
+                    display: none;
+                    margin-bottom: .5rem;
+                    font-family: $secondary-font;
+                    gap: .5rem;
+
+                    @media screen and (min-width:500px) {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+
+                    .GenreList {
+                        border: 1px solid #fff;
+                        padding: .5rem 1rem;
+                    }
+                }
+
+                .status {
+                    display: flex;
+                    font-size: 14px;
+                    font-family: $secondary-font;
+                    gap: .5rem;
+
+                    @media screen and (min-width:768px) {
+                        font-size: 20px;
+                    }
+
+                    .stusIcn {
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+
+                    }
+                }
+
+                .btnPlay {
+                    font-size: fn.rem(20);
+
+                    @media screen and (min-width:768px) {
+                        font-size: fn.rem(25);
+                    }
+                }
+            }
+        }
+    }
+
+    .teaserOverlayContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgba(0, 0, 0, .85);
+        inset: 0;
         display: flex;
         justify-content: center;
         align-items: center;
+
+
+        .teaserOverlay {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 2rem;
+
+            @media screen and (min-width:1440px) {
+                width: 1450px;
+            }
+        }
     }
+
+
 }
