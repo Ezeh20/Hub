@@ -20,7 +20,6 @@ const TvDetails = () => {
   const { result } = useContext(CurrentIdContext)
 
   const {
-    id,
     original_language,
     first_air_date,
     homepage,
@@ -40,15 +39,15 @@ const TvDetails = () => {
           <div className={styles.MovieInfo}>
             <p className={`${styles.head} HeadingsAlt`}>Media</p>
             <div className={styles.top}>
-              <BaseInformation media='tv' id={id} />
+              <BaseInformation media='tv' />
             </div>
             <p className={`${styles.cas} HeadingsAlt`}>Casts</p>
             <div className={styles.bottom}>
               <div className={styles.wrapper}>
-                <Credits media='tv' id={id} />
+                <Credits media='tv' />
                 <div>
                   <p className={`${styles.cas} HeadingsAlt`}>Recommended</p>
-                  <Recommended media='tv' id={id} />
+                  <Recommended media='tv' />
                 </div>
               </div>
               <p className={`${styles.cas} HeadingsAlt`}>Info</p>
