@@ -1,42 +1,45 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
-import Home from './Pages/Home/Home'
-import Movies from './Pages/Movies/Movies'
-import PageNotFound from './Pages/404/404'
-import Tv from './Pages/Tv/tv'
-import TvDetails from './Routes/Tv_details/tv_details'
 import PeopleDetails from './Routes/People_details/people_details'
 import Layout from './Layout/layout'
-import { useContext } from 'react'
+import { lazy, Suspense, useContext } from 'react'
 import { ThemeContext } from './Context/theme_context'
-import People from './Pages/People/people'
-import Search from './Pages/Search/search'
-import MovieInformation from './Routes/Movie_Information/movie_information'
 import { AnimatePresence } from 'framer-motion'
+const Home = lazy(() => import('./Pages/Home/Home'))
+const Movies = lazy(() => import('./Pages/Movies/Movies'))
+const MovieInformation = lazy(() => import('./Routes/Movie_Information/movie_information'))
+const Tv = lazy(() => import('./Pages/Tv/tv'))
+const TvDetails = lazy(() => import('./Routes/Tv_details/tv_details'))
+const People = lazy(() => import('./Pages/People/people'))
+const Search = lazy(() => import('./Pages/Search/search'))
+const PageNotFound = lazy(() => import('./Pages/404/404'))
 
 function App() {
   const { theme } = useContext(ThemeContext)
   const location = useLocation()
+
   return (
     <div className={`${theme}`}>
       <Layout>
         <AnimatePresence >
-          <Routes key={location.pathname} location={location}>
-            <Route index element={<Home />} />
-            <Route path='/movie'>
-              <Route index element={<Movies />} />
-              <Route path=':uid' element={<MovieInformation />} />
-            </Route>
-            <Route path='/tv'>
-              <Route index element={<Tv />} />
-              <Route path=':uid' element={<TvDetails />} />
-            </Route>
-            <Route path='/person'>
-              <Route index element={<People />} />
-              <Route path=':uid' element={<PeopleDetails />} />
-            </Route>
-            <Route path='/search' element={<Search />} />
-            <Route path='*' element={<PageNotFound />} />
-          </Routes>
+          <Suspense fallback={<>loading...</>}>
+            <Routes key={location.pathname} location={location}>
+              <Route index element={<Home />} />
+              <Route path='/movie'>
+                <Route index element={<Movies />} />
+                <Route path=':uid' element={<MovieInformation />} />
+              </Route>
+              <Route path='/tv'>
+                <Route index element={<Tv />} />
+                <Route path=':uid' element={<TvDetails />} />
+              </Route>
+              <Route path='/person'>
+                <Route index element={<People />} />
+                <Route path=':uid' element={<PeopleDetails />} />
+              </Route>
+              <Route path='/search' element={<Search />} />
+              <Route path='*' element={<PageNotFound />} />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
       </Layout>
     </div>

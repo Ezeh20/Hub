@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import Container from '../../Components/Container/container'
 import styles from './footer.module.scss'
+import logo from '../../../public/main-logo.svg'
+import tmdb from '../../../public/tmdb-alt.svg'
 
 const Footer = () => {
     return (
@@ -14,9 +16,9 @@ const Footer = () => {
                     className={styles.footerContent}>
                     <div
                         className={styles.logos}>
-                        <img src="/public/main-logo.svg" alt="logo" className={styles.logo} />
+                        <img src={logo} alt="logo" className={styles.logo} />
                         <span>X</span>
-                        <img src="/public/tmdb-alt.svg" alt="logo-tmdb" className={styles.logo} />
+                        <img src={tmdb} alt="logo-tmdb" className={styles.logo} />
                     </div>
                     <div
                         className={styles.text}>
