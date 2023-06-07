@@ -7,24 +7,19 @@ type Type = {
     people?: string
 }
 
-const Animated = ({ children, home, people }: Type) => {
+const Animated = ({ children }: Type) => {
     const anims = {
         initial: { opacity: 0 },
         animate: { opacity: 1, ease: easeInOut },
     }
 
-    const animsPeople = {
-        initial: { opacity: 0, scale: 0 },
-        animate: { opacity: 1, scale: 1, ease: easeInOut },
-
-    }
     return (
         <motion.div
-            variants={home === 'home' ? anims : people === 'people' ? animsPeople : anims}
+            variants={anims}
             initial="initial"
             animate="animate"
-            transition={{ duration: .2, type:"spring" }}
-            exit={{ opacity: 0, transition: { duration: .5} }}
+            transition={{ duration: .2, type: "spring" }}
+            exit={{ opacity: 0, transition: { duration: .5 } }}
         >
             {children}
         </motion.div>

@@ -4,7 +4,6 @@ import Rating from '../../../../Components/Rating/rating';
 import Button from '../../../../Components/Button/button';
 import { BsArrowBarRight } from "react-icons/bs";
 import { useNavigate } from 'react-router';
-import { motion } from 'framer-motion';
 
 type Props = {
     id: number,
@@ -32,17 +31,11 @@ const Info = (props: Props) => {
     }
 
     return (
-        <motion.div
+        <div
             className={styles.content}>
-            <motion.img
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: .5, delay: .5, type:'spring', stiffness:100 }}
+            <img
                 src={apiConfig.small(poster_path)} alt="poster" className={styles.poster} />
-            <motion.div
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1, type:'spring' }}
+            <div
                 className={styles.Info}>
                 <div className={styles.rating}>
                     <Rating rating={rating} />
@@ -70,8 +63,8 @@ const Info = (props: Props) => {
                         <BsArrowBarRight className={styles.icn} />
                     </Button>
                 </div>
-            </motion.div>
-        </motion.div>
+            </div>
+        </div>
     )
 }
 

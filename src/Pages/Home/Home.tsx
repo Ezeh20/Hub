@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react"
+import { lazy, useEffect, useState } from "react"
 import requestApi from "../../api/tmdb_api_config"
 import styles from './home.module.scss'
-import Hero from "./Hero_section/hero"
-import Trending from "./Trending_section/trending"
-import TopMovies from "./Top_movies/top_movies"
-import TvOnair from "./Tv/tv_onair"
-import ComingSoon from "./Coming_soon/coming_soon"
 import Animated from "../../Components/AnimatedRoutes/animated"
 import Footer from "../../Layout/Footer/footer"
+
+const Hero = lazy(() => import("./Hero_section/hero"))
+const Trending = lazy(() => import("./Trending_section/trending"))
+const TopMovies = lazy(() => import("./Top_movies/top_movies"))
+const TvOnair = lazy(() => import("./Tv/tv_onair"))
+const ComingSoon = lazy(() => import("./Coming_soon/coming_soon"))
 
 
 const Home = () => {

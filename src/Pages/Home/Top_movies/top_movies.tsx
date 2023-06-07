@@ -31,15 +31,11 @@ const TopMovies = () => {
             {
                 result.length > 0 ?
                     <Container>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 2 }}
-                            viewport={{ once: true }}
+                        <div
                             className='HeadingsContainer'>
                             <p className='Headings'>Top rated</p>
                             <span className='HeadingSub'>Top movies to watch</span>
-                        </motion.div>
+                        </div>
                         <CardsWrapper id='top_rated'>
                             <DisplayCard result={result} typeOfMedia="movie" />
                         </CardsWrapper>

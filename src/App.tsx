@@ -21,7 +21,7 @@ function App() {
     <div className={`${theme}`}>
       <Layout>
         <AnimatePresence >
-          <Suspense fallback={<>loading...</>}>
+          <Suspense>
             <Routes key={location.pathname} location={location}>
               <Route index element={<Home />} />
               <Route path='/movie'>
