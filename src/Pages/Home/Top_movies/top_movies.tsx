@@ -4,7 +4,6 @@ import DisplayCard from '../../../Components/Display_card/display_card'
 import { useEffect, useState } from 'react'
 import CardsWrapper from '../../../Components/Cards_wrapper/cards_wrapper'
 import styles from './top.module.scss'
-import { motion } from "framer-motion"
 import Loading from "../../../Components/Loading-spinner/loading"
 
 const TopMovies = () => {
