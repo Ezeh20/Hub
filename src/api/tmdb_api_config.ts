@@ -79,7 +79,7 @@ const requestApi = {
         const url = `/search/multi?${key}&query=${query}&page=${params}`
         return axiosConfig.get(url)
     },
-    discover: (mediaType: string, genre: number | null, params: number) => {
+    discover: (mediaType: string, genre: string, params: number) => {
         const url = `/discover/${mediaType}?${key}&with_genres=${genre}&page=${params}`
         return axiosConfig.get(url)
     }
